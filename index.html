@@ -1,0 +1,2021 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chemical Safety System - Western Digital</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700;800&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family:'Sarabun',sans-serif;
+    background:#060818;
+    color:white;
+    min-height:100vh;
+    overflow-x:hidden;
+  }
+
+  /* ===== NAVBAR ===== */
+  .navbar {
+    background:rgba(8,12,25,0.98);
+    border-bottom:1px solid rgba(255,255,255,0.07);
+    padding:0 24px;
+    height:58px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    position:sticky;
+    top:0;
+    z-index:2000;
+    backdrop-filter:blur(20px);
+  }
+  .nav-logo { font-size:17px; font-weight:800; letter-spacing:0.5px; }
+  .nav-logo span { color:#ff6b00; }
+
+  .nav-tabs {
+    display:flex;
+    gap:4px;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:12px;
+    padding:4px;
+  }
+  .nav-tab {
+    padding:7px 18px;
+    border-radius:8px;
+    font-size:13px;
+    font-weight:600;
+    cursor:pointer;
+    color:rgba(255,255,255,0.5);
+    transition:all 0.25s;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    white-space:nowrap;
+  }
+  .nav-tab:hover { color:rgba(255,255,255,0.8); background:rgba(255,255,255,0.05); }
+  .nav-tab.active {
+    background:linear-gradient(135deg,rgba(0,80,255,0.4),rgba(0,150,255,0.25));
+    color:white;
+    box-shadow:0 2px 12px rgba(0,100,255,0.2);
+  }
+  .nav-tab .tab-badge {
+    background:#ff4444;
+    color:white;
+    font-size:10px;
+    font-weight:800;
+    padding:1px 6px;
+    border-radius:10px;
+    min-width:18px;
+    text-align:center;
+  }
+
+  .nav-right {
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:12px;
+    color:rgba(255,255,255,0.4);
+  }
+  .live-dot {
+    width:7px;height:7px;
+    border-radius:50%;
+    background:#00ff88;
+    box-shadow:0 0 8px #00ff88;
+    animation:blink 2s ease-in-out infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  /* ===== PAGE CONTAINER ===== */
+  .page { display:none; }
+  .page.active { display:block; }
+
+  /* ==========================================
+     PAGE 1: MAP (same as before - simplified)
+  ========================================== */
+  .map-page {
+    display:none;
+    grid-template-columns:300px 1fr;
+    height:calc(100vh - 58px);
+  }
+  .map-page.active { display:grid; }
+
+  .left-panel {
+    background:rgba(8,12,25,0.95);
+    border-right:1px solid rgba(255,255,255,0.07);
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+  }
+  .search-wrap { padding:14px; border-bottom:1px solid rgba(255,255,255,0.07); }
+  .search-inp-box { position:relative; margin-bottom:10px; }
+  .search-inp {
+    width:100%;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:10px;
+    padding:10px 14px 10px 38px;
+    color:white;
+    font-family:'Sarabun',sans-serif;
+    font-size:13px;
+    outline:none;
+    transition:all 0.3s;
+  }
+  .search-inp:focus { border-color:rgba(0,150,255,0.5); background:rgba(0,80,255,0.08); }
+  .search-inp::placeholder { color:rgba(255,255,255,0.3); }
+  .s-icon { position:absolute; left:12px;top:50%;transform:translateY(-50%); font-size:14px; opacity:0.5; }
+
+  .filter-row { display:flex; gap:5px; flex-wrap:wrap; }
+  .fchip {
+    padding:3px 10px;
+    border-radius:20px;
+    font-size:11px;
+    font-weight:600;
+    cursor:pointer;
+    border:1px solid rgba(255,255,255,0.1);
+    background:rgba(255,255,255,0.04);
+    color:rgba(255,255,255,0.5);
+    transition:all 0.2s;
+  }
+  .fchip.on { background:rgba(0,150,255,0.2); border-color:rgba(0,150,255,0.4); color:#00e5ff; }
+
+  .chem-scroll { flex:1; overflow-y:auto; padding:8px; }
+  .chem-scroll::-webkit-scrollbar { width:3px; }
+  .chem-scroll::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.1); }
+
+  .c-item {
+    display:flex; align-items:center; gap:10px;
+    padding:10px 12px;
+    border-radius:10px;
+    cursor:pointer;
+    margin-bottom:3px;
+    border:1px solid transparent;
+    transition:all 0.2s;
+  }
+  .c-item:hover { background:rgba(255,255,255,0.04); border-color:rgba(255,255,255,0.07); }
+  .c-item.on { background:rgba(0,100,255,0.1); border-color:rgba(0,150,255,0.3); }
+
+  .c-sym {
+    width:34px;height:34px;
+    border-radius:8px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:16px;
+    flex-shrink:0;
+    transform:rotate(45deg);
+  }
+  .c-sym span { transform:rotate(-45deg); display:block; }
+
+  .c-info { flex:1; min-width:0; }
+  .c-name { font-size:13px; font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .c-cas { font-size:10px; color:rgba(255,255,255,0.4); }
+  .c-tag { font-size:10px; padding:2px 8px; border-radius:6px; font-weight:600; white-space:nowrap; flex-shrink:0; }
+
+  /* Map */
+  .map-right { position:relative; overflow:hidden; background:#070d1a; display:flex; flex-direction:column; }
+  .map-bar {
+    background:rgba(8,12,25,0.9);
+    border-bottom:1px solid rgba(255,255,255,0.07);
+    padding:8px 16px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .floor-tabs { display:flex; gap:5px; }
+  .ftab {
+    padding:5px 14px;
+    border-radius:7px;
+    font-size:12px; font-weight:700;
+    cursor:pointer;
+    border:1px solid rgba(255,255,255,0.1);
+    background:rgba(255,255,255,0.04);
+    color:rgba(255,255,255,0.5);
+    transition:all 0.2s;
+  }
+  .ftab.on { background:rgba(0,80,255,0.25); border-color:rgba(0,150,255,0.5); color:#00e5ff; }
+
+  .map-zone {
+    flex:1;
+    position:relative;
+    overflow:hidden;
+    background:
+      linear-gradient(rgba(0,100,200,0.015) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(0,100,200,0.015) 1px,transparent 1px),
+      linear-gradient(135deg,#070d1a,#0a1228,#070d1a);
+    background-size:40px 40px,40px 40px,100% 100%;
+  }
+  .map-cv {
+    position:absolute;
+    top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    width:780px; height:540px;
+    transition:transform 0.3s;
+  }
+  .room {
+    position:absolute;
+    border:1.5px solid rgba(100,150,255,0.2);
+    border-radius:8px;
+    background:rgba(15,30,70,0.45);
+    transition:all 0.3s;
+    cursor:pointer;
+  }
+  .room:hover { background:rgba(0,60,180,0.2); border-color:rgba(0,150,255,0.45); }
+  .room.hi { background:rgba(0,100,255,0.15); border-color:rgba(0,200,255,0.6); box-shadow:0 0 20px rgba(0,150,255,0.25),inset 0 0 20px rgba(0,80,255,0.08); }
+  .rl { position:absolute; top:8px;left:10px; font-size:11px; font-weight:700; color:rgba(140,180,255,0.65); pointer-events:none; }
+  .rs { position:absolute; top:22px;left:10px; font-size:10px; color:rgba(140,180,255,0.35); pointer-events:none; }
+
+  /* Pins */
+  .pin {
+    position:absolute;
+    cursor:pointer;
+    z-index:20;
+    transform:translate(-50%,-50%);
+    transition:all 0.3s;
+  }
+  .pin:hover,.pin.on { transform:translate(-50%,-50%) scale(1.25); z-index:30; }
+  .p-body {
+    width:30px;height:30px;
+    border-radius:50% 50% 50% 0;
+    transform:rotate(-45deg);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 3px 12px rgba(0,0,0,0.5);
+  }
+  .p-ic { transform:rotate(45deg); font-size:11px; display:block; }
+  .p-sh { width:7px;height:3px; border-radius:50%; margin:2px auto 0; transform:rotate(45deg); background:rgba(0,0,0,0.3); }
+  .p-lbl {
+    position:absolute;
+    top:-26px;left:50%;transform:translateX(-50%);
+    background:rgba(8,14,28,0.92);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:6px;
+    padding:2px 7px;
+    font-size:9px; font-weight:700; white-space:nowrap;
+    opacity:0; transition:opacity 0.2s; pointer-events:none;
+  }
+  .pin:hover .p-lbl,.pin.on .p-lbl { opacity:1; }
+  .p-pulse {
+    position:absolute;top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    width:40px;height:40px;
+    border-radius:50%;
+    pointer-events:none; opacity:0;
+  }
+  .pin.on .p-pulse { animation:pr 1.5s ease-out infinite; }
+  @keyframes pr { 0%{transform:translate(-50%,-50%) scale(0.8);opacity:0.8} 100%{transform:translate(-50%,-50%) scale(2);opacity:0} }
+
+  /* Detail panel */
+  .det-panel {
+    position:absolute;right:0;top:0;bottom:0;width:290px;
+    background:rgba(7,11,24,0.98);
+    border-left:1px solid rgba(255,255,255,0.07);
+    backdrop-filter:blur(20px);
+    z-index:200;
+    transform:translateX(100%);
+    transition:transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    overflow-y:auto;
+  }
+  .det-panel.open { transform:translateX(0); }
+  .det-panel::-webkit-scrollbar { width:3px; }
+  .det-panel::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.08); }
+  .dh { padding:18px 18px 14px; border-bottom:1px solid rgba(255,255,255,0.07); position:sticky;top:0;background:rgba(7,11,24,0.99);z-index:5; }
+  .dc { padding:14px 18px; }
+  .da { padding:12px 18px; border-top:1px solid rgba(255,255,255,0.07); display:flex; gap:8px; }
+  .dclose {
+    position:absolute;top:14px;right:14px;
+    width:26px;height:26px;
+    border-radius:7px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.1);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer; font-size:13px; color:rgba(255,255,255,0.5);
+  }
+  .dclose:hover { background:rgba(255,50,50,0.2); color:#ff6666; }
+
+  .dsec-t { font-size:10px; font-weight:700; letter-spacing:2px; color:rgba(255,255,255,0.3); text-transform:uppercase; margin-bottom:8px; }
+  .dcard { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07); border-radius:10px; padding:10px 12px; margin-bottom:8px; }
+  .dcard-l { font-size:10px; color:rgba(255,255,255,0.4); margin-bottom:3px; }
+  .dcard-v { font-size:13px; font-weight:700; }
+  .hbar { margin-bottom:7px; }
+  .hbar-row { display:flex;justify-content:space-between; font-size:10px; color:rgba(255,255,255,0.45); margin-bottom:3px; }
+  .hbar-t { height:5px; background:rgba(255,255,255,0.07); border-radius:3px; overflow:hidden; }
+  .hbar-f { height:100%; border-radius:3px; transition:width 0.8s; }
+  .ebox { background:rgba(200,0,0,0.1); border:1px solid rgba(255,80,80,0.25); border-radius:10px; padding:12px; }
+  .ebox-t { font-size:12px; font-weight:700; color:#ff8888; margin-bottom:6px; }
+  .ebox-r { font-size:12px; color:rgba(255,255,255,0.7); margin-bottom:4px; }
+  .dbtn { flex:1;padding:9px; border-radius:9px; font-size:12px;font-weight:700; cursor:pointer; border:none; font-family:'Sarabun',sans-serif; transition:all 0.2s; }
+  .dbtn-p { background:linear-gradient(135deg,#0050ff,#0096ff); color:white; }
+  .dbtn-s { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); color:rgba(255,255,255,0.7); }
+
+  /* Legend */
+  .mleg {
+    position:absolute;bottom:14px;left:14px;
+    background:rgba(7,11,24,0.92);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:10px;padding:10px 14px;
+    backdrop-filter:blur(10px); z-index:50;
+  }
+  .mleg-t { font-size:9px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.35);margin-bottom:7px; }
+  .mleg-r { display:flex;align-items:center;gap:7px;margin-bottom:4px;font-size:11px;color:rgba(255,255,255,0.55); }
+  .mleg-d { width:9px;height:9px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);flex-shrink:0; }
+
+  .mstats {
+    position:absolute;top:14px;right:14px;
+    display:flex;flex-direction:column;gap:6px;z-index:50;
+  }
+  .mst { background:rgba(7,11,24,0.92); border:1px solid rgba(255,255,255,0.07); border-radius:9px; padding:8px 12px; text-align:center; min-width:72px; backdrop-filter:blur(10px); }
+  .mst-v { font-size:18px; font-weight:800; line-height:1; }
+  .mst-l { font-size:9px; color:rgba(255,255,255,0.35); margin-top:2px; }
+
+  .zoom-c { position:absolute;bottom:14px;right:14px;display:flex;flex-direction:column;gap:4px;z-index:50; }
+  .zbtn {
+    width:34px;height:34px;
+    background:rgba(7,11,24,0.92);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:8px;
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;font-size:15px;font-weight:bold;
+    color:rgba(255,255,255,0.65);
+    transition:all 0.2s;
+    backdrop-filter:blur(10px);
+    user-select:none;
+    font-family:sans-serif;
+  }
+  .zbtn:hover { background:rgba(0,80,200,0.2); color:white; }
+
+  /* Scan beam */
+  .sbeam { position:absolute;left:0;right:0;height:2px; background:linear-gradient(90deg,transparent,rgba(0,229,255,0.3),transparent); animation:sb 4s linear infinite; pointer-events:none;z-index:5; }
+  @keyframes sb { 0%{top:0;opacity:0.6} 100%{top:100%;opacity:0} }
+
+  /* ==========================================
+     PAGE 2: QR SCAN
+  ========================================== */
+  .qr-page { padding:30px; max-width:1100px; margin:0 auto; }
+
+  .qr-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+    margin-top:24px;
+  }
+
+  .glass-card {
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:20px;
+    overflow:hidden;
+    position:relative;
+  }
+  .glass-card::before {
+    content:'';
+    position:absolute;
+    top:0;left:0;right:0;height:2px;
+  }
+  .card-blue::before { background:linear-gradient(90deg,#0050ff,#00e5ff); }
+  .card-green::before { background:linear-gradient(90deg,#00aa55,#00ff88); }
+  .card-purple::before { background:linear-gradient(90deg,#7700ff,#cc88ff); }
+  .card-orange::before { background:linear-gradient(90deg,#cc4400,#ff8844); }
+
+  .card-head {
+    padding:20px 22px 16px;
+    border-bottom:1px solid rgba(255,255,255,0.06);
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .card-head-icon {
+    width:40px;height:40px;
+    border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:20px;
+    flex-shrink:0;
+  }
+  .card-head-title { font-size:16px; font-weight:700; }
+  .card-head-sub { font-size:12px; color:rgba(255,255,255,0.45); margin-top:2px; }
+  .card-body { padding:20px 22px; }
+
+  /* QR Scanner Simulation */
+  .qr-scanner-box {
+    width:100%;
+    aspect-ratio:1;
+    max-width:280px;
+    margin:0 auto 20px;
+    position:relative;
+    background:rgba(0,0,0,0.4);
+    border-radius:16px;
+    overflow:hidden;
+    border:2px solid rgba(0,229,255,0.3);
+  }
+  .qr-viewfinder {
+    position:absolute;inset:16px;
+    border:2px solid transparent;
+  }
+  .qr-corner-piece {
+    position:absolute;
+    width:24px;height:24px;
+    border-color:#00e5ff;
+    border-style:solid;
+  }
+  .qcp-tl { top:0;left:0; border-width:3px 0 0 3px; border-radius:4px 0 0 0; }
+  .qcp-tr { top:0;right:0; border-width:3px 3px 0 0; border-radius:0 4px 0 0; }
+  .qcp-bl { bottom:0;left:0; border-width:0 0 3px 3px; border-radius:0 0 0 4px; }
+  .qcp-br { bottom:0;right:0; border-width:0 3px 3px 0; border-radius:0 0 4px 0; }
+
+  .qr-scan-line {
+    position:absolute;
+    left:16px;right:16px;
+    height:2px;
+    background:linear-gradient(90deg,transparent,#00e5ff,transparent);
+    box-shadow:0 0 8px #00e5ff;
+    animation:qscan 2.5s ease-in-out infinite;
+  }
+  @keyframes qscan {
+    0%,100% { top:16px; }
+    50% { top:calc(100% - 16px); }
+  }
+
+  .qr-preview-area {
+    position:absolute;inset:0;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(0,20,60,0.6);
+  }
+  .qr-demo-code {
+    width:100px;height:100px;
+    background:white;
+    border-radius:8px;
+    padding:8px;
+    opacity:0.8;
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    grid-template-rows:repeat(7,1fr);
+    gap:2px;
+  }
+  .qcell { background:#1a1a2e; border-radius:1px; }
+  .qcell.w { background:white; }
+
+  .qr-input-section {
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .qr-manual-input {
+    display:flex;
+    gap:8px;
+  }
+  .qr-inp {
+    flex:1;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:10px;
+    padding:10px 14px;
+    color:white;
+    font-family:'Sarabun',sans-serif;
+    font-size:13px;
+    outline:none;
+  }
+  .qr-inp:focus { border-color:rgba(0,150,255,0.5); }
+  .qr-inp::placeholder { color:rgba(255,255,255,0.3); }
+  .qr-scan-btn {
+    padding:10px 18px;
+    background:linear-gradient(135deg,#0050ff,#0096ff);
+    border:none;
+    border-radius:10px;
+    color:white;
+    font-size:13px;
+    font-weight:700;
+    cursor:pointer;
+    font-family:'Sarabun',sans-serif;
+    transition:all 0.2s;
+    white-space:nowrap;
+  }
+  .qr-scan-btn:hover { opacity:0.85; transform:translateY(-1px); }
+
+  /* QR Result */
+  .qr-result {
+    background:rgba(0,80,255,0.08);
+    border:1px solid rgba(0,150,255,0.25);
+    border-radius:14px;
+    padding:16px;
+    display:none;
+    animation:fadeIn 0.3s ease;
+  }
+  .qr-result.show { display:block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+
+  .result-header {
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:14px;
+    padding-bottom:12px;
+    border-bottom:1px solid rgba(255,255,255,0.07);
+  }
+  .result-icon {
+    width:44px;height:44px;
+    border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:22px;
+    transform:rotate(45deg);
+    flex-shrink:0;
+  }
+  .result-icon span { transform:rotate(-45deg); display:block; }
+  .result-name { font-size:18px; font-weight:800; }
+  .result-cas { font-size:11px; color:rgba(255,255,255,0.5); }
+
+  .result-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin-bottom:12px;
+  }
+  .rg-item {
+    background:rgba(255,255,255,0.04);
+    border-radius:8px;
+    padding:8px 10px;
+    border:1px solid rgba(255,255,255,0.06);
+  }
+  .rg-l { font-size:10px; color:rgba(255,255,255,0.4); }
+  .rg-v { font-size:12px; font-weight:700; margin-top:2px; }
+
+  .result-emergency {
+    background:rgba(255,50,50,0.1);
+    border:1px solid rgba(255,80,80,0.25);
+    border-radius:10px;
+    padding:10px 12px;
+    font-size:12px;
+    color:rgba(255,200,200,0.9);
+  }
+  .result-emergency strong { color:#ff8888; display:block; margin-bottom:4px; }
+
+  /* QR Code Generator */
+  .qr-gen-list {
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    max-height:380px;
+    overflow-y:auto;
+  }
+  .qr-gen-list::-webkit-scrollbar { width:3px; }
+  .qr-gen-list::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.1); }
+
+  .qr-gen-item {
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px 14px;
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.07);
+    border-radius:12px;
+    cursor:pointer;
+    transition:all 0.2s;
+  }
+  .qr-gen-item:hover { background:rgba(0,80,200,0.1); border-color:rgba(0,150,255,0.3); }
+
+  .qr-mini {
+    width:48px;height:48px;
+    background:white;
+    border-radius:8px;
+    padding:5px;
+    flex-shrink:0;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:1.5px;
+  }
+  .qm-cell { background:#1a1a2e; border-radius:1px; }
+  .qm-cell.w { background:white; }
+
+  .qri-info { flex:1; }
+  .qri-name { font-size:13px; font-weight:700; }
+  .qri-loc { font-size:11px; color:rgba(255,255,255,0.45); margin-top:2px; }
+
+  .qri-actions { display:flex; gap:6px; }
+  .qri-btn {
+    padding:5px 10px;
+    border-radius:7px;
+    font-size:11px;
+    font-weight:600;
+    cursor:pointer;
+    border:1px solid rgba(255,255,255,0.1);
+    background:rgba(255,255,255,0.06);
+    color:rgba(255,255,255,0.7);
+    transition:all 0.2s;
+    font-family:'Sarabun',sans-serif;
+  }
+  .qri-btn:hover { background:rgba(0,100,255,0.2); border-color:rgba(0,150,255,0.4); color:white; }
+  .qri-btn.pri { background:rgba(0,80,200,0.3); border-color:rgba(0,150,255,0.5); color:#00e5ff; }
+
+  /* ==========================================
+     PAGE 3: SDS ALERTS
+  ========================================== */
+  .alert-page { padding:30px; max-width:1100px; margin:0 auto; }
+
+  .alert-summary {
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+    margin:24px 0;
+  }
+  .alert-sum-card {
+    border-radius:16px;
+    padding:20px;
+    position:relative;
+    overflow:hidden;
+    border:1px solid;
+  }
+  .alert-sum-card::before {
+    content:'';
+    position:absolute;
+    top:0;left:0;right:0;height:3px;
+  }
+  .asc-expired { background:rgba(200,0,0,0.1); border-color:rgba(255,50,50,0.25); }
+  .asc-expired::before { background:linear-gradient(90deg,#cc0000,#ff4444); }
+  .asc-warning { background:rgba(200,100,0,0.1); border-color:rgba(255,140,0,0.25); }
+  .asc-warning::before { background:linear-gradient(90deg,#cc6600,#ff9933); }
+  .asc-upcoming { background:rgba(180,150,0,0.1); border-color:rgba(255,220,0,0.25); }
+  .asc-upcoming::before { background:linear-gradient(90deg,#aaaa00,#ffdd00); }
+  .asc-ok { background:rgba(0,150,80,0.1); border-color:rgba(0,200,100,0.25); }
+  .asc-ok::before { background:linear-gradient(90deg,#006633,#00cc66); }
+
+  .asc-num { font-size:36px; font-weight:800; line-height:1; margin-bottom:4px; }
+  .asc-label { font-size:13px; font-weight:600; margin-bottom:2px; }
+  .asc-sub { font-size:11px; opacity:0.5; }
+  .asc-icon { position:absolute; right:16px; top:50%; transform:translateY(-50%); font-size:32px; opacity:0.2; }
+
+  /* Filter bar */
+  .alert-filters {
+    display:flex;
+    gap:8px;
+    margin-bottom:16px;
+    align-items:center;
+  }
+  .af-label { font-size:12px; color:rgba(255,255,255,0.4); margin-right:4px; }
+  .af-chip {
+    padding:5px 14px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:600;
+    cursor:pointer;
+    border:1px solid rgba(255,255,255,0.1);
+    background:rgba(255,255,255,0.05);
+    color:rgba(255,255,255,0.55);
+    transition:all 0.2s;
+  }
+  .af-chip.on { background:rgba(0,150,255,0.18); border-color:rgba(0,150,255,0.4); color:#00e5ff; }
+
+  /* Alert Table */
+  .alert-table-wrap {
+    background:rgba(255,255,255,0.02);
+    border:1px solid rgba(255,255,255,0.07);
+    border-radius:16px;
+    overflow:hidden;
+  }
+  .alert-table {
+    width:100%;
+    border-collapse:collapse;
+  }
+  .alert-table th {
+    padding:12px 16px;
+    text-align:left;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1.5px;
+    color:rgba(255,255,255,0.35);
+    text-transform:uppercase;
+    background:rgba(255,255,255,0.02);
+    border-bottom:1px solid rgba(255,255,255,0.06);
+  }
+  .alert-table td {
+    padding:12px 16px;
+    font-size:13px;
+    border-bottom:1px solid rgba(255,255,255,0.04);
+    vertical-align:middle;
+  }
+  .alert-table tr:hover td { background:rgba(255,255,255,0.025); }
+  .alert-table tr:last-child td { border-bottom:none; }
+
+  .status-badge {
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    padding:3px 10px;
+    border-radius:20px;
+    font-size:11px;
+    font-weight:700;
+  }
+  .sb-expired { background:rgba(200,0,0,0.2); color:#ff6666; border:1px solid rgba(255,50,50,0.3); }
+  .sb-warning { background:rgba(200,100,0,0.2); color:#ffaa44; border:1px solid rgba(255,140,0,0.3); }
+  .sb-upcoming { background:rgba(200,180,0,0.2); color:#ffdd44; border:1px solid rgba(255,220,0,0.3); }
+  .sb-ok { background:rgba(0,150,80,0.2); color:#44ff99; border:1px solid rgba(0,200,100,0.3); }
+
+  .days-badge {
+    display:inline-block;
+    padding:2px 8px;
+    border-radius:6px;
+    font-size:12px;
+    font-weight:700;
+  }
+
+  .action-btn {
+    padding:4px 12px;
+    border-radius:7px;
+    font-size:11px;
+    font-weight:600;
+    cursor:pointer;
+    border:1px solid rgba(255,255,255,0.1);
+    background:rgba(255,255,255,0.05);
+    color:rgba(255,255,255,0.7);
+    transition:all 0.2s;
+    font-family:'Sarabun',sans-serif;
+    margin-right:4px;
+  }
+  .action-btn:hover { background:rgba(0,100,200,0.2); border-color:rgba(0,150,255,0.4); color:white; }
+  .action-btn.urgent { background:rgba(200,0,0,0.2); border-color:rgba(255,50,50,0.4); color:#ff8888; }
+
+  /* Notification panel */
+  .notif-panel {
+    background:rgba(255,255,255,0.02);
+    border:1px solid rgba(255,255,255,0.07);
+    border-radius:16px;
+    padding:20px;
+    margin-top:20px;
+  }
+  .notif-title { font-size:15px; font-weight:700; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+  .notif-item {
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    padding:12px 14px;
+    border-radius:10px;
+    margin-bottom:8px;
+    border:1px solid;
+    position:relative;
+    overflow:hidden;
+  }
+  .ni-expired { background:rgba(200,0,0,0.08); border-color:rgba(255,50,50,0.2); }
+  .ni-warning { background:rgba(200,100,0,0.08); border-color:rgba(255,140,0,0.2); }
+  .ni-info { background:rgba(0,80,200,0.08); border-color:rgba(0,150,255,0.2); }
+  .ni-icon { font-size:20px; flex-shrink:0; }
+  .ni-content { flex:1; }
+  .ni-title { font-size:13px; font-weight:700; margin-bottom:3px; }
+  .ni-desc { font-size:12px; color:rgba(255,255,255,0.55); }
+  .ni-time { font-size:10px; color:rgba(255,255,255,0.3); margin-top:4px; }
+  .ni-close { position:absolute;top:10px;right:10px; font-size:12px; cursor:pointer; opacity:0.4; }
+  .ni-close:hover { opacity:0.8; }
+
+  /* ==========================================
+     PAGE 4: DASHBOARD
+  ========================================== */
+  .dash-page { padding:24px 30px; max-width:1200px; margin:0 auto; }
+
+  .dash-header-row {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:24px;
+  }
+  .dash-title { font-size:22px; font-weight:800; }
+  .dash-sub { font-size:13px; color:rgba(255,255,255,0.4); margin-top:3px; }
+  .dash-date {
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:10px;
+    padding:8px 16px;
+    font-size:12px;
+    color:rgba(255,255,255,0.6);
+  }
+
+  /* KPI Cards */
+  .kpi-row {
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:14px;
+    margin-bottom:24px;
+  }
+  .kpi-card {
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.07);
+    border-radius:16px;
+    padding:18px 16px;
+    position:relative;
+    overflow:hidden;
+    transition:all 0.3s;
+  }
+  .kpi-card:hover { background:rgba(255,255,255,0.05); transform:translateY(-2px); }
+  .kpi-card::before { content:''; position:absolute; top:0;left:0;right:0;height:2px; }
+  .kc-1::before { background:linear-gradient(90deg,#0050ff,#00e5ff); }
+  .kc-2::before { background:linear-gradient(90deg,#cc0000,#ff4444); }
+  .kc-3::before { background:linear-gradient(90deg,#cc6600,#ff9933); }
+  .kc-4::before { background:linear-gradient(90deg,#006633,#00ff88); }
+  .kc-5::before { background:linear-gradient(90deg,#7700ff,#cc88ff); }
+
+  .kpi-icon { font-size:22px; margin-bottom:10px; }
+  .kpi-val { font-size:28px; font-weight:800; line-height:1; margin-bottom:4px; }
+  .kpi-label { font-size:12px; color:rgba(255,255,255,0.5); }
+  .kpi-delta {
+    position:absolute;top:16px;right:16px;
+    font-size:11px;font-weight:700;
+    padding:2px 7px;border-radius:6px;
+  }
+  .kd-up { background:rgba(0,200,100,0.15); color:#00ff88; }
+  .kd-dn { background:rgba(200,0,0,0.15); color:#ff6666; }
+
+  /* Charts Row */
+  .charts-row {
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:16px;
+    margin-bottom:20px;
+  }
+
+  .chart-card {
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.07);
+    border-radius:16px;
+    padding:20px;
+    position:relative;
+    overflow:hidden;
+  }
+  .chart-title { font-size:14px; font-weight:700; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+
+  /* Donut Chart */
+  .donut-wrap {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:16px;
+  }
+  .donut-svg { position:relative; }
+  .donut-center {
+    position:absolute;
+    top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+  }
+  .donut-num { font-size:22px; font-weight:800; }
+  .donut-lbl { font-size:10px; color:rgba(255,255,255,0.45); }
+  .donut-legend { width:100%; }
+  .dl-item { display:flex;align-items:center;justify-content:space-between;margin-bottom:7px; }
+  .dl-left { display:flex;align-items:center;gap:7px; }
+  .dl-dot { width:10px;height:10px;border-radius:50%;flex-shrink:0; }
+  .dl-name { font-size:12px;color:rgba(255,255,255,0.7); }
+  .dl-val { font-size:12px;font-weight:700; }
+
+  /* Bar Chart */
+  .bar-chart { display:flex; flex-direction:column; gap:10px; }
+  .bc-row { }
+  .bc-label { display:flex;justify-content:space-between;margin-bottom:4px;font-size:11px;color:rgba(255,255,255,0.55); }
+  .bc-track { height:8px;background:rgba(255,255,255,0.07);border-radius:4px;overflow:hidden; }
+  .bc-fill { height:100%;border-radius:4px;transition:width 1s cubic-bezier(0.4,0,0.2,1); }
+
+  /* Line Chart (CSS) */
+  .line-chart-svg { width:100%; height:140px; }
+
+  /* Second row */
+  .bottom-row {
+    display:grid;
+    grid-template-columns:1.5fr 1fr;
+    gap:16px;
+  }
+
+  /* Activity feed */
+  .activity-feed { max-height:260px; overflow-y:auto; }
+  .activity-feed::-webkit-scrollbar { width:3px; }
+  .activity-feed::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.1); }
+  .act-item {
+    display:flex;gap:12px;padding:10px 0;
+    border-bottom:1px solid rgba(255,255,255,0.05);
+  }
+  .act-item:last-child { border-bottom:none; }
+  .act-dot {
+    width:8px;height:8px;border-radius:50%;
+    margin-top:5px;flex-shrink:0;
+  }
+  .act-text { font-size:12px;color:rgba(255,255,255,0.7); line-height:1.5; }
+  .act-time { font-size:10px;color:rgba(255,255,255,0.3);margin-top:2px; }
+
+  /* Top hazardous */
+  .top-list { }
+  .top-item {
+    display:flex;align-items:center;gap:10px;
+    padding:10px 0;
+    border-bottom:1px solid rgba(255,255,255,0.05);
+  }
+  .top-item:last-child { border-bottom:none; }
+  .top-rank { font-size:14px;font-weight:800;width:22px;color:rgba(255,255,255,0.3); }
+  .top-rank.r1 { color:#ffdd00; }
+  .top-rank.r2 { color:#cccccc; }
+  .top-rank.r3 { color:#cc8844; }
+  .top-sym { width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;transform:rotate(45deg);flex-shrink:0; }
+  .top-sym span { transform:rotate(-45deg);display:block; }
+  .top-info { flex:1; }
+  .top-name { font-size:12px;font-weight:700; }
+  .top-room { font-size:10px;color:rgba(255,255,255,0.4); }
+  .top-score { font-size:14px;font-weight:800; }
+
+  /* Page header */
+  .page-head {
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:24px;
+  }
+  .ph-title { font-size:22px;font-weight:800; }
+  .ph-sub { font-size:13px;color:rgba(255,255,255,0.4);margin-top:3px; }
+  .ph-btn {
+    padding:8px 18px;
+    border-radius:10px;
+    font-size:13px;font-weight:600;
+    cursor:pointer;border:none;
+    font-family:'Sarabun',sans-serif;
+    transition:all 0.2s;
+  }
+  .ph-btn-p { background:linear-gradient(135deg,#0050ff,#0096ff);color:white; }
+  .ph-btn-s { background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7); margin-left:8px; }
+
+  /* glow pulse alert */
+  @keyframes alertPulse {
+    0%,100% { box-shadow:0 0 0 0 rgba(255,50,50,0.4); }
+    50% { box-shadow:0 0 0 8px rgba(255,50,50,0); }
+  }
+  .has-alert { animation:alertPulse 2s ease-in-out infinite; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+  <div class="nav-logo">Western<span>Digital</span> <span style="font-size:12px;font-weight:400;color:rgba(255,255,255,0.35);margin-left:6px;">| Chemical Safety System</span></div>
+  <div class="nav-tabs">
+    <div class="nav-tab active" onclick="goPage('map',this)">🗺️ แผนที่สารเคมี</div>
+    <div class="nav-tab" onclick="goPage('qr',this)">📱 QR Scan</div>
+    <div class="nav-tab has-alert" onclick="goPage('alerts',this)" id="alertTab">
+      🔔 SDS แจ้งเตือน
+      <span class="tab-badge" id="alertBadge">3</span>
+    </div>
+    <div class="nav-tab" onclick="goPage('dashboard',this)">📊 Dashboard</div>
+  </div>
+  <div class="nav-right">
+    <div class="live-dot"></div>
+    <span>Online | EHS Dept</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE: MAP ==================== -->
+<div class="map-page active" id="page-map">
+  <div class="left-panel">
+    <div class="search-wrap">
+      <div class="search-inp-box">
+        <span class="s-icon">🔍</span>
+        <input class="search-inp" id="mapSearch" type="text" placeholder="ค้นหาสารเคมี / ห้อง / CAS..."
+          oninput="filterMap(this.value)">
+      </div>
+      <div class="filter-row">
+        <div class="fchip on" onclick="setMapFilter('all',this)">ทั้งหมด</div>
+        <div class="fchip" onclick="setMapFilter('red',this)">🔴 อันตรายสูง</div>
+        <div class="fchip" onclick="setMapFilter('orange',this)">🟠 ติดไฟ</div>
+        <div class="fchip" onclick="setMapFilter('yellow',this)">🟡 ระวัง</div>
+        <div class="fchip" onclick="setMapFilter('green',this)">🟢 ปลอดภัย</div>
+      </div>
+    </div>
+    <div class="chem-scroll" id="mapList"></div>
+  </div>
+
+  <div class="map-right">
+    <div class="map-bar">
+      <div class="floor-tabs">
+        <div class="ftab on" onclick="setFloor(1,this)">🏭 ชั้น 1 Production</div>
+        <div class="ftab" onclick="setFloor(2,this)">🔬 ชั้น 2 Lab</div>
+        <div class="ftab" onclick="setFloor(3,this)">🏪 ชั้น 3 Storage</div>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <button class="action-btn" onclick="resetMapView()">🔄 รีเซ็ต</button>
+        <button class="action-btn" onclick="goPage('qr',document.querySelector('.nav-tab:nth-child(2)'))">📱 สแกน QR</button>
+        <button class="action-btn" style="background:rgba(0,80,200,0.2);border-color:rgba(0,150,255,0.4);color:#00e5ff;" onclick="goPage('dashboard',document.querySelector('.nav-tab:nth-child(4)'))">📊 Dashboard</button>
+      </div>
+    </div>
+    <div class="map-zone">
+      <div class="sbeam"></div>
+      <div class="map-cv" id="mapCv">
+        <svg style="position:absolute;inset:0;pointer-events:none;" viewBox="0 0 780 540" width="780" height="540">
+          <rect x="8" y="8" width="764" height="524" rx="10" fill="none" stroke="rgba(100,150,255,0.12)" stroke-width="1.5"/>
+          <line x1="8" y1="274" x2="772" y2="274" stroke="rgba(100,150,255,0.06)" stroke-width="1" stroke-dasharray="8,8"/>
+          <line x1="390" y1="8" x2="390" y2="532" stroke="rgba(100,150,255,0.06)" stroke-width="1" stroke-dasharray="8,8"/>
+          <text x="748" y="28" fill="rgba(100,150,255,0.35)" font-size="11" font-family="sans-serif" font-weight="bold">N↑</text>
+        </svg>
+        <!-- Rooms -->
+        <div class="room" id="room-prod-a" style="left:18px;top:18px;width:240px;height:190px;" onclick="focusRoom('prod-a')">
+          <div class="rl">PRODUCTION A</div><div class="rs">โรงผลิต A</div>
+        </div>
+        <div class="room" id="room-prod-b" style="left:268px;top:18px;width:240px;height:190px;" onclick="focusRoom('prod-b')">
+          <div class="rl">PRODUCTION B</div><div class="rs">โรงผลิต B</div>
+        </div>
+        <div class="room" id="room-qc" style="left:518px;top:18px;width:244px;height:190px;" onclick="focusRoom('qc')">
+          <div class="rl">QC LABORATORY</div><div class="rs">ห้องตรวจสอบคุณภาพ</div>
+        </div>
+        <div class="room" id="room-storage" style="left:18px;top:218px;width:170px;height:250px;" onclick="focusRoom('storage')">
+          <div class="rl">CHEMICAL</div><div class="rs" style="top:32px;">STORAGE</div><div class="rs" style="top:46px;">คลังสารเคมี</div>
+        </div>
+        <div class="room" id="room-process" style="left:198px;top:218px;width:300px;height:130px;" onclick="focusRoom('process')">
+          <div class="rl">PROCESS AREA</div><div class="rs">พื้นที่กระบวนการผลิต</div>
+        </div>
+        <div class="room" id="room-mixing" style="left:198px;top:358px;width:190px;height:110px;" onclick="focusRoom('mixing')">
+          <div class="rl">MIXING ROOM</div><div class="rs">ห้องผสมสาร</div>
+        </div>
+        <div class="room" id="room-rd" style="left:508px;top:218px;width:254px;height:140px;" onclick="focusRoom('rd')">
+          <div class="rl">R&amp;D LABORATORY</div><div class="rs">ห้องวิจัยและพัฒนา</div>
+        </div>
+        <div class="room" id="room-waste" style="left:508px;top:368px;width:150px;height:100px;" onclick="focusRoom('waste')">
+          <div class="rl" style="font-size:10px;">WASTE TREATMENT</div><div class="rs" style="top:28px;">บำบัดของเสีย</div>
+        </div>
+        <div class="room" id="room-ehs" style="left:668px;top:368px;width:94px;height:100px;" onclick="focusRoom('ehs')">
+          <div class="rl" style="font-size:10px;">EHS OFFICE</div>
+        </div>
+        <!-- Pin Container -->
+        <div id="pinCon"></div>
+        <!-- Tooltip -->
+        <div style="position:absolute;background:rgba(7,11,24,0.95);border:1px solid rgba(0,150,255,0.3);border-radius:10px;padding:10px 14px;pointer-events:none;z-index:100;opacity:0;transition:opacity 0.2s;backdrop-filter:blur(10px);max-width:190px;" id="mtt">
+          <div style="font-size:13px;font-weight:700;" id="mtt-n"></div>
+          <div style="font-size:11px;color:rgba(0,229,255,0.8);margin-top:2px;" id="mtt-l"></div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.45);" id="mtt-q"></div>
+        </div>
+        <!-- Route SVG -->
+        <svg id="routeSvg" style="position:absolute;inset:0;pointer-events:none;z-index:10;" viewBox="0 0 780 540" width="780" height="540"></svg>
+      </div>
+      <!-- Legend -->
+      <div class="mleg">
+        <div class="mleg-t">HAZARD LEVEL</div>
+        <div class="mleg-r"><div class="mleg-d" style="background:#ff4444;"></div>อันตรายสูง</div>
+        <div class="mleg-r"><div class="mleg-d" style="background:#ff9933;"></div>ติดไฟได้</div>
+        <div class="mleg-r"><div class="mleg-d" style="background:#ffcc00;"></div>ระวัง</div>
+        <div class="mleg-r"><div class="mleg-d" style="background:#0088ff;"></div>ออกซิไดซ์</div>
+        <div class="mleg-r"><div class="mleg-d" style="background:#00cc66;"></div>ปลอดภัยต่ำ</div>
+      </div>
+      <!-- Stats -->
+      <div class="mstats">
+        <div class="mst"><div class="mst-v" style="color:#ff6666;" id="ms-r">0</div><div class="mst-l">อันตรายสูง</div></div>
+        <div class="mst"><div class="mst-v" style="color:#ffaa44;" id="ms-o">0</div><div class="mst-l">ติดไฟ</div></div>
+        <div class="mst"><div class="mst-v" style="color:#ffdd44;" id="ms-y">0</div><div class="mst-l">ระวัง</div></div>
+        <div class="mst"><div class="mst-v" style="color:#44aaff;" id="ms-b">0</div><div class="mst-l">ออกซิไดซ์</div></div>
+        <div class="mst"><div class="mst-v" style="color:#44ff99;" id="ms-g">0</div><div class="mst-l">ปลอดภัย</div></div>
+      </div>
+      <!-- Zoom -->
+      <div class="zoom-c">
+        <div class="zbtn" onclick="zoomM(1.2)">+</div>
+        <div class="zbtn" onclick="zoomM(0.83)">−</div>
+        <div class="zbtn" onclick="resetMapView()" style="font-size:11px;">⌂</div>
+      </div>
+    </div>
+    <!-- Detail Panel -->
+    <div class="det-panel" id="detPanel">
+      <div class="dh" id="detH"></div>
+      <div class="dc" id="detC"></div>
+      <div class="da" id="detA"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PAGE: QR ==================== -->
+<div class="page" id="page-qr">
+  <div class="qr-page">
+    <div class="page-head">
+      <div>
+        <div class="ph-title">📱 QR Chemical Scan</div>
+        <div class="ph-sub">สแกน QR Code เพื่อดูข้อมูลสารเคมีทันที หรือค้นหาจากรหัส CAS / ชื่อสาร</div>
+      </div>
+      <div>
+        <button class="ph-btn ph-btn-p" onclick="genAllQR()">🖨️ พิมพ์ QR ทั้งหมด</button>
+        <button class="ph-btn ph-btn-s" onclick="exportQRList()">📄 Export รายการ</button>
+      </div>
+    </div>
+
+    <div class="qr-grid">
+      <!-- QR Scanner -->
+      <div class="glass-card card-blue">
+        <div class="card-head">
+          <div class="card-head-icon" style="background:rgba(0,80,255,0.2);">📷</div>
+          <div>
+            <div class="card-head-title">สแกน QR Code</div>
+            <div class="card-head-sub">จำลองการสแกนหรือพิมพ์ CAS/ชื่อสาร</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="qr-scanner-box">
+            <div class="qr-preview-area">
+              <div class="qr-demo-code" id="demoQR">
+                <!-- QR pattern cells generated by JS -->
+              </div>
+            </div>
+            <div class="qr-viewfinder">
+              <div class="qr-corner-piece qcp-tl"></div>
+              <div class="qr-corner-piece qcp-tr"></div>
+              <div class="qr-corner-piece qcp-bl"></div>
+              <div class="qr-corner-piece qcp-br"></div>
+            </div>
+            <div class="qr-scan-line"></div>
+          </div>
+          <div class="qr-input-section">
+            <div style="font-size:12px;color:rgba(255,255,255,0.4);text-align:center;margin-bottom:4px;">— หรือพิมพ์ค้นหาด้านล่าง —</div>
+            <div class="qr-manual-input">
+              <input class="qr-inp" id="qrSearchInp" type="text"
+                placeholder="ชื่อสาร / CAS No. / รหัสห้อง..."
+                onkeydown="if(event.key==='Enter')doQRScan()">
+              <button class="qr-scan-btn" onclick="doQRScan()">🔍 ค้นหา</button>
+            </div>
+            <!-- Quick select -->
+            <div style="display:flex;gap:6px;flex-wrap:wrap;">
+              <span style="font-size:11px;color:rgba(255,255,255,0.35);">ตัวอย่างด่วน:</span>
+              <span onclick="quickScan('อะซิโตน')" style="font-size:11px;color:#00e5ff;cursor:pointer;text-decoration:underline;">อะซิโตน</span>
+              <span onclick="quickScan('67-64-1')" style="font-size:11px;color:#00e5ff;cursor:pointer;text-decoration:underline;">67-64-1</span>
+              <span onclick="quickScan('กรดซัลฟิวริก')" style="font-size:11px;color:#ff8888;cursor:pointer;text-decoration:underline;">กรดซัลฟิวริก</span>
+              <span onclick="quickScan('QC')" style="font-size:11px;color:#ffaa44;cursor:pointer;text-decoration:underline;">ห้อง QC</span>
+            </div>
+            <!-- Result -->
+            <div class="qr-result" id="qrResult"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- QR Generator -->
+      <div class="glass-card card-green">
+        <div class="card-head">
+          <div class="card-head-icon" style="background:rgba(0,150,80,0.2);">🏷️</div>
+          <div>
+            <div class="card-head-title">QR Label ทุกสารเคมี</div>
+            <div class="card-head-sub">คลิก "พิมพ์" เพื่อออก QR Label สำหรับติดภาชนะ</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div style="display:flex;gap:8px;margin-bottom:12px;">
+            <input class="qr-inp" style="flex:1;" type="text" id="qrListSearch"
+              placeholder="กรองรายการ..." oninput="filterQRList(this.value)">
+          </div>
+          <div class="qr-gen-list" id="qrGenList"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- QR Info Cards -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px;">
+      <div class="glass-card card-purple">
+        <div class="card-body" style="text-align:center;padding:20px;">
+          <div style="font-size:36px;margin-bottom:8px;">⚡</div>
+          <div style="font-size:22px;font-weight:800;color:#cc88ff;">98%</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6);">เวลาค้นหาลดลง</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:4px;">จาก 5-10 นาที → &lt; 10 วินาที</div>
+        </div>
+      </div>
+      <div class="glass-card card-blue">
+        <div class="card-body" style="text-align:center;padding:20px;">
+          <div style="font-size:36px;margin-bottom:8px;">📦</div>
+          <div style="font-size:22px;font-weight:800;color:#00e5ff;" id="qr-total-count">12</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6);">QR Label ทั้งหมด</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:4px;">ครอบคลุมทุกห้องในโรงงาน</div>
+        </div>
+      </div>
+      <div class="glass-card card-orange">
+        <div class="card-body" style="text-align:center;padding:20px;">
+          <div style="font-size:36px;margin-bottom:8px;">🛡️</div>
+          <div style="font-size:22px;font-weight:800;color:#ff8844;">100%</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6);">GHS ครบถ้วน</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:4px;">ตาม ISO 11014 / มอก.1685</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PAGE: ALERTS ==================== -->
+<div class="page" id="page-alerts">
+  <div class="alert-page">
+    <div class="page-head">
+      <div>
+        <div class="ph-title">🔔 SDS Expiry Alerts</div>
+        <div class="ph-sub">ติดตามวันหมดอายุ SDS และแจ้งเตือนล่วงหน้า 90 วัน</div>
+      </div>
+      <div>
+        <button class="ph-btn ph-btn-p" onclick="sendAllAlerts()">📧 ส่งแจ้งเตือนทั้งหมด</button>
+        <button class="ph-btn ph-btn-s" onclick="exportAlerts()">📄 Export รายงาน</button>
+      </div>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="alert-summary">
+      <div class="alert-sum-card asc-expired">
+        <div class="asc-num" style="color:#ff4444;" id="cnt-expired">0</div>
+        <div class="asc-label" style="color:#ff8888;">SDS หมดอายุแล้ว</div>
+        <div class="asc-sub">ต้องดำเนินการทันที</div>
+        <div class="asc-icon">🚨</div>
+      </div>
+      <div class="alert-sum-card asc-warning">
+        <div class="asc-num" style="color:#ff9933;" id="cnt-warning">0</div>
+        <div class="asc-label" style="color:#ffaa66;">หมดภายใน 30 วัน</div>
+        <div class="asc-sub">ต้องต่ออายุเร่งด่วน</div>
+        <div class="asc-icon">⚠️</div>
+      </div>
+      <div class="alert-sum-card asc-upcoming">
+        <div class="asc-num" style="color:#ffcc00;" id="cnt-upcoming">0</div>
+        <div class="asc-label" style="color:#ffdd66;">หมดภายใน 90 วัน</div>
+        <div class="asc-sub">วางแผนต่ออายุ</div>
+        <div class="asc-icon">📅</div>
+      </div>
+      <div class="alert-sum-card asc-ok">
+        <div class="asc-num" style="color:#00cc66;" id="cnt-ok">0</div>
+        <div class="asc-label" style="color:#44ff99;">SDS ยังใช้งานได้</div>
+        <div class="asc-sub">อัปเดตแล้ว</div>
+        <div class="asc-icon">✅</div>
+      </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="alert-filters">
+      <span class="af-label">กรอง:</span>
+      <div class="af-chip on" onclick="setAlertFilter('all',this)">ทั้งหมด</div>
+      <div class="af-chip" onclick="setAlertFilter('expired',this)" style="color:#ff8888;">🚨 หมดอายุ</div>
+      <div class="af-chip" onclick="setAlertFilter('warning',this)" style="color:#ffaa44;">⚠️ เร่งด่วน</div>
+      <div class="af-chip" onclick="setAlertFilter('upcoming',this)" style="color:#ffdd44;">📅 ใกล้หมด</div>
+      <div class="af-chip" onclick="setAlertFilter('ok',this)" style="color:#44ff99;">✅ ปกติ</div>
+    </div>
+
+    <!-- Table -->
+    <div class="alert-table-wrap">
+      <table class="alert-table">
+        <thead>
+          <tr>
+            <th>ชื่อสารเคมี</th>
+            <th>CAS No.</th>
+            <th>ห้องจัดเก็บ</th>
+            <th>วันหมดอายุ SDS</th>
+            <th>สถานะ</th>
+            <th>เหลืออีก</th>
+            <th>การดำเนินการ</th>
+          </tr>
+        </thead>
+        <tbody id="alertTableBody"></tbody>
+      </table>
+    </div>
+
+    <!-- Notification Feed -->
+    <div class="notif-panel">
+      <div class="notif-title">🔔 การแจ้งเตือนล่าสุด</div>
+      <div id="notifFeed"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PAGE: DASHBOARD ==================== -->
+<div class="page" id="page-dashboard">
+  <div class="dash-page">
+    <div class="dash-header-row">
+      <div>
+        <div class="dash-title">📊 Chemical Safety Dashboard</div>
+        <div class="dash-sub">ภาพรวมระบบจัดการสารเคมี Western Digital Thailand | อัปเดต Real-time</div>
+      </div>
+      <div class="dash-date" id="dashDate"></div>
+    </div>
+
+    <!-- KPI Row -->
+    <div class="kpi-row">
+      <div class="kpi-card kc-1">
+        <div class="kpi-icon">⚗️</div>
+        <div class="kpi-val" style="color:#00e5ff;">12</div>
+        <div class="kpi-label">สารเคมีทั้งหมด</div>
+        <div class="kpi-delta kd-up">+2 เดือนนี้</div>
+      </div>
+      <div class="kpi-card kc-2">
+        <div class="kpi-icon">🚨</div>
+        <div class="kpi-val" style="color:#ff4444;" id="dash-expired">0</div>
+        <div class="kpi-label">SDS หมดอายุ</div>
+        <div class="kpi-delta kd-dn" id="dash-exp-delta">ต้องแก้ไข</div>
+      </div>
+      <div class="kpi-card kc-3">
+        <div class="kpi-icon">📱</div>
+        <div class="kpi-val" style="color:#ffaa44;">247</div>
+        <div class="kpi-label">QR สแกนวันนี้</div>
+        <div class="kpi-delta kd-up">+18% vs เมื่อวาน</div>
+      </div>
+      <div class="kpi-card kc-4">
+        <div class="kpi-icon">✅</div>
+        <div class="kpi-val" style="color:#00ff88;" id="dash-compliance">0%</div>
+        <div class="kpi-label">Compliance Rate</div>
+        <div class="kpi-delta kd-up" id="dash-comp-delta">เป้า 100%</div>
+      </div>
+      <div class="kpi-card kc-5">
+        <div class="kpi-icon">🏭</div>
+        <div class="kpi-val" style="color:#cc88ff;">9</div>
+        <div class="kpi-label">ห้องที่ครอบคลุม</div>
+        <div class="kpi-delta kd-up">100% Coverage</div>
+      </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="charts-row">
+      <!-- Donut: Hazard Distribution -->
+      <div class="chart-card">
+        <div class="chart-title">🎯 การกระจายระดับอันตราย</div>
+        <div class="donut-wrap">
+          <div class="donut-svg" style="position:relative;width:140px;height:140px;">
+            <svg viewBox="0 0 120 120" width="140" height="140">
+              <!-- Donut segments (pre-calculated) -->
+              <!-- Red: 4/12 = 33% = ~120deg stroke-dasharray -->
+              <circle cx="60" cy="60" r="45" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="18"/>
+              <circle cx="60" cy="60" r="45" fill="none" stroke="#ff4444" stroke-width="18"
+                stroke-dasharray="94 188" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+              <circle cx="60" cy="60" r="45" fill="none" stroke="#ff9933" stroke-width="18"
+                stroke-dasharray="70 188" stroke-dashoffset="-94" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+              <circle cx="60" cy="60" r="45" fill="none" stroke="#ffcc00" stroke-width="18"
+                stroke-dasharray="47 188" stroke-dashoffset="-164" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+              <circle cx="60" cy="60" r="45" fill="none" stroke="#0088ff" stroke-width="18"
+                stroke-dasharray="24 188" stroke-dashoffset="-211" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+              <circle cx="60" cy="60" r="45" fill="none" stroke="#00cc66" stroke-width="18"
+                stroke-dasharray="20 188" stroke-dashoffset="-235" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+            </svg>
+            <div class="donut-center">
+              <div class="donut-num" style="color:#00e5ff;">12</div>
+              <div class="donut-lbl">รายการ</div>
+            </div>
+          </div>
+          <div class="donut-legend" style="width:100%;">
+            <div class="dl-item"><div class="dl-left"><div class="dl-dot" style="background:#ff4444;"></div><span class="dl-name">อันตรายสูง</span></div><span class="dl-val" style="color:#ff4444;">4</span></div>
+            <div class="dl-item"><div class="dl-left"><div class="dl-dot" style="background:#ff9933;"></div><span class="dl-name">ติดไฟ</span></div><span class="dl-val" style="color:#ff9933;">4</span></div>
+            <div class="dl-item"><div class="dl-left"><div class="dl-dot" style="background:#ffcc00;"></div><span class="dl-name">ระวัง</span></div><span class="dl-val" style="color:#ffcc00;">2</span></div>
+            <div class="dl-item"><div class="dl-left"><div class="dl-dot" style="background:#0088ff;"></div><span class="dl-name">ออกซิไดซ์</span></div><span class="dl-val" style="color:#0088ff;">1</span></div>
+            <div class="dl-item"><div class="dl-left"><div class="dl-dot" style="background:#00cc66;"></div><span class="dl-name">ปลอดภัยต่ำ</span></div><span class="dl-val" style="color:#00cc66;">1</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bar: Chemical per room -->
+      <div class="chart-card">
+        <div class="chart-title">🏭 สารเคมีต่อห้อง</div>
+        <div class="bar-chart" id="roomBarChart"></div>
+      </div>
+
+      <!-- Line: QR Scan trend -->
+      <div class="chart-card">
+        <div class="chart-title">📱 แนวโน้มการสแกน QR (7 วัน)</div>
+        <svg class="line-chart-svg" viewBox="0 0 260 140" id="scanTrendSvg">
+          <defs>
+            <linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#0096ff" stop-opacity="0.3"/>
+              <stop offset="100%" stop-color="#0096ff" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <!-- Grid lines -->
+          <line x1="30" y1="20" x2="260" y2="20" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+          <line x1="30" y1="50" x2="260" y2="50" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+          <line x1="30" y1="80" x2="260" y2="80" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+          <line x1="30" y1="110" x2="260" y2="110" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+          <!-- Y labels -->
+          <text x="0" y="23" fill="rgba(255,255,255,0.3)" font-size="9" font-family="sans-serif">300</text>
+          <text x="0" y="53" fill="rgba(255,255,255,0.3)" font-size="9" font-family="sans-serif">200</text>
+          <text x="0" y="83" fill="rgba(255,255,255,0.3)" font-size="9" font-family="sans-serif">100</text>
+          <text x="10" y="113" fill="rgba(255,255,255,0.3)" font-size="9" font-family="sans-serif">0</text>
+          <!-- Area fill -->
+          <path d="M40,85 L75,70 L110,90 L145,55 L180,45 L215,60 L250,30 L250,110 L40,110 Z"
+            fill="url(#lineGrad)"/>
+          <!-- Line -->
+          <polyline points="40,85 75,70 110,90 145,55 180,45 215,60 250,30"
+            fill="none" stroke="#0096ff" stroke-width="2" stroke-linejoin="round"/>
+          <!-- Dots -->
+          <circle cx="40" cy="85" r="3" fill="#0096ff"/>
+          <circle cx="75" cy="70" r="3" fill="#0096ff"/>
+          <circle cx="110" cy="90" r="3" fill="#0096ff"/>
+          <circle cx="145" cy="55" r="3" fill="#0096ff"/>
+          <circle cx="180" cy="45" r="3" fill="#0096ff"/>
+          <circle cx="215" cy="60" r="3" fill="#0096ff"/>
+          <circle cx="250" cy="30" r="3" fill="#00e5ff" stroke="#fff" stroke-width="1.5"/>
+          <!-- X labels -->
+          <text x="34" y="128" fill="rgba(255,255,255,0.3)" font-size="8" font-family="sans-serif">จ</text>
+          <text x="69" y="128" fill="rgba(255,255,255,0.3)" font-size="8" font-family="sans-serif">อ</text>
+          <text x="104" y="128" fill="rgba(255,255,255,0.3)" font-size="8" font-family="sans-serif">พ</text>
+          <text x="139" y="128" fill="rgba(255,255,255,0.3)" font-size="8" font-family="sans-serif">พฤ</text>
+          <text x="174" y="128" fill="rgba(255,255,255,0.3)" font-size="8" font-family="sans-serif">ศ</text>
+          <text x="209" y="128" fill="rgba(255,255,255,0.3)" font-size="8" font-family="sans-serif">ส</text>
+          <text x="244" y="128" fill="rgba(255,255,255,0.3)" font-size="8" font-family="sans-serif">อา</text>
+          <!-- Tooltip for last point -->
+          <rect x="226" y="14" width="40" height="16" rx="4" fill="rgba(0,150,255,0.3)" stroke="rgba(0,200,255,0.5)" stroke-width="1"/>
+          <text x="236" y="25" fill="#00e5ff" font-size="9" font-family="sans-serif" font-weight="bold">247</text>
+        </svg>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px;">
+          <div style="text-align:center;padding:8px;background:rgba(255,255,255,0.03);border-radius:8px;">
+            <div style="font-size:14px;font-weight:800;color:#00e5ff;">247</div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.4);">วันนี้</div>
+          </div>
+          <div style="text-align:center;padding:8px;background:rgba(255,255,255,0.03);border-radius:8px;">
+            <div style="font-size:14px;font-weight:800;color:#00ff88;">1,284</div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.4);">7 วัน</div>
+          </div>
+          <div style="text-align:center;padding:8px;background:rgba(255,255,255,0.03);border-radius:8px;">
+            <div style="font-size:14px;font-weight:800;color:#cc88ff;">4,821</div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.4);">เดือนนี้</div>
+          </div>
+          <div style="text-align:center;padding:8px;background:rgba(255,255,255,0.03);border-radius:8px;">
+            <div style="font-size:14px;font-weight:800;color:#ffaa44;">+18%</div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.4);">เติบโต</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Row -->
+    <div class="bottom-row">
+      <!-- Activity -->
+      <div class="chart-card">
+        <div class="chart-title">📋 กิจกรรมล่าสุด</div>
+        <div class="activity-feed" id="actFeed"></div>
+      </div>
+      <!-- Top Hazardous -->
+      <div class="chart-card">
+        <div class="chart-title">⚠️ สารเคมีอันตรายสูงสุด Top 5</div>
+        <div class="top-list" id="topList"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== JAVASCRIPT ==================== -->
+<script>
+// ===== DATA =====
+const chemicals = [
+  { id:1, name:'อะซิโตน', nameEn:'Acetone', cas:'67-64-1',
+    hazard:'orange', hazardLabel:'ติดไฟสูง',
+    room:'prod-a', roomName:'Production A', location:'ชั้นวาง A-3, ตู้ F-01',
+    floor:1, pinX:115, pinY:95,
+    qty:'20 L', ghs:['🔥','⚠️','🫁'],
+    hazardLevels:{fire:90,toxic:20,reactive:10,env:15},
+    emergency:'ระบายอากาศ, ห่างจากแหล่งความร้อน, ใช้ CO₂ ดับเพลิง',
+    ppe:'ถุงมือ Nitrile, แว่นครอบตา, หน้ากาก P100',
+    storage:'แยกจากสารออกซิไดซ์, อุณหภูมิ <25°C',
+    sdsExpiry:'2025-03-15', lastUpdate:'2025-01-15', riskScore:75 },
+  { id:2, name:'กรดซัลฟิวริก', nameEn:'Sulfuric Acid', cas:'7664-93-9',
+    hazard:'red', hazardLabel:'กัดกร่อนสูง',
+    room:'qc', roomName:'QC Laboratory', location:'ตู้กรด B-1, ชั้น 2',
+    floor:1, pinX:630, pinY:75,
+    qty:'5 L', ghs:['💀','⚠️','🔥'],
+    hazardLevels:{fire:30,toxic:95,reactive:70,env:80},
+    emergency:'ล้างด้วยน้ำสะอาด 15 นาที, แจ้ง EHS ทันที Ext.1234',
+    ppe:'ถุงมือ Butyl, ชุด Acid Suit, Face Shield',
+    storage:'ตู้กรด-ด่างแยกกัน, ระบายอากาศดี',
+    sdsExpiry:'2024-12-31', lastUpdate:'2025-01-10', riskScore:96 },
+  { id:3, name:'เมทิลแอลกอฮอล์', nameEn:'Methanol', cas:'67-56-1',
+    hazard:'orange', hazardLabel:'ติดไฟ/พิษ',
+    room:'rd', roomName:'R&D Laboratory', location:'ตู้ติดไฟ R-2',
+    floor:1, pinX:645, pinY:300,
+    qty:'10 L', ghs:['🔥','💀','⚠️'],
+    hazardLevels:{fire:85,toxic:80,reactive:20,env:40},
+    emergency:'อพยพ, ห้ามสูดดม, แจ้ง EHS Ext.1234',
+    ppe:'ถุงมือ Nitrile หนา, แว่นครอบตา, Respirator',
+    storage:'แยกจากสารออกซิไดซ์, ติด "ห้ามสูบบุหรี่"',
+    sdsExpiry:'2025-05-01', lastUpdate:'2025-01-12', riskScore:88 },
+  { id:4, name:'โซเดียมไฮดรอกไซด์', nameEn:'Sodium Hydroxide', cas:'1310-73-2',
+    hazard:'red', hazardLabel:'กัดกร่อน',
+    room:'process', roomName:'Process Area', location:'ถังผสม P-5, โซน C',
+    floor:1, pinX:345, pinY:285,
+    qty:'50 kg', ghs:['⚠️','💀'],
+    hazardLevels:{fire:5,toxic:75,reactive:40,env:50},
+    emergency:'ล้างน้ำทันที, ห้ามทำให้เป็นกลางด้วยกรดแรง',
+    ppe:'ถุงมือยาง, แว่นครอบตา, ผ้ากันเปื้อน',
+    storage:'แยกจากกรด, ภาชนะปิดสนิท',
+    sdsExpiry:'2025-02-10', lastUpdate:'2025-01-08', riskScore:82 },
+  { id:5, name:'ไฮโดรเจนเปอร์ออกไซด์', nameEn:'Hydrogen Peroxide 30%', cas:'7722-84-1',
+    hazard:'blue', hazardLabel:'ออกซิไดซ์',
+    room:'storage', roomName:'Chemical Storage', location:'ตู้ออกซิไดซ์ S-1',
+    floor:1, pinX:90, pinY:330,
+    qty:'25 L', ghs:['🔥','⚠️','💀'],
+    hazardLevels:{fire:60,toxic:55,reactive:85,env:45},
+    emergency:'แยกออกจากสารอินทรีย์, ห้ามให้ถูกความร้อน',
+    ppe:'ถุงมือ Nitrile, แว่นครอบตา, Face Shield',
+    storage:'แยกห้อง, อุณหภูมิต่ำ, ห่างจากสารติดไฟ',
+    sdsExpiry:'2025-08-01', lastUpdate:'2025-01-20', riskScore:70 },
+  { id:6, name:'โทลูอีน', nameEn:'Toluene', cas:'108-88-3',
+    hazard:'orange', hazardLabel:'ติดไฟ',
+    room:'prod-b', roomName:'Production B', location:'ชั้นวาง B-7',
+    floor:1, pinX:385, pinY:95,
+    qty:'15 L', ghs:['🔥','⚠️','🌿'],
+    hazardLevels:{fire:88,toxic:50,reactive:15,env:70},
+    emergency:'ระบายอากาศ, ดับด้วยโฟม/CO₂',
+    ppe:'ถุงมือ Nitrile, แว่นตา, Respirator OV',
+    storage:'ตู้ติดไฟ, ห่างจากแหล่งจุดระเบิด',
+    sdsExpiry:'2026-01-15', lastUpdate:'2025-01-05', riskScore:72 },
+  { id:7, name:'ไอโซโพรพานอล', nameEn:'Isopropanol (IPA)', cas:'67-63-0',
+    hazard:'yellow', hazardLabel:'ระวัง',
+    room:'qc', roomName:'QC Laboratory', location:'ชั้น A-1, Q-3',
+    floor:1, pinX:700, pinY:130,
+    qty:'30 L', ghs:['🔥','⚠️'],
+    hazardLevels:{fire:72,toxic:25,reactive:8,env:10},
+    emergency:'ระบายอากาศ, ห่างจากเปลวไฟ',
+    ppe:'ถุงมือ Nitrile, แว่นตา',
+    storage:'ตู้ติดไฟ, อุณหภูมิปกติ',
+    sdsExpiry:'2025-11-30', lastUpdate:'2025-01-18', riskScore:45 },
+  { id:8, name:'กรดไฮโดรคลอริก', nameEn:'Hydrochloric Acid', cas:'7647-01-0',
+    hazard:'red', hazardLabel:'กัดกร่อน/พิษ',
+    room:'mixing', roomName:'Mixing Room', location:'ถัง M-3, โซนกรด',
+    floor:1, pinX:265, pinY:415,
+    qty:'100 L', ghs:['💀','⚠️','🌿'],
+    hazardLevels:{fire:10,toxic:90,reactive:55,env:75},
+    emergency:'สวม Face Shield, ล้างน้ำ 20 นาที, แจ้ง EHS',
+    ppe:'ชุด Full Protection, ถุงมือ Butyl, Face Shield',
+    storage:'ตู้กรด, แยกจากด่าง, ระบายอากาศ',
+    sdsExpiry:'2025-01-20', lastUpdate:'2025-01-22', riskScore:91 },
+  { id:9, name:'น้ำยาล้างชิ้นส่วน', nameEn:'Parts Cleaner NF', cas:'N/A',
+    hazard:'yellow', hazardLabel:'ระวัง',
+    room:'prod-a', roomName:'Production A', location:'สถานีทำความสะอาด A-1',
+    floor:1, pinX:75, pinY:155,
+    qty:'200 L', ghs:['⚠️'],
+    hazardLevels:{fire:20,toxic:30,reactive:5,env:25},
+    emergency:'ล้างน้ำสะอาด, ระบายอากาศ',
+    ppe:'ถุงมือ Nitrile, แว่นตา',
+    storage:'ปิดฝาสนิท, อุณหภูมิปกติ',
+    sdsExpiry:'2026-06-01', lastUpdate:'2025-01-01', riskScore:28 },
+  { id:10, name:'สารหน่วงไฟ FR-50', nameEn:'Flame Retardant FR-50', cas:'Various',
+    hazard:'green', hazardLabel:'ความเสี่ยงต่ำ',
+    room:'storage', roomName:'Chemical Storage', location:'ชั้น S-5',
+    floor:1, pinX:55, pinY:420,
+    qty:'500 kg', ghs:['⚠️'],
+    hazardLevels:{fire:10,toxic:20,reactive:5,env:15},
+    emergency:'ล้างทำความสะอาด, ระบายอากาศ',
+    ppe:'ถุงมือทั่วไป, แว่นตา',
+    storage:'ห้องแห้ง, ปิดฝา',
+    sdsExpiry:'2026-09-01', lastUpdate:'2025-01-03', riskScore:18 },
+  { id:11, name:'กรดไนตริก', nameEn:'Nitric Acid 65%', cas:'7697-37-2',
+    hazard:'red', hazardLabel:'ออกซิไดซ์/กัดกร่อน',
+    room:'rd', roomName:'R&D Laboratory', location:'ตู้กรด R-1, ชั้น 1',
+    floor:1, pinX:575, pinY:265,
+    qty:'3 L', ghs:['🔥','💀','⚠️','🌿'],
+    hazardLevels:{fire:50,toxic:92,reactive:90,env:85},
+    emergency:'อพยพ, แจ้ง EHS ทันที, ห้ามสัมผัส',
+    ppe:'ชุด Full Chemical, ถุงมือ Butyl, SCBA',
+    storage:'ตู้กรด, แยกจากสารอินทรีย์ทั้งหมด',
+    sdsExpiry:'2025-04-01', lastUpdate:'2025-01-25', riskScore:94 },
+  { id:12, name:'น้ำยา Photoresist', nameEn:'Positive Photoresist', cas:'Various',
+    hazard:'orange', hazardLabel:'ไวแสง/ติดไฟ',
+    room:'prod-b', roomName:'Production B', location:'Cleanroom B-2',
+    floor:1, pinX:455, pinY:145,
+    qty:'50 L', ghs:['🔥','⚠️'],
+    hazardLevels:{fire:65,toxic:40,reactive:30,env:20},
+    emergency:'เก็บในที่มืด, ห่างจากแสง UV',
+    ppe:'ถุงมือ Nitrile, แว่นตา, ไม่ให้ถูกแสง',
+    storage:'ตู้มืด, อุณหภูมิ 5-15°C',
+    sdsExpiry:'2025-07-01', lastUpdate:'2025-01-11', riskScore:62 }
+];
+
+// ===== STATE =====
+let mapFilter='all', mapSearch='', activeChem=null, mapScale=1, currentFloor=1;
+let alertFilter='all';
+const TODAY = new Date('2025-01-26');
+
+// ===== SDS STATUS =====
+function getSdsStatus(expiry) {
+  const exp = new Date(expiry);
+  const diffDays = Math.floor((exp - TODAY) / (1000*60*60*24));
+  if(diffDays < 0) return {status:'expired', days:diffDays, label:'หมดอายุแล้ว', cls:'sb-expired', color:'#ff4444'};
+  if(diffDays <= 30) return {status:'warning', days:diffDays, label:'เร่งด่วน', cls:'sb-warning', color:'#ff9933'};
+  if(diffDays <= 90) return {status:'upcoming', days:diffDays, label:'ใกล้หมด', cls:'sb-upcoming', color:'#ffcc00'};
+  return {status:'ok', days:diffDays, label:'ปกติ', cls:'sb-ok', color:'#00cc66'};
+}
+
+// ===== PAGE NAVIGATION =====
+function goPage(name, el) {
+  document.querySelectorAll('.page,.map-page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  if(el) el.classList.add('active');
+  if(name==='dashboard') renderDashboard();
+  if(name==='alerts') renderAlerts();
+  if(name==='qr') renderQRList('');
+}
+
+// ===== MAP =====
+function renderMapList() {
+  const list = document.getElementById('mapList');
+  const filtered = getMapFiltered();
+  let html = `<div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.35);letter-spacing:2px;padding:8px 10px 5px;text-transform:uppercase;">สารเคมี (${filtered.length} รายการ)</div>`;
+  const hzBorder = {red:'rgba(255,50,50,0.3)',orange:'rgba(255,150,0,0.3)',yellow:'rgba(255,220,0,0.2)',blue:'rgba(0,100,255,0.3)',green:'rgba(0,200,100,0.2)'};
+  const hzBg = {red:'rgba(200,0,0,0.15)',orange:'rgba(200,100,0,0.15)',yellow:'rgba(200,180,0,0.12)',blue:'rgba(0,80,200,0.15)',green:'rgba(0,150,80,0.12)'};
+  const roomShort = {'prod-a':'Prod.A','prod-b':'Prod.B','qc':'QC Lab','storage':'Storage','process':'Process','mixing':'Mixing','rd':'R&D','waste':'Waste','ehs':'EHS'};
+  filtered.forEach(c => {
+    const st = getSdsStatus(c.sdsExpiry);
+    html += `<div class="c-item ${activeChem===c.id?'on':''}" onclick="selectChem(${c.id})">
+      <div class="c-sym" style="background:${hzBg[c.hazard]};border:1.5px solid ${hzBorder[c.hazard]};"><span>${c.ghs[0]||'⚗️'}</span></div>
+      <div class="c-info">
+        <div class="c-name">${c.name}</div>
+        <div class="c-cas">CAS: ${c.cas} ${st.status!=='ok'?`<span style="color:${st.color};font-size:10px;">● SDS</span>`:''}</div>
+      </div>
+      <div class="c-tag" style="background:rgba(0,80,200,0.15);color:rgba(150,200,255,0.7);">${roomShort[c.room]||c.room}</div>
+    </div>`;
+  });
+  list.innerHTML = html;
+}
+
+function getMapFiltered() {
+  return chemicals.filter(c => {
+    const ms = mapSearch.toLowerCase();
+    const matchS = !ms || c.name.toLowerCase().includes(ms) || c.nameEn.toLowerCase().includes(ms) || c.cas.toLowerCase().includes(ms) || c.roomName.toLowerCase().includes(ms);
+    const matchF = mapFilter==='all' || c.hazard===mapFilter;
+    return matchS && matchF && c.floor===currentFloor;
+  });
+}
+
+function renderMapPins() {
+  const con = document.getElementById('pinCon');
+  const fids = new Set(getMapFiltered().map(c=>c.id));
+  const pinColor = {red:'linear-gradient(135deg,#cc0000,#ff4444)',orange:'linear-gradient(135deg,#cc6600,#ff9933)',yellow:'linear-gradient(135deg,#aa8800,#ffcc00)',blue:'linear-gradient(135deg,#0044cc,#0088ff)',green:'linear-gradient(135deg,#006633,#00cc66)'};
+  const pulseC = {red:'rgba(255,50,50,0.5)',orange:'rgba(255,150,0,0.4)',yellow:'rgba(255,220,0,0.3)',blue:'rgba(0,100,255,0.4)',green:'rgba(0,200,100,0.3)'};
+  let html = '';
+  chemicals.filter(c=>c.floor===currentFloor).forEach(c => {
+    const op = fids.has(c.id)?1:0.18;
+    const st = getSdsStatus(c.sdsExpiry);
+    const alertDot = st.status!=='ok'?`<div style="position:absolute;top:-2px;right:-2px;width:8px;height:8px;border-radius:50%;background:${st.color};border:1px solid #0a0f1e;z-index:5;"></div>`:'';
+    html += `<div class="pin ${activeChem===c.id?'on':''}" id="pin-${c.id}" style="left:${c.pinX}px;top:${c.pinY}px;opacity:${op};"
+      onclick="selectChem(${c.id})" onmouseenter="showTT(event,${c.id})" onmouseleave="hideTT()">
+      <div class="p-pulse" style="background:${pulseC[c.hazard]};border:2px solid ${pulseC[c.hazard]};"></div>
+      <div class="p-lbl">${c.name}</div>
+      ${alertDot}
+      <div class="p-body" style="background:${pinColor[c.hazard]};"><span class="p-ic">${c.ghs[0]||'⚗️'}</span></div>
+      <div class="p-sh"></div>
+    </div>`;
+  });
+  con.innerHTML = html;
+}
+
+function selectChem(id) {
+  activeChem = activeChem===id ? null : id;
+  renderMapList();
+  renderMapPins();
+  if(activeChem) {
+    const c = chemicals.find(x=>x.id===id);
+    highlightRoom(c.room);
+    openDetail(c);
+    drawRoute(c);
+  } else {
+    clearHL(); closeDetailPanel(); clearRoute();
+  }
+}
+
+function openDetail(c) {
+  const panel = document.getElementById('detPanel');
+  const hzC={red:'#ff4444',orange:'#ff9933',yellow:'#ffcc00',blue:'#0088ff',green:'#00cc66'}[c.hazard];
+  const hzBg={red:'rgba(200,0,0,0.18)',orange:'rgba(200,100,0,0.18)',yellow:'rgba(200,180,0,0.15)',blue:'rgba(0,80,200,0.18)',green:'rgba(0,150,80,0.15)'}[c.hazard];
+  const st = getSdsStatus(c.sdsExpiry);
+  document.getElementById('detH').innerHTML = `
+    <div class="dclose" onclick="closeDetailPanel()">✕</div>
+    <div style="width:46px;height:46px;border-radius:12px;background:${hzBg};border:2px solid ${hzC}40;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:10px;transform:rotate(45deg);">
+      <span style="transform:rotate(-45deg);display:block;">${c.ghs[0]||'⚗️'}</span>
+    </div>
+    <div style="font-size:18px;font-weight:800;">${c.name}</div>
+    <div style="font-size:12px;color:rgba(255,255,255,0.45);margin-bottom:6px;">${c.nameEn}</div>
+    <span style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:2px 9px;font-size:11px;color:rgba(255,255,255,0.5);">CAS: ${c.cas}</span>
+    <span style="background:${hzBg};border:1px solid ${hzC}40;border-radius:6px;padding:2px 9px;font-size:11px;color:${hzC};margin-left:5px;">${c.hazardLabel}</span>
+    <span style="background:${st.status==='ok'?'rgba(0,150,80,0.15)':'rgba(200,0,0,0.15)'};border:1px solid ${st.color}40;border-radius:6px;padding:2px 9px;font-size:11px;color:${st.color};margin-left:5px;">📋 SDS ${st.label}</span>
+  `;
+  const bars = Object.entries({ติดไฟ:c.hazardLevels.fire,พิษ:c.hazardLevels.toxic,ทำปฏิกิริยา:c.hazardLevels.reactive,สิ่งแวดล้อม:c.hazardLevels.env}).map(([k,v])=>{
+    const col = v>=80?'#ff4444':v>=60?'#ff9933':v>=40?'#ffcc00':'#00cc66';
+    return `<div class="hbar"><div class="hbar-row"><span>${k}</span><span style="color:${col}">${v}%</span></div><div class="hbar-t"><div class="hbar-f" style="width:${v}%;background:${col};"></div></div></div>`;
+  }).join('');
+  const ghsHtml = c.ghs.map(g=>`<div style="width:34px;height:34px;border-radius:6px;border:1.5px solid rgba(255,80,80,0.4);background:rgba(255,50,50,0.1);display:flex;align-items:center;justify-content:center;font-size:16px;transform:rotate(45deg);"><span style="transform:rotate(-45deg);display:block;">${g}</span></div>`).join('');
+  document.getElementById('detC').innerHTML = `
+    <div style="margin-bottom:14px;">
+      <div class="dsec-t">📍 ตำแหน่งจัดเก็บ</div>
+      <div style="background:rgba(0,80,255,0.08);border:1px solid rgba(0,150,255,0.2);border-radius:10px;padding:12px;">
+        <div style="font-size:12px;color:rgba(255,255,255,0.75);margin-bottom:5px;">🏭 ${c.roomName}</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.75);margin-bottom:5px;">📦 ${c.location}</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.75);">⚖️ ปริมาณ: ${c.qty}</div>
+      </div>
+    </div>
+    <div style="margin-bottom:14px;">
+      <div class="dsec-t">⚠️ GHS Symbols</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">${ghsHtml}</div>
+    </div>
+    <div style="margin-bottom:14px;">
+      <div class="dsec-t">📊 ระดับอันตราย</div>
+      ${bars}
+    </div>
+    <div style="margin-bottom:14px;">
+      <div class="dsec-t">🦺 PPE ที่ต้องใช้</div>
+      <div class="dcard"><span style="font-size:12px;color:rgba(255,255,255,0.8);">🥽 ${c.ppe}</span></div>
+    </div>
+    <div style="margin-bottom:14px;">
+      <div class="ebox">
+        <div class="ebox-t">🚨 Emergency Response</div>
+        <div class="ebox-r">${c.emergency}</div>
+        <div class="ebox-r" style="margin-top:6px;color:#ff8888;">📞 EHS Hotline: <strong>Ext. 1234</strong></div>
+      </div>
+    </div>
+    <div>
+      <div class="info-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <div class="dcard"><div class="dcard-l">วันหมดอายุ SDS</div><div class="dcard-v" style="font-size:11px;color:${st.color};">${c.sdsExpiry}</div></div>
+        <div class="dcard"><div class="dcard-l">อัปเดตล่าสุด</div><div class="dcard-v" style="font-size:11px;">${c.lastUpdate}</div></div>
+      </div>
+    </div>
+  `;
+  document.getElementById('detA').innerHTML = `
+    <button class="dbtn dbtn-p" onclick="doQRFromMap(${c.id})">📱 ดู QR Code</button>
+    <button class="dbtn dbtn-s" onclick="alert('กำลังพิมพ์ Label: ${c.name}')">🏷️ พิมพ์ Label</button>
+  `;
+  panel.classList.add('open');
+}
+
+function closeDetailPanel() {
+  document.getElementById('detPanel').classList.remove('open');
+  activeChem=null; renderMapList(); renderMapPins(); clearHL(); clearRoute();
+}
+
+function highlightRoom(rid) {
+  document.querySelectorAll('.room').forEach(r=>r.classList.remove('hi'));
+  const r=document.getElementById('room-'+rid);
+  if(r) r.classList.add('hi');
+}
+function clearHL() { document.querySelectorAll('.room').forEach(r=>r.classList.remove('hi')); }
+function focusRoom(rid) { highlightRoom(rid); }
+
+function drawRoute(c) {
+  const svg=document.getElementById('routeSvg');
+  svg.innerHTML=`<defs><marker id="ah" markerWidth="5" markerHeight="3" refX="0" refY="1.5" orient="auto"><polygon points="0 0,5 1.5,0 3" fill="rgba(0,229,255,0.7)"/></marker></defs>
+  <line x1="0" y1="${c.pinY}" x2="${c.pinX-18}" y2="${c.pinY}" stroke="rgba(0,229,255,0.35)" stroke-width="1.5" stroke-dasharray="5,4" marker-end="url(#ah)"><animate attributeName="stroke-dashoffset" from="100" to="0" dur="1s" repeatCount="indefinite"/></line>`;
+}
+function clearRoute() { document.getElementById('routeSvg').innerHTML=''; }
+
+function showTT(e,id) {
+  const c=chemicals.find(x=>x.id===id);
+  const tt=document.getElementById('mtt');
+  document.getElementById('mtt-n').textContent=c.name;
+  document.getElementById('mtt-l').textContent='📍 '+c.roomName+' — '+c.location;
+  document.getElementById('mtt-q').textContent='📦 '+c.qty;
+  tt.style.left=(c.pinX+20)+'px';
+  tt.style.top=(c.pinY-15)+'px';
+  tt.style.opacity='1';
+}
+function hideTT() { document.getElementById('mtt').style.opacity='0'; }
+
+function filterMap(v) { mapSearch=v; renderMapList(); renderMapPins(); }
+function setMapFilter(f,el) {
+  mapFilter=f;
+  document.querySelectorAll('.fchip').forEach(c=>c.classList.remove('on'));
+  el.classList.add('on');
+  renderMapList(); renderMapPins();
+}
+function setFloor(n,el) {
+  currentFloor=n;
+  document.querySelectorAll('.ftab').forEach(t=>t.classList.remove('on'));
+  el.classList.add('on');
+  activeChem=null; closeDetailPanel(); clearHL(); clearRoute();
+  renderMapList(); renderMapPins(); updateMapStats();
+}
+function updateMapStats() {
+  const cnt={red:0,orange:0,yellow:0,blue:0,green:0};
+  chemicals.filter(c=>c.floor===currentFloor).forEach(c=>cnt[c.hazard]++);
+  document.getElementById('ms-r').textContent=cnt.red;
+  document.getElementById('ms-o').textContent=cnt.orange;
+  document.getElementById('ms-y').textContent=cnt.yellow;
+  document.getElementById('ms-b').textContent=cnt.blue;
+  document.getElementById('ms-g').textContent=cnt.green;
+}
+function zoomM(f) { mapScale=Math.min(Math.max(mapScale*f,0.4),2.2); document.getElementById('mapCv').style.transform=`translate(-50%,-50%) scale(${mapScale})`; }
+function resetMapView() { mapScale=1; document.getElementById('mapCv').style.transform='translate(-50%,-50%) scale(1)'; }
+function doQRFromMap(id) { goPage('qr',document.querySelectorAll('.nav-tab')[1]); setTimeout(()=>quickScan(chemicals.find(c=>c.id===id).name),300); }
+
+// ===== QR PAGE =====
+function renderQRList(search) {
+  const list=document.getElementById('qrGenList');
+  const filtered=chemicals.filter(c=>!search||c.name.toLowerCase().includes(search.toLowerCase())||c.nameEn.toLowerCase().includes(search.toLowerCase()));
+  const hzC={red:'#ff4444',orange:'#ff9933',yellow:'#ffcc00',blue:'#0088ff',green:'#00cc66'};
+  const st=getSdsStatus;
+  list.innerHTML=filtered.map(c=>{
+    const s=st(c.sdsExpiry);
+    return `<div class="qr-gen-item">
+      <div class="qr-mini">
+        ${Array(25).fill(0).map((_,i)=>`<div class="qm-cell ${[0,1,5,6,12,18,19,23,24].includes(i)?'':'w'}"></div>`).join('')}
+      </div>
+      <div class="qri-info">
+        <div class="qri-name">${c.name}</div>
+        <div class="qri-loc">📍 ${c.roomName} | CAS: ${c.cas}</div>
+        <div style="margin-top:3px;"><span style="font-size:10px;padding:1px 7px;border-radius:10px;background:rgba(${s.status==='ok'?'0,150,80':'200,0,0'},0.15);color:${s.color};border:1px solid ${s.color}30;">SDS ${s.label}</span></div>
+      </div>
+      <div class="qri-actions">
+        <button class="qri-btn pri" onclick="doQRScanById(${c.id})">🔍 ดู</button>
+        <button class="qri-btn" onclick="alert('พิมพ์ QR Label: ${c.name}')">🖨️</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function filterQRList(v) { renderQRList(v); }
+
+function doQRScan() {
+  const val=document.getElementById('qrSearchInp').value.trim();
+  if(!val) return;
+  const c=chemicals.find(x=>
+    x.name.toLowerCase().includes(val.toLowerCase()) ||
+    x.nameEn.toLowerCase().includes(val.toLowerCase()) ||
+    x.cas.toLowerCase().includes(val.toLowerCase()) ||
+    x.roomName.toLowerCase().includes(val.toLowerCase())
+  );
+  showQRResult(c);
+}
+function quickScan(v) {
+  document.getElementById('qrSearchInp').value=v;
+  doQRScan();
+}
+function doQRScanById(id) {
+  const c=chemicals.find(x=>x.id===id);
+  document.getElementById('qrSearchInp').value=c.name;
+  showQRResult(c);
+  document.getElementById('qrResult').scrollIntoView({behavior:'smooth'});
+}
+
+function showQRResult(c) {
+  const res=document.getElementById('qrResult');
+  if(!c) {
+    res.className='qr-result show';
+    res.innerHTML=`<div style="text-align:center;padding:20px;color:rgba(255,255,255,0.4);">❌ ไม่พบข้อมูลสารเคมีที่ค้นหา</div>`;
+    return;
+  }
+  const st=getSdsStatus(c.sdsExpiry);
+  const hzC={red:'#ff4444',orange:'#ff9933',yellow:'#ffcc00',blue:'#0088ff',green:'#00cc66'}[c.hazard];
+  const hzBg={red:'rgba(200,0,0,0.18)',orange:'rgba(200,100,0,0.18)',yellow:'rgba(200,180,0,0.15)',blue:'rgba(0,80,200,0.18)',green:'rgba(0,150,80,0.15)'}[c.hazard];
+  const ghsHtml=c.ghs.map(g=>`<div style="width:28px;height:28px;border-radius:5px;border:1px solid rgba(255,80,80,0.4);background:rgba(255,50,50,0.1);display:flex;align-items:center;justify-content:center;font-size:13px;transform:rotate(45deg);"><span style="transform:rotate(-45deg);display:block;">${g}</span></div>`).join('');
+  res.className='qr-result show';
+  res.innerHTML=`
+    <div class="result-header">
+      <div class="result-icon" style="background:${hzBg};border:2px solid ${hzC}50;"><span>${c.ghs[0]||'⚗️'}</span></div>
+      <div><div class="result-name">${c.name}</div><div class="result-cas">${c.nameEn} | CAS: ${c.cas}</div></div>
+    </div>
+    <div class="result-grid">
+      <div class="rg-item"><div class="rg-l">ห้องจัดเก็บ</div><div class="rg-v" style="color:#00e5ff;">🏭 ${c.roomName}</div></div>
+      <div class="rg-item"><div class="rg-l">ตำแหน่ง</div><div class="rg-v">📦 ${c.location}</div></div>
+      <div class="rg-item"><div class="rg-l">ปริมาณ</div><div class="rg-v">⚖️ ${c.qty}</div></div>
+      <div class="rg-item"><div class="rg-l">SDS Status</div><div class="rg-v" style="color:${st.color};">● ${st.label}</div></div>
+    </div>
+    <div style="display:flex;gap:8px;margin-bottom:12px;">${ghsHtml}<span style="font-size:11px;color:rgba(255,255,255,0.45);margin-left:4px;">GHS Hazard Symbols</span></div>
+    <div class="result-emergency">
+      <strong>🚨 Emergency: ${c.emergency}</strong>
+      <div>🥽 PPE: ${c.ppe}</div>
+      <div style="margin-top:4px;color:#ff8888;">📞 EHS Hotline: Ext. 1234</div>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:12px;">
+      <button class="qr-scan-btn" style="flex:1;background:rgba(0,80,200,0.3);border:1px solid rgba(0,150,255,0.4);" onclick="goPageAndShow('map',${c.id})">🗺️ ดูบนแผนที่</button>
+      <button class="qr-scan-btn" style="flex:1;background:rgba(0,150,80,0.3);border:1px solid rgba(0,200,100,0.4);" onclick="alert('พิมพ์ QR Label: ${c.name}')">🏷️ พิมพ์ Label</button>
+    </div>
+  `;
+}
+
+function goPageAndShow(page,id) {
+  goPage(page,document.querySelector('.nav-tab'));
+  setTimeout(()=>selectChem(id),300);
+}
+
+function genAllQR() { alert('กำลังสร้าง QR Label ทั้งหมด '+chemicals.length+' รายการ\nในระบบจริงจะสร้างไฟล์ PDF สำหรับพิมพ์'); }
+function exportQRList() {
+  const txt=chemicals.map(c=>`${c.name} | ${c.cas} | ${c.roomName} | ${c.location}`).join('\n');
+  const b=new Blob(['Chemical QR List - WD Thailand\n\n'+txt],{type:'text/plain'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='qr-list.txt';a.click();
+}
+
+// ===== ALERTS PAGE =====
+function renderAlerts() {
+  const cnt={expired:0,warning:0,upcoming:0,ok:0};
+  chemicals.forEach(c=>{ const s=getSdsStatus(c.sdsExpiry); cnt[s.status]++; });
+  document.getElementById('cnt-expired').textContent=cnt.expired;
+  document.getElementById('cnt-warning').textContent=cnt.warning;
+  document.getElementById('cnt-upcoming').textContent=cnt.upcoming;
+  document.getElementById('cnt-ok').textContent=cnt.ok;
+  document.getElementById('alertBadge').textContent=cnt.expired+cnt.warning;
+  if(cnt.expired+cnt.warning===0) document.getElementById('alertTab').classList.remove('has-alert');
+
+  // Dashboard sync
+  document.getElementById('dash-expired').textContent=cnt.expired;
+  document.getElementById('dash-expired').style.color=cnt.expired>0?'#ff4444':'#00ff88';
+  const comp=Math.round((cnt.ok/(chemicals.length||1))*100);
+  document.getElementById('dash-compliance').textContent=comp+'%';
+  document.getElementById('dash-comp-delta').textContent=comp>=100?'✅ บรรลุเป้า':comp>=80?'ใกล้เป้า':'ต้องปรับปรุง';
+
+  renderAlertTable();
+  renderNotifFeed();
+}
+
+function renderAlertTable() {
+  const tbody=document.getElementById('alertTableBody');
+  let data=chemicals;
+  if(alertFilter!=='all') data=data.filter(c=>getSdsStatus(c.sdsExpiry).status===alertFilter);
+  data.sort((a,b)=>new Date(a.sdsExpiry)-new Date(b.sdsExpiry));
+  tbody.innerHTML=data.map(c=>{
+    const st=getSdsStatus(c.sdsExpiry);
+    const daysLabel=st.days<0?`<span class="days-badge" style="background:rgba(200,0,0,0.2);color:#ff4444;">หมดแล้ว ${Math.abs(st.days)} วัน</span>`:`<span class="days-badge" style="background:rgba(${st.status==='warning'?'200,100,0':st.status==='upcoming'?'180,150,0':'0,150,80'},0.15);color:${st.color};">อีก ${st.days} วัน</span>`;
+    return `<tr>
+      <td><div style="font-weight:700;">${c.name}</div><div style="font-size:11px;color:rgba(255,255,255,0.4);">${c.nameEn}</div></td>
+      <td style="font-size:12px;color:rgba(255,255,255,0.5);">${c.cas}</td>
+      <td style="font-size:12px;">🏭 ${c.roomName}</td>
+      <td style="font-size:12px;color:${st.color};">${c.sdsExpiry}</td>
+      <td><span class="status-badge ${st.cls}">● ${st.label}</span></td>
+      <td>${daysLabel}</td>
+      <td>
+        ${st.status!=='ok'?`<button class="action-btn urgent" onclick="alert('กำลังส่งแจ้งเตือน: ${c.name}')">📧 แจ้งเตือน</button>`:''}
+        <button class="action-btn" onclick="alert('อัปเดต SDS: ${c.name}')">🔄 อัปเดต SDS</button>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function setAlertFilter(f,el) {
+  alertFilter=f;
+  document.querySelectorAll('.af-chip').forEach(c=>c.classList.remove('on'));
+  el.classList.add('on');
+  renderAlertTable();
+}
+
+function renderNotifFeed() {
+  const feed=document.getElementById('notifFeed');
+  const expired=chemicals.filter(c=>getSdsStatus(c.sdsExpiry).status==='expired');
+  const warning=chemicals.filter(c=>getSdsStatus(c.sdsExpiry).status==='warning');
+  let html='';
+  expired.forEach(c=>{
+    html+=`<div class="notif-item ni-expired">
+      <div class="ni-icon">🚨</div>
+      <div class="ni-content">
+        <div class="ni-title">SDS หมดอายุ: ${c.name}</div>
+        <div class="ni-desc">หมดอายุเมื่อ ${c.sdsExpiry} | ห้อง: ${c.roomName}</div>
+        <div class="ni-time">ต้องดำเนินการทันที</div>
+      </div>
+      <div class="ni-close" onclick="this.parentElement.style.display='none'">✕</div>
+    </div>`;
+  });
+  warning.forEach(c=>{
+    const st=getSdsStatus(c.sdsExpiry);
+    html+=`<div class="notif-item ni-warning">
+      <div class="ni-icon">⚠️</div>
+      <div class="ni-content">
+        <div class="ni-title">SDS ใกล้หมดอายุ: ${c.name}</div>
+        <div class="ni-desc">หมดอายุวันที่ ${c.sdsExpiry} | อีก ${st.days} วัน</div>
+        <div class="ni-time">กรุณาต่ออายุภายใน 30 วัน</div>
+      </div>
+      <div class="ni-close" onclick="this.parentElement.style.display='none'">✕</div>
+    </div>`;
+  });
+  if(!html) html=`<div class="notif-item ni-info"><div class="ni-icon">✅</div><div class="ni-content"><div class="ni-title">ไม่มีการแจ้งเตือนเร่งด่วน</div><div class="ni-desc">SDS ทุกรายการอยู่ในสถานะปกติ</div></div></div>`;
+  feed.innerHTML=html;
+}
+
+function sendAllAlerts() { alert('ส่งแจ้งเตือนอีเมลไปยัง EHS Team และผู้รับผิดชอบแล้ว'); }
+function exportAlerts() {
+  const data=chemicals.map(c=>{const s=getSdsStatus(c.sdsExpiry);return `${c.name}|${c.sdsExpiry}|${s.label}|${s.days} วัน`;}).join('\n');
+  const b=new Blob(['SDS Alert Report\n\n'+data],{type:'text/plain'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='sds-alert.txt';a.click();
+}
+
+// ===== DASHBOARD =====
+function renderDashboard() {
+  document.getElementById('dashDate').textContent='📅 '+TODAY.toLocaleDateString('th-TH',{year:'numeric',month:'long',day:'numeric'});
+  // Bar chart: chemicals per room
+  const roomCnt={};
+  chemicals.forEach(c=>{roomCnt[c.roomName]=(roomCnt[c.roomName]||0)+1;});
+  const sorted=Object.entries(roomCnt).sort((a,b)=>b[1]-a[1]);
+  const max=sorted[0]?sorted[0][1]:1;
+  const colors=['#0096ff','#cc88ff','#00ff88','#ffaa44','#ff6666','#ffdd44','#44ccff','#ff88aa','#88ff88'];
+  document.getElementById('roomBarChart').innerHTML=sorted.map(([room,cnt],i)=>`
+    <div class="bc-row">
+      <div class="bc-label"><span style="font-size:12px;">${room}</span><span style="font-weight:700;color:${colors[i%colors.length]};">${cnt}</span></div>
+      <div class="bc-track"><div class="bc-fill" style="width:${(cnt/max*100)}%;background:${colors[i%colors.length]};"></div></div>
+    </div>`).join('');
+
+  // Activity feed
+  const acts=[
+    {dot:'#00e5ff',text:'สแกน QR: อะซิโตน — Production A',time:'เมื่อ 2 นาทีที่แล้ว'},
+    {dot:'#ff4444',text:'🚨 SDS หมดอายุ: กรดไฮโดรคลอริก',time:'เมื่อ 15 นาทีที่แล้ว'},
+    {dot:'#00ff88',text:'อัปเดต SDS: ไอโซโพรพานอล',time:'เมื่อ 1 ชั่วโมงที่แล้ว'},
+    {dot:'#ffaa44',text:'สแกน QR: กรดซัลฟิวริก — QC Lab',time:'เมื่อ 2 ชั่วโมงที่แล้ว'},
+    {dot:'#cc88ff',text:'เพิ่มสารเคมีใหม่: Photoresist PR-500',time:'เมื่อ 3 ชั่วโมงที่แล้ว'},
+    {dot:'#ffdd44',text:'⚠️ SDS ใกล้หมด: โซเดียมไฮดรอกไซด์',time:'เมื่อ 5 ชั่วโมงที่แล้ว'},
+    {dot:'#00e5ff',text:'สแกน QR: โทลูอีน — Production B',time:'เมื่อวาน 14:30'},
+    {dot:'#00ff88',text:'ตรวจสอบ SDS ครบทุกรายการ',time:'เมื่อวาน 10:00'},
+  ];
+  document.getElementById('actFeed').innerHTML=acts.map(a=>`
+    <div class="act-item">
+      <div class="act-dot" style="background:${a.dot};box-shadow:0 0 6px ${a.dot}60;"></div>
+      <div><div class="act-text">${a.text}</div><div class="act-time">${a.time}</div></div>
+    </div>`).join('');
+
+  // Top hazardous
+  const top=[...chemicals].sort((a,b)=>b.riskScore-a.riskScore).slice(0,5);
+  const hzC={red:'#ff4444',orange:'#ff9933',yellow:'#ffcc00',blue:'#0088ff',green:'#00cc66'};
+  const hzBg={red:'rgba(200,0,0,0.18)',orange:'rgba(200,100,0,0.18)',yellow:'rgba(200,180,0,0.15)',blue:'rgba(0,80,200,0.18)',green:'rgba(0,150,80,0.15)'};
+  document.getElementById('topList').innerHTML=top.map((c,i)=>`
+    <div class="top-item">
+      <div class="top-rank ${i<3?'r'+(i+1):''}">${i+1}</div>
+      <div class="top-sym" style="background:${hzBg[c.hazard]};border:1.5px solid ${hzC[c.hazard]}40;"><span>${c.ghs[0]||'⚗️'}</span></div>
+      <div class="top-info"><div class="top-name">${c.name}</div><div class="top-room">${c.roomName}</div></div>
+      <div class="top-score" style="color:${hzC[c.hazard]};">${c.riskScore}</div>
+    </div>`).join('');
+}
+
+// ===== INIT =====
+function init() {
+  renderMapList();
+  renderMapPins();
+  updateMapStats();
+  renderQRList('');
+  renderAlerts();
+  renderDashboard();
+}
+init();
+</script>
+</body>
+</html>
