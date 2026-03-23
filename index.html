@@ -78,7 +78,6 @@
   .pin.on .pp{animation:pr 1.5s ease-out infinite;}
   @keyframes pr{0%{transform:translate(-50%,-50%) scale(0.8);opacity:0.8}100%{transform:translate(-50%,-50%) scale(2);opacity:0}}
 
-  /* ===== DETAIL PANEL - WIDER ===== */
   .det-panel{position:absolute;right:0;top:0;bottom:0;width:360px;background:rgba(7,11,24,0.98);border-left:1px solid rgba(255,255,255,0.07);backdrop-filter:blur(20px);z-index:200;transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.4,0,0.2,1);overflow-y:auto;display:flex;flex-direction:column;}
   .det-panel.open{transform:translateX(0);}
   .det-panel::-webkit-scrollbar{width:3px;}
@@ -92,34 +91,27 @@
   .dclose:hover{background:rgba(255,50,50,0.2);color:#ff6666;}
   .dsec{font-size:9px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:7px;margin-top:14px;display:flex;align-items:center;gap:6px;}
   .dsec::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.07);}
-  .dcard{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:9px;padding:9px 11px;margin-bottom:7px;}
 
-  /* PPE Styles */
   .ppe-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:4px;}
   .ppe-item{background:rgba(0,80,200,0.1);border:1px solid rgba(0,120,255,0.25);border-radius:10px;padding:10px 8px;text-align:center;transition:all 0.2s;}
   .ppe-item:hover{background:rgba(0,80,200,0.2);border-color:rgba(0,150,255,0.4);}
   .ppe-icon{font-size:22px;margin-bottom:5px;display:block;}
   .ppe-name{font-size:10px;font-weight:700;color:rgba(255,255,255,0.85);line-height:1.3;}
-  .ppe-req{font-size:9px;color:rgba(0,200,255,0.7);margin-top:2px;}
 
-  /* Signal Word Badge */
   .signal-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:800;margin-bottom:10px;}
   .sig-danger{background:rgba(200,0,0,0.2);border:2px solid rgba(255,50,50,0.5);color:#ff4444;}
   .sig-warning{background:rgba(200,130,0,0.2);border:2px solid rgba(255,170,0,0.5);color:#ffaa00;}
   .sig-none{background:rgba(0,100,200,0.15);border:2px solid rgba(0,150,255,0.4);color:#66aaff;}
 
-  /* Purpose Box */
   .purpose-box{background:linear-gradient(135deg,rgba(0,60,150,0.15),rgba(0,100,200,0.08));border:1px solid rgba(0,150,255,0.2);border-radius:10px;padding:11px 13px;margin-bottom:8px;}
   .purpose-label{font-size:9px;font-weight:700;letter-spacing:2px;color:rgba(0,200,255,0.6);text-transform:uppercase;margin-bottom:5px;}
   .purpose-text{font-size:12px;color:rgba(255,255,255,0.85);line-height:1.6;}
 
-  /* Hazard Class Box */
   .hazard-class-box{background:rgba(255,50,50,0.08);border:1px solid rgba(255,80,80,0.2);border-radius:10px;padding:11px 13px;margin-bottom:8px;}
   .hazard-class-list{display:flex;flex-direction:column;gap:4px;}
   .hazard-class-item{display:flex;align-items:flex-start;gap:7px;font-size:11px;color:rgba(255,200,200,0.85);}
   .hazard-dot{width:6px;height:6px;border-radius:50%;background:#ff6666;margin-top:4px;flex-shrink:0;}
 
-  /* Chem Card in room list */
   .chem-card-room{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:12px 13px;margin-bottom:8px;cursor:pointer;transition:all 0.2s;position:relative;overflow:hidden;}
   .chem-card-room::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:3px 0 0 3px;}
   .chem-card-room.hz-red::before{background:linear-gradient(180deg,#cc0000,#ff4444);}
@@ -136,27 +128,18 @@
   .st-hold{background:rgba(255,140,0,0.2);color:#ffaa44;border:1px solid rgba(255,160,0,0.3);}
   .st-rejected{background:rgba(200,0,0,0.2);color:#ff6666;border:1px solid rgba(255,50,50,0.3);}
   .st-submitted{background:rgba(0,80,200,0.2);color:#66aaff;border:1px solid rgba(0,120,255,0.3);}
-
   .ccr-info-row{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:7px;}
   .ccr-info-item{background:rgba(255,255,255,0.03);border-radius:7px;padding:6px 8px;}
   .ccr-info-label{font-size:9px;color:rgba(255,255,255,0.35);margin-bottom:2px;}
   .ccr-info-val{font-size:11px;font-weight:700;line-height:1.3;}
 
-  /* PPE mini in room list */
   .ppe-mini-row{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px;}
   .ppe-mini{display:flex;align-items:center;gap:4px;background:rgba(0,80,200,0.1);border:1px solid rgba(0,120,255,0.2);border-radius:15px;padding:3px 8px;font-size:10px;color:rgba(150,200,255,0.9);}
-
-  /* Signal mini */
   .sig-mini{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:12px;font-size:10px;font-weight:700;}
   .sig-mini.danger{background:rgba(200,0,0,0.2);color:#ff6666;border:1px solid rgba(255,50,50,0.3);}
   .sig-mini.warning{background:rgba(200,130,0,0.15);color:#ffaa44;border:1px solid rgba(255,150,0,0.3);}
   .sig-mini.none{background:rgba(0,80,200,0.15);color:#66aaff;border:1px solid rgba(0,120,255,0.3);}
 
-  /* Expand button */
-  .expand-btn{width:100%;padding:7px;background:rgba(0,80,200,0.1);border:1px solid rgba(0,150,255,0.2);border-radius:8px;color:rgba(100,180,255,0.8);font-size:11px;font-weight:600;cursor:pointer;transition:all 0.2s;text-align:center;font-family:'Sarabun',sans-serif;margin-top:5px;}
-  .expand-btn:hover{background:rgba(0,80,200,0.2);color:#00e5ff;}
-
-  /* Map overlays */
   .mleg{position:absolute;bottom:12px;left:12px;background:rgba(7,11,24,0.92);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:9px 13px;backdrop-filter:blur(10px);z-index:50;}
   .mlt{font-size:9px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.35);margin-bottom:6px;}
   .mlr{display:flex;align-items:center;gap:6px;margin-bottom:4px;font-size:11px;color:rgba(255,255,255,0.55);}
@@ -172,7 +155,6 @@
   .sbeam{position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,229,255,0.25),transparent);animation:sb 5s linear infinite;pointer-events:none;z-index:5;}
   @keyframes sb{0%{top:0;opacity:0.5}100%{top:100%;opacity:0}}
 
-  /* Action buttons */
   .dbtn{flex:1;padding:8px;border-radius:9px;font-size:12px;font-weight:700;cursor:pointer;border:none;font-family:'Sarabun',sans-serif;transition:all 0.2s;}
   .dbp{background:linear-gradient(135deg,#0050ff,#0096ff);color:white;}
   .dbs{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);}
@@ -200,7 +182,7 @@
   </div>
   <div class="nav-right">
     <div class="live-dot"></div>
-    <span>Online | EHS Dept | <span id="totalCount">0</span> สารเคมี</span>
+    <span>Online | EHS Dept | <span id="totalCount">296</span> สารเคมี</span>
   </div>
 </div>
 
@@ -298,7 +280,6 @@
         </div>
         <svg id="routeSvg" style="position:absolute;inset:0;pointer-events:none;z-index:10;" viewBox="0 0 800 560" width="800" height="560"></svg>
       </div>
-
       <div class="mleg">
         <div class="mlt">HAZARD LEVEL</div>
         <div class="mlr"><div class="mld" style="background:#ff4444;"></div>อันตรายสูง/กัดกร่อน</div>
@@ -320,8 +301,6 @@
         <div class="zbtn" onclick="resetView()" style="font-size:10px;">⌂</div>
       </div>
     </div>
-
-    <!-- DETAIL PANEL -->
     <div class="det-panel" id="detPanel">
       <div class="dh" id="detH"></div>
       <div class="dc" id="detC"></div>
@@ -335,11 +314,10 @@
   <div style="padding:22px 28px;max-width:1100px;margin:0 auto;">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;">
       <div><div style="font-size:20px;font-weight:800;">📱 QR Chemical Scan</div>
-      <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:2px;">สแกน QR Code หรือค้นหาสารเคมีจากข้อมูลจริง WD Thailand</div></div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:2px;">สแกน QR Code หรือค้นหาสารเคมีจากข้อมูลจริง WD Thailand (296 รายการ)</div></div>
       <button onclick="exportQRList()" style="padding:7px 16px;border-radius:9px;font-size:12px;font-weight:600;cursor:pointer;background:linear-gradient(135deg,#0050ff,#0096ff);border:none;color:white;font-family:'Sarabun',sans-serif;">📄 Export รายการ</button>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
-      <!-- Scanner -->
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:18px;overflow:hidden;position:relative;">
         <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#0050ff,#00e5ff);"></div>
         <div style="padding:18px 20px 14px;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;gap:10px;">
@@ -376,13 +354,12 @@
           </div>
         </div>
       </div>
-      <!-- QR List -->
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:18px;overflow:hidden;position:relative;">
         <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#00aa55,#00ff88);"></div>
         <div style="padding:18px 20px 14px;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;gap:10px;">
           <div style="width:38px;height:38px;border-radius:11px;background:rgba(0,150,80,0.2);display:flex;align-items:center;justify-content:center;font-size:18px;">🏷️</div>
           <div><div style="font-size:15px;font-weight:700;">QR Label ทุกสารเคมี</div>
-          <div style="font-size:11px;color:rgba(255,255,255,0.45);">ข้อมูลจริงจากระบบ WD Thailand</div></div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.45);">ข้อมูลจริง 296 รายการจากระบบ WD Thailand</div></div>
         </div>
         <div style="padding:18px 20px;">
           <input type="text" id="qrListSearch" placeholder="กรองรายการ..."
@@ -392,26 +369,25 @@
         </div>
       </div>
     </div>
-    <!-- Stats -->
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px;">
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(0,150,255,0.2);border-radius:14px;padding:18px;text-align:center;">
         <div style="font-size:28px;margin-bottom:6px;">📦</div>
-        <div style="font-size:20px;font-weight:800;color:#00e5ff;" id="total-chem-count">0</div>
+        <div style="font-size:20px;font-weight:800;color:#00e5ff;" id="total-chem-count">296</div>
         <div style="font-size:11px;color:rgba(255,255,255,0.5);">สารเคมีทั้งหมด</div>
       </div>
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(0,200,100,0.2);border-radius:14px;padding:18px;text-align:center;">
         <div style="font-size:28px;margin-bottom:6px;">✅</div>
-        <div style="font-size:20px;font-weight:800;color:#00ff88;" id="completed-count">0</div>
+        <div style="font-size:20px;font-weight:800;color:#00ff88;" id="completed-count">161</div>
         <div style="font-size:11px;color:rgba(255,255,255,0.5);">Completed</div>
       </div>
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,140,0,0.2);border-radius:14px;padding:18px;text-align:center;">
         <div style="font-size:28px;margin-bottom:6px;">⏳</div>
-        <div style="font-size:20px;font-weight:800;color:#ffaa44;" id="hold-count">0</div>
+        <div style="font-size:20px;font-weight:800;color:#ffaa44;" id="hold-count">47</div>
         <div style="font-size:11px;color:rgba(255,255,255,0.5);">Hold</div>
       </div>
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,50,50,0.2);border-radius:14px;padding:18px;text-align:center;">
         <div style="font-size:28px;margin-bottom:6px;">❌</div>
-        <div style="font-size:20px;font-weight:800;color:#ff6666;" id="rejected-count">0</div>
+        <div style="font-size:20px;font-weight:800;color:#ff6666;" id="rejected-count">55</div>
         <div style="font-size:11px;color:rgba(255,255,255,0.5);">Rejected</div>
       </div>
     </div>
@@ -498,38 +474,38 @@
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:16px 14px;position:relative;overflow:hidden;">
         <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#0050ff,#00e5ff);"></div>
         <div style="font-size:20px;margin-bottom:8px;">⚗️</div>
-        <div style="font-size:26px;font-weight:800;color:#00e5ff;line-height:1;margin-bottom:3px;" id="dash-total">0</div>
+        <div style="font-size:26px;font-weight:800;color:#00e5ff;line-height:1;margin-bottom:3px;" id="dash-total">296</div>
         <div style="font-size:11px;color:rgba(255,255,255,0.5);">สารเคมีทั้งหมด</div>
       </div>
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:16px 14px;position:relative;overflow:hidden;">
         <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#006633,#00ff88);"></div>
         <div style="font-size:20px;margin-bottom:8px;">✅</div>
-        <div style="font-size:26px;font-weight:800;color:#00ff88;line-height:1;margin-bottom:3px;" id="dash-comp">0</div>
+        <div style="font-size:26px;font-weight:800;color:#00ff88;line-height:1;margin-bottom:3px;" id="dash-comp">161</div>
         <div style="font-size:11px;color:rgba(255,255,255,0.5);">Completed</div>
       </div>
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:16px 14px;position:relative;overflow:hidden;">
         <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#cc5500,#ff8800);"></div>
         <div style="font-size:20px;margin-bottom:8px;">⏳</div>
-        <div style="font-size:26px;font-weight:800;color:#ffaa44;line-height:1;margin-bottom:3px;" id="dash-hold">0</div>
+        <div style="font-size:26px;font-weight:800;color:#ffaa44;line-height:1;margin-bottom:3px;" id="dash-hold">47</div>
         <div style="font-size:11px;color:rgba(255,255,255,0.5);">Hold</div>
       </div>
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:16px 14px;position:relative;overflow:hidden;">
         <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#cc0000,#ff4444);"></div>
         <div style="font-size:20px;margin-bottom:8px;">❌</div>
-        <div style="font-size:26px;font-weight:800;color:#ff6666;line-height:1;margin-bottom:3px;" id="dash-rej">0</div>
+        <div style="font-size:26px;font-weight:800;color:#ff6666;line-height:1;margin-bottom:3px;" id="dash-rej">55</div>
         <div style="font-size:11px;color:rgba(255,255,255,0.5);">Rejected</div>
       </div>
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:16px 14px;position:relative;overflow:hidden;">
         <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#7700ff,#cc88ff);"></div>
         <div style="font-size:20px;margin-bottom:8px;">🚨</div>
-        <div style="font-size:26px;font-weight:800;color:#ff4444;line-height:1;margin-bottom:3px;" id="dash-sds-exp">0</div>
+        <div style="font-size:26px;font-weight:800;color:#ff4444;line-height:1;margin-bottom:3px;" id="dash-sds-exp">80</div>
         <div style="font-size:11px;color:rgba(255,255,255,0.5);">SDS หมดอายุ</div>
       </div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:18px;">
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:18px;">
         <div style="font-size:13px;font-weight:700;margin-bottom:14px;">🏭 สารเคมีต่อแผนก (Top 10)</div>
-        <div id="deptBar" style="display:flex;flex-direction:column;gap:8px;"></div>
+        <div id="deptBar"></div>
       </div>
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:18px;">
         <div style="font-size:13px;font-weight:700;margin-bottom:14px;">⚠️ Signal Word</div>
@@ -552,14 +528,23 @@
     </div>
   </div>
 </div>
-
 <script>
 const TODAY = new Date('2026-02-12');
 
-// ===== PPE MAPPING BY SIGNAL WORD AND HAZARD =====
+// ===== REAL DATA COUNTS (296 records) =====
+const REAL_COUNTS = {
+  total: 296,
+  completed: 161,
+  hold: 47,
+  rejected: 55,
+  submitted: 33,
+  sdsExpired: 80
+};
+
+// ===== PPE MAPPING =====
 function getPPEList(c){
   const ppeMap = {
-    red: [
+    red:[
       {icon:'🧤',name:'ถุงมือ Butyl/Nitrile',req:'บังคับ'},
       {icon:'🥽',name:'Face Shield + แว่น',req:'บังคับ'},
       {icon:'😷',name:'Respirator/SCBA',req:'บังคับ'},
@@ -567,7 +552,7 @@ function getPPEList(c){
       {icon:'👢',name:'รองเท้า Safety',req:'บังคับ'},
       {icon:'🧥',name:'ผ้ากันเปื้อน',req:'แนะนำ'}
     ],
-    orange: [
+    orange:[
       {icon:'🧤',name:'ถุงมือ Nitrile',req:'บังคับ'},
       {icon:'🥽',name:'แว่นครอบตา',req:'บังคับ'},
       {icon:'😷',name:'หน้ากาก P100',req:'บังคับ'},
@@ -575,154 +560,290 @@ function getPPEList(c){
       {icon:'👢',name:'รองเท้า Safety',req:'แนะนำ'},
       {icon:'🔥',name:'ห้ามใกล้แหล่งติดไฟ',req:'ข้อควรระวัง'}
     ],
-    yellow: [
+    yellow:[
       {icon:'🧤',name:'ถุงมือ Nitrile',req:'บังคับ'},
       {icon:'🥽',name:'แว่นนิรภัย',req:'บังคับ'},
       {icon:'😷',name:'หน้ากากอนามัย',req:'แนะนำ'},
       {icon:'🦺',name:'ผ้ากันเปื้อน',req:'แนะนำ'}
     ],
-    blue: [
+    blue:[
       {icon:'🧤',name:'ถุงมือทั่วไป',req:'แนะนำ'},
       {icon:'🥽',name:'แว่นนิรภัย',req:'แนะนำ'},
       {icon:'🌬️',name:'ระบายอากาศดี',req:'บังคับ'},
       {icon:'💨',name:'ห้ามสูดดม',req:'ข้อควรระวัง'}
     ],
-    green: [
+    green:[
       {icon:'🧤',name:'ถุงมือทั่วไป',req:'แนะนำ'},
       {icon:'🥽',name:'แว่นนิรภัย',req:'แนะนำ'}
     ]
   };
-
-  // Special overrides
-  if(c.name.includes('กรด') || c.name.includes('Acid') || c.name.includes('HCl') || c.name.includes('Hydroxide')){
-    return [
-      {icon:'🧤',name:'ถุงมือ Butyl',req:'บังคับ'},
-      {icon:'🥽',name:'Face Shield',req:'บังคับ'},
-      {icon:'🦺',name:'ชุด Acid Suit',req:'บังคับ'},
-      {icon:'👢',name:'รองเท้า Safety',req:'บังคับ'},
-      {icon:'🌬️',name:'ระบายอากาศ LEV',req:'บังคับ'},
-      {icon:'🚿',name:'Eyewash Station',req:'บังคับ'}
-    ];
+  if(c.name.includes('กรด')||c.name.includes('Acid')||c.name.includes('HCl')||c.name.includes('Hydroxide')){
+    return [{icon:'🧤',name:'ถุงมือ Butyl',req:'บังคับ'},{icon:'🥽',name:'Face Shield',req:'บังคับ'},{icon:'🦺',name:'ชุด Acid Suit',req:'บังคับ'},{icon:'👢',name:'รองเท้า Safety',req:'บังคับ'},{icon:'🌬️',name:'ระบายอากาศ LEV',req:'บังคับ'},{icon:'🚿',name:'Eyewash Station',req:'บังคับ'}];
   }
-  if(c.name.includes('Flux') || c.name.includes('GUMMIX') || c.name.includes('solder')){
-    return [
-      {icon:'🧤',name:'ถุงมือ Nitrile',req:'บังคับ'},
-      {icon:'🥽',name:'แว่นครอบตา',req:'บังคับ'},
-      {icon:'😷',name:'Respirator OV/P100',req:'บังคับ'},
-      {icon:'🌬️',name:'Fume Extractor',req:'บังคับ'},
-      {icon:'🦺',name:'ผ้ากันเปื้อน',req:'แนะนำ'}
-    ];
+  if(c.name.includes('Flux')||c.name.includes('GUMMIX')||c.name.includes('solder')||c.name.includes('almit')){
+    return [{icon:'🧤',name:'ถุงมือ Nitrile',req:'บังคับ'},{icon:'🥽',name:'แว่นครอบตา',req:'บังคับ'},{icon:'😷',name:'Respirator OV/P100',req:'บังคับ'},{icon:'🌬️',name:'Fume Extractor',req:'บังคับ'},{icon:'🦺',name:'ผ้ากันเปื้อน',req:'แนะนำ'}];
   }
-  if(c.name.includes('Helium') || c.name.includes('Nitrogen') || c.name.includes('CO2') || c.name.includes('LPG') || c.name.includes('ก๊าซ') || c.name.includes('Gas')){
-    return [
-      {icon:'🌬️',name:'ระบายอากาศดี',req:'บังคับ'},
-      {icon:'🔵',name:'Gas Detector',req:'บังคับ'},
-      {icon:'🧤',name:'ถุงมือ Cryo',req:'แนะนำ'},
-      {icon:'🥽',name:'แว่นนิรภัย',req:'แนะนำ'},
-      {icon:'🚪',name:'ทางออกฉุกเฉิน',req:'ตรวจสอบ'}
-    ];
+  if(c.name.includes('Helium')||c.name.includes('Nitrogen')||c.name.includes('CO2')||c.name.includes('LPG')||c.name.includes('ก๊าซ')||c.name.toLowerCase().includes('gas')||c.name.includes('ไนโตรเจน')){
+    return [{icon:'🌬️',name:'ระบายอากาศดี',req:'บังคับ'},{icon:'🔵',name:'Gas Detector',req:'บังคับ'},{icon:'🧤',name:'ถุงมือ Cryo',req:'แนะนำ'},{icon:'🥽',name:'แว่นนิรภัย',req:'แนะนำ'},{icon:'🚪',name:'ทางออกฉุกเฉิน',req:'ตรวจสอบ'}];
   }
-  if(c.name.includes('Oxygen') || c.name.includes('O₂')){
-    return [
-      {icon:'🔥',name:'ห้ามใกล้ติดไฟ',req:'บังคับ'},
-      {icon:'🧤',name:'ถุงมือทนความร้อน',req:'บังคับ'},
-      {icon:'🥽',name:'แว่นนิรภัย',req:'บังคับ'},
-      {icon:'🌬️',name:'ระบายอากาศดี',req:'บังคับ'}
-    ];
+  if(c.name.includes('Oxygen')||c.name.includes('O₂')){
+    return [{icon:'🔥',name:'ห้ามใกล้ติดไฟ',req:'บังคับ'},{icon:'🧤',name:'ถุงมือทนความร้อน',req:'บังคับ'},{icon:'🥽',name:'แว่นนิรภัย',req:'บังคับ'},{icon:'🌬️',name:'ระบายอากาศดี',req:'บังคับ'}];
   }
-
-  return ppeMap[c.hazard] || ppeMap['green'];
+  return ppeMap[c.hazard]||ppeMap['green'];
 }
 
-// ===== DATA =====
+// ===== RAW DATA =====
 const rawChemicals = [
   {id:'C0208',name:'Sikaflex-740 Construction',cas:'',dept:'PCS /FAC',room:'pcs-fac',floor:1,sdsDate:'12/13/21',status:'Completed',signal:'Warning ระวัง',hazard:'orange',qty:'58.2 L/เดือน',location:'Building 1, Store 1',useType:'Use and storage',appCat:'Facility',purpose:'กาวยาแนวรอยต่อ สำหรับรอยต่อที่ต้องฉาบตกแต่งและทาสี',hazardClass:'Flammable liquids; Category 4'},
   {id:'C0254',name:'Soil Release Bonnet Buff',cas:'1336216',dept:'Site Service',room:'pcs-fac',floor:2,sdsDate:'01/10/20',status:'Hold',signal:'Warning ระวัง',hazard:'yellow',qty:'10 L/เดือน',location:'Pcs Store phase2, Bld.5',useType:'Use and storage',appCat:'Facility',purpose:'งานทำความสะอาด เพื่อทำความสะอาดพรม',hazardClass:'Skin corrosion/irritation; Category 1'},
   {id:'C0311',name:'สีน้ำซุปเปอร์ชิลด์ เบสเอ',cas:'',dept:'IT',room:'pcs-fac',floor:1,sdsDate:'02/11/26',status:'Hold',signal:'Hazard อันตราย',hazard:'red',qty:'3 L/วัน',location:'ห้องประชุมศรีมหาโพธิ',useType:'Use',appCat:'Construction',purpose:'ทาสีผนัง ฝา งานติดตั้ง ห้องประชุม',hazardClass:'No GHS Category'},
   {id:'C0264',name:'Gemstar Laser',cas:'',dept:'Site Service',room:'pcs-fac',floor:1,sdsDate:'08/07/23',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'43 L/เดือน',location:'Phase1-5, Store 2',useType:'Use and storage',appCat:'Facility',purpose:'เคลือบเงาพื้นเพื่อให้เกิดความเงาใส',hazardClass:'Acute toxicity dermal/inhalation; Category 3'},
-  {id:'C0057',name:'ทีโอเอ 201 รูฟซีล',cas:'',dept:'PCS/FAC',room:'pcs-fac',floor:4,sdsDate:'07/01/23',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'20 kg/ปี',location:'AHU OAHU ชั้น 2 P4',useType:'Use',appCat:'Maintenance',purpose:'ใช้ป้องกันน้ำที่รั่วหยดจากเครื่องจักรลงพื้น และซึมลงไปในพื้น',hazardClass:'Acute toxicity inhalation; Category 4, Skin sensitization; Category 1'},
-  {id:'C0063',name:'Refrigerant R32',cas:'',dept:'PCS /FAC',room:'utility',floor:1,sdsDate:'03/04/25',status:'Rejected',signal:'No signal word',hazard:'green',qty:'9.5 kg/เดือน',location:'All area',useType:'Use',appCat:'Facility',purpose:'ใช้ในระบบปรับอากาศและระบบทำความเย็น',hazardClass:'Serious eye damage; Category 2B, Skin corrosion; Category 2'},
-  {id:'C0072',name:'ทินเนอร์ 3A (Thinner AAA)',cas:'141786',dept:'PCS/FAC',room:'pcs-fac',floor:3,sdsDate:'06/01/25',status:'Rejected',signal:'Hazard อันตราย',hazard:'orange',qty:'3.5 L/เดือน',location:'TLC Substation 8',useType:'Use',appCat:'Maintenance',purpose:'นำไปใช้ในงานทาสีประตูพื้นที่ประตูฉุกเฉินห้องหม้อแปลงไฟฟ้า',hazardClass:'Flammable liquids; Category 2, Skin corrosion; Category 2'},
-  {id:'C0074',name:'Smoke Check 25S',cas:'',dept:'PCS/FAC',room:'pcs-fac',floor:1,sdsDate:'12/10/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'1 kg/ปี',location:'All Area',useType:'Use',appCat:'Other',purpose:'ใช้ในงานทดสอบระบบ Fire Alarm P1,2,3,4 และ 5',hazardClass:'Aerosols; Category 1, Chemicals under pressure; Category 1'},
-  {id:'C0075',name:'Metacaulk 835+ Firestop Sealant',cas:'13463677',dept:'PCS /FAC',room:'pcs-fac',floor:1,sdsDate:'12/08/25',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'59.6 L/เดือน',location:'แก้ไขรอยร้าว P1&P2',useType:'Use',appCat:'Facility',purpose:'เพื่อแก้ไขรอยร้าวผนังช่อง fire wall protection P1&P2 ชำรุด',hazardClass:'Serious eye damage; Category 1, Skin corrosion; Category 1'},
+  {id:'C0057',name:'ทีโอเอ 201 รูฟซีล',cas:'',dept:'PCS/FAC',room:'pcs-fac',floor:4,sdsDate:'07/01/23',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'20 kg/ปี',location:'AHU OAHU ชั้น 2 P4',useType:'Use',appCat:'Maintenance',purpose:'ใช้ป้องกันน้ำที่รั่วหยดจากเครื่องจักรลงพื้น',hazardClass:'Acute toxicity inhalation; Category 4, Skin sensitization; Category 1'},
+  {id:'C0063',name:'Refrigerant R32',cas:'',dept:'PCS /FAC',room:'utility',floor:1,sdsDate:'03/04/25',status:'Rejected',signal:'No signal word',hazard:'green',qty:'9.5 kg/เดือน',location:'All area',useType:'Use',appCat:'Facility',purpose:'ใช้ในระบบปรับอากาศและระบบทำความเย็น',hazardClass:'Serious eye damage; Category 2B'},
+  {id:'C0072',name:'ทินเนอร์ 3A (Thinner AAA)',cas:'141786',dept:'PCS/FAC',room:'pcs-fac',floor:3,sdsDate:'06/01/25',status:'Rejected',signal:'Hazard อันตราย',hazard:'orange',qty:'3.5 L/เดือน',location:'TLC Substation 8',useType:'Use',appCat:'Maintenance',purpose:'นำไปใช้ในงานทาสีประตูพื้นที่ประตูฉุกเฉินห้องหม้อแปลงไฟฟ้า',hazardClass:'Flammable liquids; Category 2'},
+  {id:'C0074',name:'Smoke Check 25S',cas:'',dept:'PCS/FAC',room:'pcs-fac',floor:1,sdsDate:'12/10/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'1 kg/ปี',location:'All Area',useType:'Use',appCat:'Other',purpose:'ใช้ในงานทดสอบระบบ Fire Alarm P1,2,3,4 และ 5',hazardClass:'Aerosols; Category 1'},
+  {id:'C0075',name:'Metacaulk 835+ Firestop Sealant',cas:'13463677',dept:'PCS /FAC',room:'pcs-fac',floor:1,sdsDate:'12/08/25',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'59.6 L/เดือน',location:'แก้ไขรอยร้าว P1&P2',useType:'Use',appCat:'Facility',purpose:'เพื่อแก้ไขรอยร้าวผนังช่อง fire wall protection P1&P2 ชำรุด',hazardClass:'Serious eye damage; Category 1'},
   {id:'C0079',name:'ไนโตรเจน (N₂)',cas:'',dept:'PCS /FAC',room:'utility',floor:1,sdsDate:'12/09/25',status:'Completed',signal:'Warning ระวัง',hazard:'blue',qty:'10 L/สัปดาห์',location:'All area',useType:'Use',appCat:'Facility',purpose:'ใช้ตรวจเช็ครอยรั่วของระบบแอร์',hazardClass:'Gases under pressure; Compressed gas'},
-  {id:'C0093',name:'Fleetcool DCA-4 Liquid',cas:'',dept:'PCS /FAC',room:'utility',floor:1,sdsDate:'12/16/25',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'3.78 L/วัน',location:'All area - Generator',useType:'Use',appCat:'Facility',purpose:'ใช้สำหรับใส่ระบบระบายความร้อนของ Generator (ผสมน้ำเปล่า เพื่อระบายความร้อน)',hazardClass:'Serious eye damage; Category 2, Skin corrosion; Category 2'},
-  {id:'C0097',name:'ไดนามิค พลัส (Engine Oil)',cas:'',dept:'PCS /FAC',room:'utility',floor:1,sdsDate:'12/16/25',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'18 L/วัน',location:'All area - Generator',useType:'Use',appCat:'Facility',purpose:'สำหรับเปลี่ยนถ่ายน้ำมันเครื่อง Generator',hazardClass:'Serious eye damage; Category 1, Skin corrosion; Category 1'},
-  {id:'C0206',name:'DIESEL FUEL CONDITIONER',cas:'',dept:'PCS /FAC',room:'utility',floor:1,sdsDate:'02/05/21',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'ไม่ระบุ',location:'All area - Generator',useType:'Use',appCat:'Facility',purpose:'เติมน้ำมันเครื่อง Generator',hazardClass:'Flammable liquids; Category 3, Carcinogenicity; Category 2, Aspiration hazard; Category 1'},
-  {id:'C0240',name:'BOSTIK FP404 FIRE RETARDANT',cas:'',dept:'PCS /FAC',room:'pcs-fac',floor:5,sdsDate:'07/26/22',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'9 L/ปี',location:'P5',useType:'Use',appCat:'Maintenance',purpose:'ใช้สำหรับอุดช่องว่าง รอยรั่ว และรอยต่อต่างๆ',hazardClass:'Aerosols; Category 1, Carcinogenicity; Category 2, Skin sensitization; Category 1'},
-  {id:'C0241',name:'Epoxy HI-PON 40-03 HARDENER',cas:'',dept:'PCS /FAC',room:'pcs-fac',floor:1,sdsDate:'01/03/22',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'2 L/ปี',location:'อาคารสารเคมี',useType:'Use',appCat:'Maintenance',purpose:'ใช้ซ่อมแซมพื้นห้องอาคารสารเคมี',hazardClass:'Flammable liquids; Category 3, Respiratory sensitization; Category 1, Reproductive toxicity; Category 2'},
-  {id:'C0289',name:'R410A (สารทำความเย็น)',cas:'',dept:'PCS /FAC',room:'utility',floor:1,sdsDate:'06/07/24',status:'Rejected',signal:'Warning ระวัง',hazard:'blue',qty:'84 L/เดือน',location:'All Area',useType:'Use',appCat:'Facility',purpose:'ใช้เป็นสารทำความเย็นในระบบปรับอากาศ',hazardClass:'Gases under pressure; Compressed gas, Skin corrosion; Category 3'},
-  {id:'C0290',name:'โซเดียม คลอไรด์ 25%',cas:'',dept:'PCS /FAC',room:'utility',floor:1,sdsDate:'01/22/26',status:'Hold',signal:'No signal word',hazard:'green',qty:'1100 kg/เดือน',location:'Drinking Water Plant',useType:'Use',appCat:'Facility',purpose:'ใช้ในกระบวนการผลิตน้ำดื่ม',hazardClass:'No GHS Category; not hazardous chemical'},
-  {id:'C0296',name:'ทีโอเอ กลิปตั้น สีเคลือบเงา',cas:'',dept:'PCS/FAC',room:'pcs-fac',floor:1,sdsDate:'01/01/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'7.56 L/เดือน',location:'All Area',useType:'Use',appCat:'Maintenance',purpose:'ใช้ในการทาสีเพื่อเคลือบเงา',hazardClass:'Flammable liquids; Category 3, Carcinogenicity; Category 2, Respiratory sensitization; Category 1'},
-  {id:'C0141',name:'KOH Potassium Hydroxide EGC',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'07/24/25',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'2 L/ปี',location:'DAS Lab Ph1, S2003-0082',useType:'Use',appCat:'Laboratory',purpose:'Eluent for Ion Chromatography Machine',hazardClass:'Acute toxicity oral; Category 4, Serious eye damage; Category 1, Skin corrosion; Category 1'},
+  {id:'C0093',name:'Fleetcool DCA-4 Liquid',cas:'',dept:'PCS /FAC',room:'utility',floor:1,sdsDate:'12/16/25',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'3.78 L/วัน',location:'All area - Generator',useType:'Use',appCat:'Facility',purpose:'ใช้สำหรับใส่ระบบระบายความร้อนของ Generator',hazardClass:'Serious eye damage; Category 2'},
+  {id:'C0097',name:'ไดนามิค พลัส (Engine Oil)',cas:'',dept:'PCS /FAC',room:'utility',floor:1,sdsDate:'12/16/25',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'18 L/วัน',location:'All area - Generator',useType:'Use',appCat:'Facility',purpose:'สำหรับเปลี่ยนถ่ายน้ำมันเครื่อง Generator',hazardClass:'Serious eye damage; Category 1'},
+  {id:'C0206',name:'DIESEL FUEL CONDITIONER',cas:'',dept:'PCS /FAC',room:'utility',floor:1,sdsDate:'02/05/21',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'N/A',location:'All area - Generator',useType:'Use',appCat:'Facility',purpose:'เติมน้ำมันเครื่อง Generator',hazardClass:'Flammable liquids; Category 3, Carcinogenicity; Category 2'},
+  {id:'C0207',name:'DE-STREAM-DE',cas:'',dept:'PCS /FAC',room:'utility',floor:1,sdsDate:'10/18/21',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'N/A',location:'UT',useType:'Use',appCat:'Facility',purpose:'น้ำยาล้างตะกรัน Cooling Tower',hazardClass:'Serious eye damage; Category 1, Skin corrosion; Category 1'},
+  {id:'C0240',name:'BOSTIK FP404 FIRE RETARDANT',cas:'',dept:'PCS /FAC',room:'pcs-fac',floor:5,sdsDate:'07/26/22',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'9 L/ปี',location:'P5',useType:'Use',appCat:'Maintenance',purpose:'ใช้สำหรับอุดช่องว่าง รอยรั่ว และรอยต่อต่างๆ',hazardClass:'Aerosols; Category 1, Carcinogenicity; Category 2'},
+  {id:'C0241',name:'Epoxy HI-PON 40-03 HARDENER',cas:'',dept:'PCS /FAC',room:'pcs-fac',floor:1,sdsDate:'01/03/22',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'2 L/ปี',location:'อาคารสารเคมี',useType:'Use',appCat:'Maintenance',purpose:'ใช้ซ่อมแซมพื้นห้องอาคารสารเคมี',hazardClass:'Flammable liquids; Category 3, Respiratory sensitization; Category 1'},
+  {id:'C0242',name:'HI-PON 40-03 (T) CLEAR',cas:'',dept:'PCS /FAC',room:'pcs-fac',floor:1,sdsDate:'01/03/22',status:'Rejected',signal:'Hazard อันตราย',hazard:'orange',qty:'6 L/ปี',location:'อาคารสารเคมี',useType:'Use',appCat:'Maintenance',purpose:'ใช้ซ่อมแซมพื้นห้องอาคารสารเคมี',hazardClass:'Flammable liquids; Category 3, Aspiration hazard; Category 1'},
+  {id:'C0289',name:'R410A (สารทำความเย็น)',cas:'',dept:'PCS /FAC',room:'utility',floor:1,sdsDate:'06/07/24',status:'Rejected',signal:'Warning ระวัง',hazard:'blue',qty:'84 L/เดือน',location:'All Area',useType:'Use',appCat:'Facility',purpose:'ใช้เป็นสารทำความเย็นในระบบปรับอากาศ',hazardClass:'Gases under pressure; Compressed gas'},
+  {id:'C0290',name:'โซเดียม คลอไรด์ 25%',cas:'',dept:'PCS /FAC',room:'utility',floor:1,sdsDate:'01/22/26',status:'Hold',signal:'No signal word',hazard:'green',qty:'1100 kg/เดือน',location:'Drinking Water Plant',useType:'Use',appCat:'Facility',purpose:'ใช้ในกระบวนการผลิตน้ำดื่ม',hazardClass:'No GHS Category'},
+  {id:'C0296',name:'ทีโอเอ กลิปตั้น สีเคลือบเงา',cas:'',dept:'PCS/FAC',room:'pcs-fac',floor:1,sdsDate:'01/01/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'7.56 L/เดือน',location:'All Area',useType:'Use',appCat:'Maintenance',purpose:'ใช้ในการทาสีเพื่อเคลือบเงา',hazardClass:'Flammable liquids; Category 3, Carcinogenicity; Category 2'},
+  {id:'C0297',name:'ทีโอเอ ทินเนอร์ผสมสีเคลือบ เบอร์ 21',cas:'',dept:'PCS /FAC',room:'pcs-fac',floor:3,sdsDate:'01/01/25',status:'Hold',signal:'Warning ระวัง',hazard:'orange',qty:'7 L/เดือน',location:'ทาสีประตูหม้อแปลง Sub8_TLC',useType:'Use',appCat:'Facility',purpose:'ทาสีประตูหม้อแปลง&ประตูฉุกเฉิน Sub8_TLC',hazardClass:'Flammable liquids; Category 3, Carcinogenicity; Category 2'},
+  {id:'C0298',name:'Nippon Paint Hybridshield Exterior',cas:'',dept:'PCS /FAC',room:'pcs-fac',floor:1,sdsDate:'02/14/23',status:'Completed',signal:'No signal word',hazard:'green',qty:'7.58 L/เดือน',location:'ทางเดินออฟฟิต P1',useType:'Use',appCat:'Facility',purpose:'แก้ไขสีฝ้าด้าง ทางเดินออฟฟิตเอ็นจิเนีย เฟส1',hazardClass:'Aquatic hazard acute; Category 3'},
+  {id:'C0299',name:'Alkyd High Gloss QD',cas:'',dept:'PCS /FAC',room:'pcs-fac',floor:5,sdsDate:'01/30/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'3 L/เดือน',location:'อาคาร P5',useType:'Use',appCat:'Facility',purpose:'ทาเสาอาคาร ปรับปรุงพื้นที่งานออดิท P5',hazardClass:'Flammable liquids; Category 3, STOT repeated; Category 1'},
+  {id:'C0300',name:'Checkmor 240, Aerosol EA',cas:'',dept:'PCS/FAC',room:'utility',floor:1,sdsDate:'05/11/23',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'0.84 L/ปี',location:'Utility Compressor System',useType:'Use',appCat:'Facility',purpose:'ใช้ในงานตรวจสอบถังลม',hazardClass:'Aerosols; Category 1, Serious eye damage; Category 1'},
+  {id:'C0301',name:'Xmor LD7, Aerosol EA',cas:'',dept:'PCS/FAC',room:'utility',floor:1,sdsDate:'05/11/23',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'1.26 L/ปี',location:'Utility Compressor System',useType:'Use',appCat:'Facility',purpose:'ใช้ในงานตรวจสอบถังลม เป็นสารที่ทำให้เกิดภาพ',hazardClass:'Aerosols; Category 1, STOT single; Category 3'},
+  {id:'C0302',name:'Xmor S76, Aerosol E',cas:'',dept:'PCS/FAC',room:'utility',floor:1,sdsDate:'05/11/23',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'2.1 L/ปี',location:'Utility Compressor System',useType:'Use',appCat:'Facility',purpose:'ใช้ในงานตรวจสอบถังลม เป็นสารซักฟอก',hazardClass:'Aerosols; Category 1, Aquatic hazard; Category 2'},
+  {id:'C0303',name:'สีรองพื้นเทากันสนิม ทีโอเอ',cas:'',dept:'PCS/FAC',room:'pcs-fac',floor:2,sdsDate:'01/01/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'3.5 L/ปี',location:'ทางเข้า Phase 2',useType:'Use',appCat:'Maintenance',purpose:'เป็นสีกันสนิม G2010 TOA เทา',hazardClass:'Flammable liquids; Category 3, Carcinogenicity; Category 2'},
+  {id:'C0304',name:'Solid State Starter / VSDCoolant',cas:'',dept:'PCS /FAC',room:'utility',floor:1,sdsDate:'10/14/25',status:'Completed',signal:'No signal word',hazard:'green',qty:'4 L/เดือน',location:'Chiller',useType:'Use',appCat:'Facility',purpose:'Spare part for Chiller',hazardClass:'No GHS Category'},
+  {id:'C0308',name:'AvistaVT 3000',cas:'',dept:'PCS/FAC',room:'utility',floor:1,sdsDate:'06/19/25',status:'Hold',signal:'Warning ระวัง',hazard:'yellow',qty:'100 kg/เดือน',location:'พื้นที่ผลิตน้ำ RO',useType:'Use',appCat:'Facility',purpose:'ใช้ในระบบผลิตน้ำ RO',hazardClass:'Serious eye damage; Category 2'},
+  {id:'C0309',name:'ถ่านกัมมันต์ (Activated Carbon)',cas:'',dept:'PCS/FAC',room:'utility',floor:1,sdsDate:'02/17/23',status:'Hold',signal:'Warning ระวัง',hazard:'yellow',qty:'50 L/เดือน',location:'พื้นที่ผลิตน้ำ RO',useType:'Use',appCat:'Facility',purpose:'ใช้เป็นตัวดูดซับในระบบผลิตน้ำ RO',hazardClass:'Aquatic long-term; Category 4'},
+  {id:'C0310',name:'สีน้ำทีโอเอ ชิลด์ วัน เบสเอ',cas:'',dept:'PCS/FAC',room:'pcs-fac',floor:1,sdsDate:'04/01/22',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'9.46 L/ปี',location:'Collaboration P1',useType:'Use',appCat:'Maintenance',purpose:'ใช้ในงานทาสีฝ้า',hazardClass:'Aquatic hazard acute; Category 3'},
+  {id:'C0312',name:'WELD-ON 717 GRAY OR CLEAR',cas:'',dept:'PCS/FAC',room:'utility',floor:1,sdsDate:'04/22/22',status:'Hold',signal:'Hazard อันตราย',hazard:'orange',qty:'9.46 L/เดือน',location:'All Area',useType:'Use',appCat:'Maintenance',purpose:'ใช้ในงานทากาวยึดติดท่อ PVC',hazardClass:'Flammable liquids; Category 2, Carcinogenicity; Category 2'},
+  {id:'C0313',name:'Shell Omala S2 GX 150',cas:'',dept:'PCS/FAC',room:'utility',floor:2,sdsDate:'09/24/25',status:'Hold',signal:'No signal word',hazard:'green',qty:'40 L/ปี',location:'Vacuum PV P2',useType:'Use',appCat:'Maintenance',purpose:'ใช้ในงาน PM ระบบ Vacuum PV P2',hazardClass:'Aquatic long-term; Category 3'},
+  {id:'C0314',name:'LOCTITE 243 THREADLOCKER',cas:'',dept:'PCS/FAC',room:'utility',floor:1,sdsDate:'05/02/24',status:'Hold',signal:'Hazard อันตราย',hazard:'yellow',qty:'0.3 L/ปี',location:'All Area',useType:'Use',appCat:'Facility',purpose:'ใช้เป็นน้ำยาล็อคเกลียวของเครื่องจักร',hazardClass:'Carcinogenicity; Category 2, Skin sensitization; Category 1'},
+  {id:'C0315',name:'SONAX MOS201L',cas:'',dept:'PCS/FAC',room:'utility',floor:1,sdsDate:'03/15/22',status:'Hold',signal:'Hazard อันตราย',hazard:'orange',qty:'4.8 L/ปี',location:'Utility Machine',useType:'Use',appCat:'Facility',purpose:'ใช้เป็นสารหล่อลื่นเครื่องจักร',hazardClass:'Aspiration hazard; Category 1, Skin sensitization; Category 1'},
+  {id:'C0316',name:'UltraClean UCW3700',cas:'',dept:'PCS/FAC',room:'utility',floor:1,sdsDate:'01/17/25',status:'Hold',signal:'Warning ระวัง',hazard:'yellow',qty:'2000 L/เดือน',location:'DI Water System',useType:'Use',appCat:'Facility',purpose:'ใช้ในระบบน้ำ DI',hazardClass:'Serious eye damage; Category 2'},
+  {id:'C0317',name:'สารละลายทดสอบ pH 4.01',cas:'',dept:'PCS/FAC',room:'utility',floor:1,sdsDate:'10/21/25',status:'Hold',signal:'No signal word',hazard:'green',qty:'5 L/เดือน',location:'IWWT',useType:'Use',appCat:'Facility',purpose:'ระบบบำบัดน้ำเสีย',hazardClass:'No GHS Category'},
+  {id:'C0318',name:'สารละลายทดสอบ pH 7.01',cas:'',dept:'PCS/FAC',room:'utility',floor:1,sdsDate:'10/21/25',status:'Hold',signal:'No signal word',hazard:'green',qty:'5 L/เดือน',location:'All Area',useType:'Use',appCat:'Facility',purpose:'ระบบบำบัดน้ำเสีย',hazardClass:'No GHS Category'},
+  {id:'C0141',name:'KOH Potassium Hydroxide EGC',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'07/24/25',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'2 L/ปี',location:'DAS Lab Ph1, S2003-0082',useType:'Use',appCat:'Laboratory',purpose:'Eluent for Ion Chromatography Machine',hazardClass:'Acute toxicity oral; Category 4, Serious eye damage; Category 1'},
   {id:'C0246',name:'Liquefied Petroleum Gas (LPG)',cas:'',dept:'Site services',room:'utility',floor:1,sdsDate:'04/25/23',status:'Hold',signal:'Hazard อันตราย',hazard:'orange',qty:'960 kg/วัน',location:'LPG Room Phase 1',useType:'Use and storage',appCat:'Other',purpose:'ใช้สำหรับประกอบอาหาร',hazardClass:'Flammable gases; Category 1A'},
-  {id:'C0288',name:'ThreeBond 1390F',cas:'',dept:'ME 2',room:'sme',floor:3,sdsDate:'03/18/24',status:'Rejected',signal:'Hazard อันตราย',hazard:'orange',qty:'200 mg/สัปดาห์',location:'Measurement room TLC P3',useType:'Use and storage',appCat:'Manufacturing',purpose:'ใช้สำหรับ rework งาน helium leak fail',hazardClass:'GHS non-compliance'},
-  {id:'C0155',name:'DEB 95 AI (Denatured Ethanol)',cas:'',dept:'MSP Storage',room:'storage',floor:3,sdsDate:'10/01/23',status:'Rejected',signal:'Hazard อันตราย',hazard:'orange',qty:'4928 L/วัน',location:'Welding TLC & Laundry, S2003-0004',useType:'Use and storage',appCat:'Manufacturing',purpose:'ใช้ทำความสะอาดชิ้นงานในพื้นที่ Welding และ ใช้เช็ดรอยหมึกที่เปื้อนตามชุด Jumpsuit พื้นที่ Laundry',hazardClass:'Flammable liquids; Category 2'},
-  {id:'C0162',name:'PROPAN-2-OL (IPA) - MSP All',cas:'67-63-0',dept:'MSP Storage',room:'storage',floor:1,sdsDate:'01/06/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'4928 L/วัน',location:'All Area, S2003-0004',useType:'Use and storage',appCat:'Manufacturing',purpose:'ใช้ทำความสะอาดชิ้นงาน และ ทำความสะอาดทั่วไป',hazardClass:'Flammable liquids; Category 2'},
-  {id:'C0192',name:'SPARKLE FLUX ZR-102F - HSA',cas:'',dept:'MSP Storage',room:'mfg-hsa',floor:2,sdsDate:'02/04/25',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'800 L/สัปดาห์',location:'HSA Submat P1,P2, S2003-0004',useType:'Use and storage',appCat:'Manufacturing',purpose:'น้ำยาประสานบัดกรี',hazardClass:'Acute toxicity oral; Category 2, Reproductive toxicity; Category 2, STOT single exposure; Category 1'},
+  {id:'C0257',name:'3M Air Foam 2in1 Cleaner',cas:'9005656',dept:'PE all',room:'qc-lab',floor:2,sdsDate:'08/19/25',status:'Hold',signal:'No signal word',hazard:'orange',qty:'N/A',location:'PE/FA lab 1st Floor',useType:'Use',appCat:'Laboratory',purpose:'ทำความสะอาดตู้ closed chamber',hazardClass:'Flammable gases; Category 1A'},
+  {id:'C0288',name:'ThreeBond 1390F - ME2',cas:'',dept:'ME 2',room:'sme',floor:3,sdsDate:'03/18/24',status:'Rejected',signal:'Hazard อันตราย',hazard:'orange',qty:'200 mg/สัปดาห์',location:'Measurement room TLC P3',useType:'Use and storage',appCat:'Manufacturing',purpose:'ใช้สำหรับ rework งาน helium leak fail',hazardClass:'GHS non-compliance'},
+  {id:'C0270',name:'Shell Brake & Clutch Fluid DOT3',cas:'',dept:'Logistics Warehouse',room:'storage',floor:2,sdsDate:'01/16/25',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'1 L/เดือน',location:'Receiving, N/A',useType:'Use',appCat:'Maintenance',purpose:'PM Forklift',hazardClass:'Health Hazard / OHS'},
+  {id:'C0201',name:'PROPAN-2-OL - MFG HSA P2 CR',cas:'67-63-0',dept:'MFG_HSA',room:'mfg-hsa',floor:2,sdsDate:'12/29/25',status:'Rejected',signal:'Hazard อันตราย',hazard:'orange',qty:'168 L/วัน',location:'Changing room Phase 2, S2003-00010',useType:'Use and storage',appCat:'Manufacturing',purpose:'Manufacturing (ใช้ในกระบวนการผลิต)',hazardClass:'Flammable liquids; Category 2'},
+  {id:'C0155',name:'DEB 95 AI Denatured Ethanol - S04',cas:'',dept:'MSP Storage',room:'storage',floor:3,sdsDate:'10/01/23',status:'Rejected',signal:'Hazard อันตราย',hazard:'orange',qty:'4928 L/วัน',location:'Welding TLC & Laundry, S2003-0004',useType:'Use and storage',appCat:'Manufacturing',purpose:'ทำความสะอาดชิ้นงาน Welding / เช็ดรอยหมึก Jumpsuit Laundry',hazardClass:'Flammable liquids; Category 2'},
+  {id:'C0162',name:'PROPAN-2-OL (IPA) - MSP S04',cas:'67-63-0',dept:'MSP Storage',room:'storage',floor:1,sdsDate:'01/06/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'4928 L/วัน',location:'All Area, S2003-0004',useType:'Use and storage',appCat:'Manufacturing',purpose:'ใช้ทำความสะอาดชิ้นงาน และทำความสะอาดทั่วไป',hazardClass:'Flammable liquids; Category 2'},
+  {id:'C0192',name:'SPARKLE FLUX ZR-102F HSA S04',cas:'',dept:'MSP Storage',room:'mfg-hsa',floor:2,sdsDate:'02/04/25',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'800 L/สัปดาห์',location:'HSA Submat P1,P2, S2003-0004',useType:'Use and storage',appCat:'Manufacturing',purpose:'น้ำยาประสานบัดกรี',hazardClass:'Acute toxicity oral; Category 2, Reproductive toxicity; Category 2'},
+  {id:'C0167',name:'SMR-100 - MSP S05 ME',cas:'',dept:'MSP Storage',room:'storage',floor:2,sdsDate:'05/07/24',status:'Completed',signal:'No signal word',hazard:'green',qty:'480 L/เดือน',location:'MTC ME, S2003-0005',useType:'Use and storage',appCat:'Manufacturing',purpose:'น้ำมันสำหรับปั๊มสุญญากาศโรตารี่แบบซีลน้ำมัน',hazardClass:'No GHS Category'},
+  {id:'C0170',name:'ULVOIL R-2 MSP S05',cas:'',dept:'MSP Storage',room:'storage',floor:2,sdsDate:'01/23/23',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'480 L/เดือน',location:'TM#1/FINAL, S2003-0005',useType:'Use and storage',appCat:'Manufacturing',purpose:'น้ำมันหล่อลื่น',hazardClass:'Aspiration hazard; Category 1'},
+  {id:'C0172',name:'almit GUMMIX-21 NH LFM-48 S05',cas:'',dept:'MSP Storage',room:'storage',floor:2,sdsDate:'09/16/22',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'6 kg/เดือน',location:'HSA Submat P1,P2, S2003-0005',useType:'Use and storage',appCat:'Manufacturing',purpose:'ตัวเชื่อมบัดกรีตัวชิ้นงาน',hazardClass:'Aquatic long-term; Category 3'},
+  {id:'C0174',name:'NSK GREASE LG2 - MSP S05',cas:'',dept:'MSP Storage',room:'storage',floor:2,sdsDate:'01/21/25',status:'Completed',signal:'No signal word',hazard:'green',qty:'3.6 kg/เดือน',location:'MTC Cleanroom/ME, S2003-0005',useType:'Use and storage',appCat:'Maintenance',purpose:'จาระบีหล่อลื่น',hazardClass:'No GHS Category'},
+  {id:'C0175',name:'AFE-CA GREASE MSP S05',cas:'',dept:'MSP Storage',room:'storage',floor:2,sdsDate:'12/04/22',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'3.15 kg/เดือน',location:'MTC CLN, S2003-0005',useType:'Use and storage',appCat:'Maintenance',purpose:'จาระบีหล่อลื่น',hazardClass:'Aquatic long-term; Category 4'},
+  {id:'C0178',name:'FOMBLIN® YR 1800 MSP S05',cas:'',dept:'MSP Storage',room:'storage',floor:2,sdsDate:'06/17/21',status:'Completed',signal:'No signal word',hazard:'green',qty:'20 kg/เดือน',location:'MTC ME/Welding, S2003-0005',useType:'Use and storage',appCat:'Manufacturing',purpose:'สารหล่อลื่น',hazardClass:'No GHS Category'},
+  {id:'C0179',name:'Three Bond 1354D MSP S05',cas:'',dept:'MSP Storage',room:'storage',floor:2,sdsDate:'06/30/25',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'3 kg/เดือน',location:'Welding, S2003-0005',useType:'Use and storage',appCat:'Manufacturing',purpose:'กาว สารยึดติด',hazardClass:'Serious eye damage; Category 2, Skin sensitization; Category 1'},
+  {id:'C0183',name:'Valtron DP327-4 MSP CLN S05',cas:'',dept:'MSP Storage',room:'storage',floor:2,sdsDate:'07/29/24',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'80 L/สัปดาห์',location:'MTC CLN, S2003-0005',useType:'Use and storage',appCat:'Manufacturing',purpose:'ใช้ล้างชิ้นงานในเครื่อง Cleaner พื้นที่ Cleaning MTC',hazardClass:'Acute toxicity oral; Category 4'},
+  {id:'C0186',name:'TRITON X-100 MSP S05',cas:'',dept:'MSP Storage',room:'storage',floor:2,sdsDate:'02/19/22',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'80 L/เดือน',location:'MTC CLN, S2003-0005',useType:'Use and storage',appCat:'Manufacturing',purpose:'ใช้ล้างชิ้นงานในเครื่อง Cleaner พื้นที่ Cleaning MTC',hazardClass:'Acute toxicity oral; Category 4, Serious eye damage; Category 1'},
+  {id:'C0187',name:'Klüberplex BE 31-222 MSP S05 TEE1',cas:'',dept:'MSP Storage',room:'storage',floor:1,sdsDate:'05/03/22',status:'Completed',signal:'No signal word',hazard:'green',qty:'1 kg/ปี',location:'TEE (XCALIBRE), S2003-0005',useType:'Use and storage',appCat:'Maintenance',purpose:'จาระบีหล่อลื่น',hazardClass:'No GHS Category'},
+  {id:'C0188',name:'Klüberplex BE 31-222 MSP S05 TEE2',cas:'',dept:'MSP Storage',room:'storage',floor:2,sdsDate:'05/03/22',status:'Completed',signal:'No signal word',hazard:'green',qty:'2 kg/ปี',location:'TEE (XCALIBRE), S2003-0005',useType:'Use and storage',appCat:'Maintenance',purpose:'จาระบีหล่อลื่น',hazardClass:'No GHS Category'},
+  {id:'C0189',name:'ThreeBond 3059E MSP S05',cas:'',dept:'MSP Storage',room:'storage',floor:2,sdsDate:'01/19/23',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'7.5 L/วัน',location:'HSA Submat P1,P2, S2003-0005',useType:'Use and storage',appCat:'Manufacturing',purpose:'กาว, สารยึดติด',hazardClass:'Serious eye damage; Category 2'},
   {id:'C0219',name:'Carbon dioxide CO₂',cas:'',dept:'MSP Storage',room:'storage',floor:1,sdsDate:'02/20/23',status:'Completed',signal:'Warning ระวัง',hazard:'blue',qty:'15000 kg/สัปดาห์',location:'HDA (Dis Asm), S2003-0020',useType:'Use and storage',appCat:'Manufacturing',purpose:'Clean base at HDA area',hazardClass:'Gases under pressure; Liquefied gas'},
-  {id:'C0223',name:'Sodium Hypochlorite 10%',cas:'7732185',dept:'PCS /FAC',room:'utility',floor:1,sdsDate:'05/12/22',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'500 kg/เดือน',location:'All area, S2003-0024',useType:'Use and storage',appCat:'Facility',purpose:'กระบวนการนำน้ำกลับมาใช้ใหม่',hazardClass:'Aquatic hazard acute; Category 1, Serious eye damage; Category 1, Skin corrosion; Category 1'},
-  {id:'C0224',name:'กรดไฮโดรคลอริก 35% (HCl)',cas:'',dept:'PCS /FAC',room:'utility',floor:1,sdsDate:'07/26/23',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'340 kg/เดือน',location:'IWWT, S2003-0025',useType:'Use and storage',appCat:'Facility',purpose:'ระบบบำบัดน้ำเสีย',hazardClass:'Corrosive to metals; Category 1, Serious eye damage; Category 2, Skin sensitization; Category 1'},
+  {id:'C0223',name:'Sodium Hypochlorite 10%',cas:'7732185',dept:'PCS /FAC',room:'utility',floor:1,sdsDate:'05/12/22',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'500 kg/เดือน',location:'All area, S2003-0024',useType:'Use and storage',appCat:'Facility',purpose:'กระบวนการนำน้ำกลับมาใช้ใหม่',hazardClass:'Aquatic hazard acute; Category 1, Serious eye damage; Category 1'},
+  {id:'C0224',name:'กรดไฮโดรคลอริก 35% (HCl)',cas:'',dept:'PCS /FAC',room:'utility',floor:1,sdsDate:'07/26/23',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'340 kg/เดือน',location:'IWWT, S2003-0025',useType:'Use and storage',appCat:'Facility',purpose:'ระบบบำบัดน้ำเสีย',hazardClass:'Corrosive to metals; Category 1, Serious eye damage; Category 2'},
   {id:'C0225',name:'Poly Aluminium Chloride',cas:'',dept:'PCS /FAC',room:'utility',floor:1,sdsDate:'08/24/24',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'950 kg/เดือน',location:'CWWT, S2003-0025',useType:'Use and storage',appCat:'Facility',purpose:'ระบบบำบัดน้ำเสีย',hazardClass:'Serious eye damage; Category 1, Skin corrosion; Category 1'},
-  {id:'C0148',name:'Sodium Hydroxide 50% (NaOH)',cas:'',dept:'PCS/FAC',room:'utility',floor:1,sdsDate:'05/12/22',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'500 kg/สัปดาห์',location:'CWWT, S2003-0041',useType:'Use and storage',appCat:'Facility',purpose:'ใช้ในระบบบำบัดน้ำเสีย',hazardClass:'Serious eye damage; Category 1, Skin corrosion; Category 1, STOT single; Category 3'},
-  {id:'C0076',name:'PROPAN-2-OL (IPA) - HDI FA Lab',cas:'67-63-0',dept:'HDI',room:'qc-lab',floor:2,sdsDate:'01/06/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'8 L/วัน',location:'FA Lab, S2003-0047',useType:'Use and storage',appCat:'Laboratory',purpose:'ทำความสะอาด Equipment/Surface TDFA operations, ถุงมือ, HDD, Disk caddy',hazardClass:'Flammable liquids; Category 2, Serious eye damage; Category 2, STOT single; Category 3'},
-  {id:'C0128',name:'Aluminum Oxide Powder',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'03/27/25',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'0.5 kg/ปี',location:'DAS Lab Ph1, S2003-0083',useType:'Use and storage',appCat:'Laboratory',purpose:'ผงขัดทำความสะอาด ion source ของเครื่อง GCMS',hazardClass:'STOT repeated exposure; Category 1'},
-  {id:'C0130',name:'Helium Compressed',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'01/14/23',status:'Completed',signal:'Warning ระวัง',hazard:'blue',qty:'700 kg/เดือน',location:'DAS Lab Ph1, S2003-0087',useType:'Use and storage',appCat:'Laboratory',purpose:'Carrier gas for GCMS machine',hazardClass:'Gases under pressure; Compressed gas'},
+  {id:'C0235',name:'DYKEM 502',cas:'',dept:'PCS/FAC',room:'utility',floor:1,sdsDate:'01/07/26',status:'Completed',signal:'Hazard อันตราย',hazard:'yellow',qty:'25 kg/ปี',location:'Process Vacuum, S2003-0025',useType:'Use and storage',appCat:'Facility',purpose:'ใช้ในกระบวนการ Vacuum',hazardClass:'Serious eye damage; Category 2, Skin sensitization; Category 1'},
+  {id:'C0269',name:'พอลิอะลูมิเนียมคลอไรด์ 10%',cas:'',dept:'PCS /FAC',room:'utility',floor:3,sdsDate:'01/16/26',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'950 kg/สัปดาห์',location:'All area, S2003-0025',useType:'Use and storage',appCat:'Facility',purpose:'City waste water treatment system (CWWT)',hazardClass:'Corrosive to metals; Category 1, Serious eye damage; Category 1'},
+  {id:'C0238',name:'Shell Tellus S2 MX 32 PCS',cas:'',dept:'PCS /FAC',room:'utility',floor:1,sdsDate:'01/26/24',status:'Completed',signal:'No signal word',hazard:'green',qty:'72 kg/ปี',location:'Utility Machine, S2003-0026',useType:'Use and storage',appCat:'Maintenance',purpose:'ใช้เติมน้ำมันไฮดรอลิกของเครื่องจักร',hazardClass:'No GHS Category'},
+  {id:'C0239',name:'Shell Tellus S2 MX 68',cas:'',dept:'PCS /FAC',room:'utility',floor:1,sdsDate:'01/26/24',status:'Completed',signal:'No signal word',hazard:'green',qty:'18 kg/ปี',location:'MR #1, 2, S2003-0026',useType:'Use and storage',appCat:'Facility',purpose:'ใช้กระบวนการของ Vacuum Pump',hazardClass:'No GHS Category'},
+  {id:'C0243',name:'SOLEST 68 (York C)',cas:'',dept:'PCS /FAC',room:'utility',floor:1,sdsDate:'01/03/22',status:'Completed',signal:'No signal word',hazard:'green',qty:'120 kg/เดือน',location:'Utility Bldg Chiller, S2003-0026',useType:'Use and storage',appCat:'Facility',purpose:'น้ำมัน Compressor Chiller',hazardClass:'No GHS Category'},
+  {id:'C0244',name:'SOLEST LT-32 (York K)',cas:'',dept:'PCS /FAC',room:'utility',floor:1,sdsDate:'09/08/22',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'120 kg/เดือน',location:'Utility Building Chiller 9-10, S2003-0026',useType:'Use and storage',appCat:'Facility',purpose:'น้ำมัน Compressor Chiller',hazardClass:'Aquatic long-term; Category 4'},
+  {id:'C0247',name:'Roto Z',cas:'',dept:'PCS /FAC',room:'utility',floor:1,sdsDate:'12/22/21',status:'Hold',signal:'No signal word',hazard:'green',qty:'40 L/ปี',location:'Air Compressor, S2003-0026/2',useType:'Use and storage',appCat:'Facility',purpose:'น้ำมันเกียร์ Air Compressor',hazardClass:'No GHS Category'},
+  {id:'C0248',name:'LGMT 3',cas:'',dept:'PCS /FAC',room:'utility',floor:1,sdsDate:'08/05/25',status:'Hold',signal:'No signal word',hazard:'green',qty:'18 kg/ปี',location:'Utility Building, S2003-0026/2',useType:'Use and storage',appCat:'Facility',purpose:'ใช้หล่อลื่น Motor & Pump',hazardClass:'No GHS Category'},
+  {id:'C0195',name:'Nitrogen Compressed MSP S35',cas:'',dept:'MSP Storage',room:'storage',floor:2,sdsDate:'02/14/23',status:'Completed',signal:'Warning ระวัง',hazard:'blue',qty:'470 L/ปี',location:'TEST BE, S2003-0035',useType:'Use and storage',appCat:'Manufacturing',purpose:'ใช้สวิตส์แก็สฮีเลียมที่สโตร์จัดเก็บ',hazardClass:'Gases under pressure; Refrigerated liquefied gas'},
+  {id:'C0049',name:'โพลิเมอร์ประจุบวก CPT-ChFloc200',cas:'',dept:'PCS/FAC',room:'utility',floor:1,sdsDate:'11/18/25',status:'Completed',signal:'No signal word',hazard:'green',qty:'100 kg/สัปดาห์',location:'CWWT, S2003-0041',useType:'Use and storage',appCat:'Facility',purpose:'โพลิเมอร์ในการอัดกากตะกอนไขมัน ระบบบำบัดน้ำเสีย CWWT',hazardClass:'No GHS Category'},
+  {id:'C0148',name:'Sodium Hydroxide 50% (NaOH)',cas:'',dept:'PCS/FAC',room:'utility',floor:1,sdsDate:'05/12/22',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'500 kg/สัปดาห์',location:'CWWT, S2003-0041',useType:'Use and storage',appCat:'Facility',purpose:'ใช้ในระบบบำบัดน้ำเสีย',hazardClass:'Serious eye damage; Category 1, Skin corrosion; Category 1'},
+  {id:'C0149',name:'Kuriflock PA-331',cas:'',dept:'PCS/FAC',room:'utility',floor:1,sdsDate:'06/20/23',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'60 kg/เดือน',location:'CWWT, S2003-0041',useType:'Use and storage',appCat:'Facility',purpose:'โพลิเมอร์ในการอัดกากตะกอนไขมัน CWWT',hazardClass:'Serious eye damage; Category 2'},
+  {id:'C0245',name:'DISPELAIR DP 150',cas:'',dept:'PCS /FAC',room:'utility',floor:1,sdsDate:'01/06/26',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'100 kg/ปี',location:'Water Recycle plant, S2003-0041',useType:'Use and storage',appCat:'Facility',purpose:'ใช้ในระบบบำบัดน้ำเสีย',hazardClass:'No GHS Category'},
+  {id:'C0153',name:'X-100 Surfactant MSP S43',cas:'',dept:'MSP Storage',room:'storage',floor:1,sdsDate:'02/19/22',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'30 L/สัปดาห์',location:'MTC CLN, S2003-0043',useType:'Use and storage',appCat:'Manufacturing',purpose:'ล้างชิ้นงานในเครื่อง Cleaner พื้นที่ Cleaning MTC',hazardClass:'Acute toxicity inhalation; Category 4, Serious eye damage; Category 1'},
+  {id:'C0166',name:'SMR-100 MSP S43 P1',cas:'',dept:'MSP Storage',room:'storage',floor:1,sdsDate:'05/07/24',status:'Completed',signal:'No signal word',hazard:'green',qty:'600 L/เดือน',location:'MTC ME, S2003-0043',useType:'Use and storage',appCat:'Manufacturing',purpose:'น้ำมันสำหรับปั๊มสุญญากาศโรตารี่',hazardClass:'No GHS Category'},
+  {id:'C0169',name:'ULVOIL R-2 MSP S43',cas:'',dept:'MSP Storage',room:'storage',floor:1,sdsDate:'01/23/23',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'4800 L/เดือน',location:'TM#1/FINAL, S2003-0043',useType:'Use and storage',appCat:'Manufacturing',purpose:'น้ำมันหล่อลื่น',hazardClass:'Aspiration hazard; Category 1'},
+  {id:'C0181',name:'Three Bond 1354D MSP CLN S43',cas:'',dept:'MSP Storage',room:'storage',floor:1,sdsDate:'07/29/24',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'1020 L/สัปดาห์',location:'MTC CLN, S2003-0043',useType:'Use and storage',appCat:'Manufacturing',purpose:'ล้างชิ้นงาน Cleaner MTC',hazardClass:'Acute toxicity oral; Category 4'},
+  {id:'C0182',name:'Valtron DP327-4 MSP CLN S43',cas:'',dept:'MSP Storage',room:'storage',floor:1,sdsDate:'07/29/24',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'1020 L/สัปดาห์',location:'MTC CLN, S2003-0043',useType:'Use and storage',appCat:'Manufacturing',purpose:'ล้างชิ้นงาน Cleaner MTC',hazardClass:'Acute toxicity oral; Category 4'},
+  {id:'C0076',name:'PROPAN-2-OL (IPA) - HDI FA Lab',cas:'67-63-0',dept:'HDI',room:'qc-lab',floor:2,sdsDate:'01/06/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'8 L/วัน',location:'FA Lab, S2003-0047',useType:'Use and storage',appCat:'Laboratory',purpose:'ทำความสะอาด Equipment/Surface TDFA, ถุงมือ, HDD, Disk caddy',hazardClass:'Flammable liquids; Category 2, Serious eye damage; Category 2'},
+  {id:'C0150',name:'SHELL GADUS S2 V220 00',cas:'',dept:'RSS & HDI',room:'qc-lab',floor:2,sdsDate:'01/13/25',status:'Completed',signal:'No signal word',hazard:'green',qty:'2 kg/ปี',location:'FA Lab, S2003-0047',useType:'Use and storage',appCat:'Laboratory',purpose:'PM maintenance / OM inspection / AFM / opening 2nd cover',hazardClass:'No GHS Category'},
+  {id:'C0272',name:'PROPAN-2-OL - sSME FA Lab',cas:'67-63-0',dept:'sSME',room:'qc-lab',floor:2,sdsDate:'01/06/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'24 L/สัปดาห์',location:'FA LAB, S2003-0047',useType:'Use and storage',appCat:'Laboratory',purpose:'เช็ดทำความสะอาด HDD / part ชิ้นงาน',hazardClass:'Flammable liquids; Category 2'},
+  {id:'C0276',name:'Gray Resin',cas:'',dept:'sSME',room:'qc-lab',floor:2,sdsDate:'06/20/22',status:'Hold',signal:'Warning ระวัง',hazard:'yellow',qty:'1 L/สัปดาห์',location:'FA LAB, S2003-0047',useType:'Use and storage',appCat:'Laboratory',purpose:'Part',hazardClass:'Aquatic long-term; Category 2, Serious eye damage; Category 2'},
+  {id:'C0129',name:'Sulfuric acid 0.1M',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'09/24/25',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'2 L/ปี',location:'DAS Lab Ph1, S2003-0082',useType:'Use and storage',appCat:'Laboratory',purpose:'สารทำความสะอาด suppressor เครื่อง Ion chromatography',hazardClass:'Corrosive to metals; Category 1'},
+  {id:'C0128',name:'Aluminum Oxide Powder',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'03/27/25',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'0.5 kg/ปี',location:'DAS Lab Ph1, S2003-0083',useType:'Use and storage',appCat:'Laboratory',purpose:'ผงขัดทำความสะอาด ion source เครื่อง GCMS',hazardClass:'STOT repeated exposure; Category 1'},
+  {id:'C0112',name:'Squalane',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'11/10/25',status:'Completed',signal:'No signal word',hazard:'green',qty:'0.01 kg/ปี',location:'DAS Lab Ph1, S2003-0084',useType:'Use and storage',appCat:'Laboratory',purpose:'สารอ้างอิงมาตราฐาน',hazardClass:'GHS non-compliance'},
+  {id:'C0113',name:'Hexamethylbenzene',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'11/10/25',status:'Completed',signal:'No signal word',hazard:'green',qty:'0.01 kg/สัปดาห์',location:'DAS Lab Ph1, S2003-0084',useType:'Use and storage',appCat:'Laboratory',purpose:'สารอ้างอิงมาตราฐาน',hazardClass:'GHS non-compliance'},
+  {id:'C0114',name:'Dioctyl phthalate',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'11/10/25',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'0.01 L/ปี',location:'DAS Lab Ph1, S2003-0084',useType:'Use and storage',appCat:'Laboratory',purpose:'สารอ้างอิงมาตราฐาน',hazardClass:'Reproductive toxicity; Category 1'},
+  {id:'C0115',name:'Dodecane',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'11/10/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'0.2 L/ปี',location:'DAS Lab Ph1, S2003-0084',useType:'Use and storage',appCat:'Laboratory',purpose:'สารอ้างอิงมาตราฐาน',hazardClass:'Aspiration hazard; Category 1'},
+  {id:'C0116',name:'Dibutyl phthalate',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'09/28/25',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'0.05 L/ปี',location:'DAS Lab Ph1, S2003-0084',useType:'Use and storage',appCat:'Laboratory',purpose:'สารอ้างอิงมาตราฐาน',hazardClass:'Aquatic hazard acute; Category 1, Reproductive toxicity; Category 1'},
+  {id:'C0117',name:'GCMS Tuning Standard PFTBA',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'06/24/24',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'0.05 L/ปี',location:'DAS Lab Ph1, S2003-0084',useType:'Use and storage',appCat:'Laboratory',purpose:'สารมาตราฐานสอบเทียบเครื่องมือ',hazardClass:'Serious eye damage; Category 2, STOT single; Category 3'},
+  {id:'C0101',name:'TRITON X-100 DAS Lab Ph1 S85',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'02/18/22',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'0.1 L/วัน',location:'DAS Lab Ph1, S2003-0085',useType:'Use and storage',appCat:'Laboratory',purpose:'Glassware Cleaning',hazardClass:'Acute toxicity oral; Category 4, Serious eye damage; Category 1'},
+  {id:'C0118',name:'AVF 45 Platinum',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'01/31/25',status:'Completed',signal:'No signal word',hazard:'green',qty:'5 L/ปี',location:'DAS Lab Ph1, S2003-0085',useType:'Use and storage',appCat:'Laboratory',purpose:'Vacuum pump oil',hazardClass:'GHS non-compliance'},
+  {id:'C0120',name:'Polymer Microsphere Suspension P1',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'12/01/15',status:'Completed',signal:'No signal word',hazard:'green',qty:'0.03 L/วัน',location:'DAS Lab Ph1, S2003-0086',useType:'Use and storage',appCat:'Laboratory',purpose:'สารมาตราฐานสอบเทียบเครื่องมือ',hazardClass:'GHS non-compliance'},
+  {id:'C0122',name:'IV-STOCK-61',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'07/02/25',status:'Completed',signal:'No signal word',hazard:'green',qty:'0.25 L/วัน',location:'DAS Lab Ph1, S2003-0086',useType:'Use and storage',appCat:'Laboratory',purpose:'สารมาตราฐานสอบเทียบเครื่องมือ',hazardClass:'GHS non-compliance'},
+  {id:'C0123',name:'IV-STOCK-64',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'06/24/25',status:'Completed',signal:'No signal word',hazard:'green',qty:'0.25 L/วัน',location:'DAS Lab Ph1, S2003-0086',useType:'Use and storage',appCat:'Laboratory',purpose:'สารมาตราฐานสอบเทียบเครื่องมือ',hazardClass:'GHS non-compliance'},
+  {id:'C0124',name:'ICHCO1',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'07/10/25',status:'Hold',signal:'No signal word',hazard:'green',qty:'0.125 L/สัปดาห์',location:'DAS Lab Ph1, S2003-0086',useType:'Use and storage',appCat:'Laboratory',purpose:'สารมาตราฐานตรวจเช็คเครื่องมือ',hazardClass:'GHS non-compliance'},
+  {id:'C0125',name:'ICOAC1',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'04/09/21',status:'Completed',signal:'No signal word',hazard:'green',qty:'0.125 L/เดือน',location:'DAS Lab Ph1, S2003-0086',useType:'Use and storage',appCat:'Laboratory',purpose:'สารมาตราฐานตรวจเช็คเครื่องมือ',hazardClass:'GHS non-compliance'},
+  {id:'C0126',name:'ICOXA1',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'06/17/25',status:'Completed',signal:'No signal word',hazard:'green',qty:'0.125 L/เดือน',location:'DAS Lab Ph1, S2003-0086',useType:'Use and storage',appCat:'Laboratory',purpose:'สารมาตราฐานตรวจเช็คเครื่องมือ',hazardClass:'GHS non-compliance'},
+  {id:'C0130',name:'Helium Compressed - DAS',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'01/14/23',status:'Completed',signal:'Warning ระวัง',hazard:'blue',qty:'700 kg/เดือน',location:'DAS Lab Ph1, S2003-0087',useType:'Use and storage',appCat:'Laboratory',purpose:'Carrier gas for GCMS machine',hazardClass:'Gases under pressure; Compressed gas'},
   {id:'C0131',name:'Nitrogen Compressed - DAS',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'02/14/23',status:'Completed',signal:'Warning ระวัง',hazard:'blue',qty:'14400 kg/สัปดาห์',location:'DAS Lab Ph1, S2003-0087',useType:'Use and storage',appCat:'Laboratory',purpose:'Carrier gas for GCMS machine',hazardClass:'Gases under pressure; Compressed gas'},
   {id:'C0132',name:'Argon Compressed',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'02/23/23',status:'Completed',signal:'Warning ระวัง',hazard:'blue',qty:'1870 kg/ปี',location:'DAS Lab Ph1, S2003-0087',useType:'Use and storage',appCat:'Laboratory',purpose:'Gas for Cu Coater Machine',hazardClass:'Gases under pressure; Compressed gas'},
-  {id:'C0119',name:'Nitrogen, Refrigerated Liquid',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'10/29/25',status:'Completed',signal:'Warning ระวัง',hazard:'blue',qty:'1000 L/วัน',location:'DAS Lab Ph1, S2003-0110',useType:'Use and storage',appCat:'Laboratory',purpose:'สารทำความเย็นสำหรับเครื่องมือวิเคราะห์',hazardClass:'Gases under pressure; Refrigerated liquefied gas'},
-  {id:'C0134',name:'Methanol (เมทานอล)',cas:'67-56-1',dept:'DAS',room:'das',floor:1,sdsDate:'07/03/24',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'5 L/ปี',location:'DAS Lab Ph1, S2019-0002',useType:'Use and storage',appCat:'Laboratory',purpose:'สารเคมีสำหรับทำความสะอาดชิ้นส่วนอะไหล่เครื่องมือ',hazardClass:'Acute toxicity oral; Category 3, Flammable liquids; Category 2, STOT single; Category 1'},
-  {id:'C0137',name:'Acetone (อะซิโตน)',cas:'67-64-1',dept:'DAS',room:'das',floor:1,sdsDate:'07/03/24',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'25 L/วัน',location:'DAS Lab Ph1, S2019-0002',useType:'Use and storage',appCat:'Laboratory',purpose:'สารเคมีสำหรับทำความสะอาด Glassware และเตรียมตัวอย่าง',hazardClass:'Flammable liquids; Category 2, Serious eye damage; Category 2, STOT single; Category 3'},
-  {id:'C0139',name:'Hexane (เฮกเซน)',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'08/10/20',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'40 L/วัน',location:'DAS Lab Ph1, S2019-0002',useType:'Use and storage',appCat:'Laboratory',purpose:'สารเคมีสำหรับสกัดตัวอย่างก่อนการวิเคราะห์',hazardClass:'Flammable liquids; Category 2, Aspiration hazard; Category 1, STOT repeated; Category 2'},
+  {id:'C0110',name:'Cemedine EP330 Base Resin Ph1',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'01/09/25',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'0.48 L/วัน',location:'DAS Lab Ph1, S2003-0088',useType:'Use and storage',appCat:'Laboratory',purpose:'กาวสำหรับเตรียมตัวอย่างก่อนการวิเคราะห์',hazardClass:'Serious eye damage; Category 2, Skin sensitization; Category 1'},
+  {id:'C0102',name:'TRITON X-100 DAS CLN Ph2 S91',cas:'',dept:'DAS',room:'das',floor:2,sdsDate:'02/18/22',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'2 L/วัน',location:'DAS Cleanroom Lab Ph2, S2003-0091',useType:'Use and storage',appCat:'Laboratory',purpose:'Glassware Cleaning',hazardClass:'Acute toxicity oral; Category 4, Serious eye damage; Category 1'},
+  {id:'C0105',name:'3M Scotch-Weld DP100 Part A Ph2',cas:'',dept:'DAS',room:'das',floor:2,sdsDate:'10/10/22',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'0.03 L/วัน',location:'DAS Cleanroom Lab Ph2, S2003-0091',useType:'Use and storage',appCat:'Laboratory',purpose:'กาวสำหรับเตรียมตัวอย่างก่อนการวิเคราะห์',hazardClass:'Serious eye damage; Category 2, Skin sensitization; Category 1'},
+  {id:'C0106',name:'3M Scotch-Weld DP100 Part B Ph2',cas:'',dept:'DAS',room:'das',floor:2,sdsDate:'05/31/22',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'0.03 L/วัน',location:'DAS Cleanroom Lab Ph2, S2003-0091',useType:'Use and storage',appCat:'Laboratory',purpose:'กาวสำหรับเตรียมตัวอย่างก่อนการวิเคราะห์',hazardClass:'Serious eye damage; Category 2, Skin corrosion; Category 1'},
+  {id:'C0108',name:'MCE .45UM WH GD 47MM Ph2',cas:'',dept:'DAS',room:'das',floor:2,sdsDate:'09/27/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'0.5 kg/วัน',location:'DAS Cleanroom Lab Ph2, S2003-0091',useType:'Use and storage',appCat:'Laboratory',purpose:'กระดาษกรองตัวอย่างก่อนการวิเคราะห์',hazardClass:'Flammable solids; Category 1'},
+  {id:'C0111',name:'Cemedine EP330 Base Resin Ph2',cas:'',dept:'DAS',room:'das',floor:2,sdsDate:'01/09/25',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'0.64 L/วัน',location:'DAS Cleanroom Lab Ph2, S2003-0091',useType:'Use and storage',appCat:'Laboratory',purpose:'กาวสำหรับเตรียมตัวอย่างก่อนการวิเคราะห์',hazardClass:'Serious eye damage; Category 2, Skin sensitization; Category 1'},
+  {id:'C0121',name:'Polymer Microsphere Ph2',cas:'',dept:'DAS',room:'das',floor:2,sdsDate:'12/01/15',status:'Completed',signal:'No signal word',hazard:'green',qty:'0.03 L/วัน',location:'DAS Cleanroom Lab Ph2, S2003-0091',useType:'Use and storage',appCat:'Laboratory',purpose:'สารมาตราฐานสอบเทียบเครื่องมือ',hazardClass:'GHS non-compliance'},
+  {id:'C0136',name:'Ethanol absolute EMSURE Ph2',cas:'',dept:'DAS',room:'das',floor:2,sdsDate:'08/04/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'0.5 L/วัน',location:'DAS Cleanroom Lab Ph2, S2003-0091',useType:'Use and storage',appCat:'Laboratory',purpose:'สารเคมีสำหรับเตรียมตัวอย่าง',hazardClass:'Flammable liquids; Category 2, Serious eye damage; Category 2'},
+  {id:'C0143',name:'PROPAN-2-OL DAS CLN Ph2',cas:'67-63-0',dept:'DAS',room:'das',floor:2,sdsDate:'01/06/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'4 L/วัน',location:'DAS Cleanroom Lab Ph2, S2003-0091',useType:'Use and storage',appCat:'Laboratory',purpose:'ทำความสะอาดสถานที่และอุปกรณ์การทำงาน',hazardClass:'Flammable liquids; Category 2, STOT single; Category 3'},
+  {id:'C0127',name:'SMR-100 DAS S93',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'05/07/24',status:'Completed',signal:'No signal word',hazard:'green',qty:'32 L/ปี',location:'DAS Lab Ph1, S2003-0093',useType:'Use and storage',appCat:'Laboratory',purpose:'Vacuum pump oil',hazardClass:'GHS non-compliance'},
+  {id:'C0109',name:'ROProtect C',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'07/29/25',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'0.27 kg/เดือน',location:'DAS Lab Ph1, S2003-0094',useType:'Use and storage',appCat:'Laboratory',purpose:'Chlorine tables for DI water generator machine',hazardClass:'Aquatic hazard acute; Category 1, Self-reactive; Types C&D'},
+  {id:'C0152',name:'PROPAN-2-OL QA Calibration',cas:'67-63-0',dept:'QA.Ops.',room:'qc-lab',floor:2,sdsDate:'01/06/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'0.6 L/สัปดาห์',location:'Calibration room, S2003-0095',useType:'Use and storage',appCat:'Laboratory',purpose:'Use for part and tool cleaning',hazardClass:'Flammable liquids; Category 2'},
   {id:'C0050',name:'WD-40 Multi-Use',cas:'124-38-9',dept:'SQE',room:'qc-lab',floor:1,sdsDate:'05/21/24',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'3.5 kg/เดือน',location:'Metrology room, S2003-0096',useType:'Use and storage',appCat:'Laboratory',purpose:'กันสนิมบน tools',hazardClass:'Aerosols; Category 1, STOT single; Category 3'},
-  {id:'C0028',name:'PROPAN-2-OL (IPA) - TEE',cas:'67-63-0',dept:'Test Equipment Eng.',room:'tee',floor:4,sdsDate:'07/07/22',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'8 L/เดือน',location:'TEE1 Xcalibre, S2003-0107',useType:'Use and storage',appCat:'Maintenance',purpose:'ทำความสะอาดเครื่องจักร ในระหว่างทำ Preventive Maintenance (PM)',hazardClass:'Flammable liquids; Category 2'},
-  {id:'C0038',name:'WD-40 Aerosol - TEE',cas:'',dept:'Test Equipment Eng.',room:'tee',floor:4,sdsDate:'05/21/24',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'10 กระป๋อง/วัน',location:'TEE1 Xcalibre, S2003-0107',useType:'Use and storage',appCat:'Maintenance',purpose:'ทำความสะอาดเครื่องจักร ในระหว่างทำ Preventive Maintenance',hazardClass:'Aerosols; Category 1, Gases under pressure; Compressed gas, STOT single; Category 3'},
-  {id:'C0039',name:'LOCTITE 243 MEDIUM STRENGTH',cas:'',dept:'Test Equipment Eng.',room:'tee',floor:4,sdsDate:'11/10/22',status:'Completed',signal:'Hazard อันตราย',hazard:'yellow',qty:'2 ml/เดือน',location:'TEE1 Xcalibre, S2003-0107',useType:'Use and storage',appCat:'Maintenance',purpose:'ทำความสะอาดเครื่องจักร ในระหว่างทำ Preventive Maintenance',hazardClass:'Serious eye damage; Category 2, Skin corrosion; Category 2, STOT single; Category 3'},
-  {id:'C0046',name:'PROPAN-2-OL (IPA) - Training',cas:'67-63-0',dept:'Training',room:'training',floor:2,sdsDate:'01/06/25',status:'Hold',signal:'Hazard อันตราย',hazard:'orange',qty:'1.65 kg/เดือน',location:'Simulator Room Ph2, S2004-0004',useType:'Use and storage',appCat:'Other',purpose:'Train New Operator and multi skill Operator',hazardClass:'Flammable liquids; Category 2'},
-  {id:'C0047',name:'SPARKLE FLUX ZR-102F - Training',cas:'',dept:'Training',room:'training',floor:2,sdsDate:'05/06/20',status:'Hold',signal:'Hazard อันตราย',hazard:'red',qty:'0.5 L/เดือน',location:'Simulator Room Ph2, S2004-0004',useType:'Use and storage',appCat:'Other',purpose:'Train New Operator and multi skill Operator',hazardClass:'Flammable liquids; Category 2'},
-  {id:'C0005',name:'PROPAN-2-OL (IPA) - TEE#2',cas:'67-63-0',dept:'TEE#2',room:'tee',floor:2,sdsDate:'06/01/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'30 L/วัน',location:'Normal area PH2, S2005-0008',useType:'Use and storage',appCat:'Maintenance',purpose:'Clean machines',hazardClass:'Flammable liquids; Category 2, Serious eye damage; Category 2, STOT single; Category 3'},
-  {id:'C0067',name:'CENTRAL HEATING PROTECTOR F1',cas:'3811732',dept:'TEE#2',room:'tee',floor:2,sdsDate:'06/30/25',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'6 ขวด/สัปดาห์',location:'Normal area PH2, S2005-0008',useType:'Use and storage',appCat:'Maintenance',purpose:'ใช้บำรุงรักษา boiler',hazardClass:'Acute toxicity oral; Category 3, Aquatic long-term; Category 3'},
-  {id:'C0071',name:'3M Quick Drying Contact Cleaner',cas:'',dept:'TEE#2',room:'tee',floor:1,sdsDate:'06/30/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'6 กระป๋อง/เดือน',location:'Normal area PH2, S2005-0008',useType:'Use and storage',appCat:'Maintenance',purpose:'ใช้ทำความสะอาด อุปกรณ์อิเลคทรอนิคส์',hazardClass:'Explosives; Category 1, Gases under pressure; Compressed gas'},
-  {id:'C0094',name:'NSK GREASE LG2 - BEM',cas:'',dept:'BEM',room:'tee',floor:3,sdsDate:'05/15/18',status:'Completed',signal:'No signal word',hazard:'green',qty:'0.08 kg/เดือน',location:'ASRS Room, S2005-0007',useType:'Use and storage',appCat:'Maintenance',purpose:'ใช้หยอดเคลือบเกลียว Screw ในเครื่องจักร เพื่อหล่อลื่น ป้องกันสนิม',hazardClass:'No GHS Category; not hazardous chemical'},
-  {id:'C0064',name:'LOCTITE 222 BO250ML',cas:'',dept:'BEM',room:'tee',floor:3,sdsDate:'01/12/25',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'0.75 L/เดือน',location:'ASRS, S2005-0007',useType:'Use and storage',appCat:'Maintenance',purpose:'ใช้หยอดบนเกลียว Screw ในเครื่องจักร เพื่อป้องกัน Nut คลายตัว',hazardClass:'Serious eye damage; Category 2, STOT single; Category 3'},
+  {id:'C0054',name:'Starrett Waterless Surface Cleaner',cas:'',dept:'SQE',room:'qc-lab',floor:1,sdsDate:'04/20/25',status:'Completed',signal:'Hazard อันตราย',hazard:'yellow',qty:'2 kg/ปี',location:'Metrology room, S2003-0096',useType:'Use and storage',appCat:'Laboratory',purpose:'ทำความสะอาด Granite surface',hazardClass:'Aquatic long-term; Category 3, Skin sensitization; Category 1'},
+  {id:'C0055',name:'JetSwam',cas:'',dept:'SQE',room:'qc-lab',floor:1,sdsDate:'05/24/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'8.256 kg/ปี',location:'Metrology room, S2003-0096',useType:'Use and storage',appCat:'Laboratory',purpose:'สีขาวพ่นเคลือบชิ้นงาน เพื่อลดแสงสะท้อน',hazardClass:'Aerosols; Category 1'},
+  {id:'C0119',name:'Nitrogen Refrigerated Liquid DAS',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'10/29/25',status:'Completed',signal:'Warning ระวัง',hazard:'blue',qty:'1000 L/วัน',location:'DAS Lab Ph1, S2003-0110',useType:'Use and storage',appCat:'Laboratory',purpose:'สารทำความเย็นสำหรับเครื่องมือวิเคราะห์',hazardClass:'Gases under pressure; Refrigerated liquefied gas'},
+  {id:'C0009',name:'PROPAN-2-OL TEE Xcalibre',cas:'67-63-0',dept:'Test Equipment Eng.',room:'tee',floor:4,sdsDate:'07/07/22',status:'Rejected',signal:'Hazard อันตราย',hazard:'orange',qty:'10 L/เดือน',location:'TEE1 Xcalibre, S2003-0107',useType:'Use and storage',appCat:'Maintenance',purpose:'ทำความสะอาดเครื่องจักร PM',hazardClass:'Flammable liquids; Category 2'},
+  {id:'C0010',name:'Central Heating Protector F1 TEE',cas:'3811732',dept:'Test Equipment Eng.',room:'tee',floor:4,sdsDate:'06/01/23',status:'Hold',signal:'Hazard อันตราย',hazard:'red',qty:'10 L/สัปดาห์',location:'TEE1 Xcalibre, S2003-0107',useType:'Use and storage',appCat:'Maintenance',purpose:'ทำความสะอาดเครื่องจักร PM',hazardClass:'Acute toxicity inhalation; Category 1'},
+  {id:'C0028',name:'PROPAN-2-OL TEE Xcalibre 2',cas:'67-63-0',dept:'Test Equipment Eng.',room:'tee',floor:4,sdsDate:'07/07/22',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'8 L/เดือน',location:'TEE1 Xcalibre, S2003-0107',useType:'Use and storage',appCat:'Maintenance',purpose:'ทำความสะอาดเครื่องจักร PM',hazardClass:'Flammable liquids; Category 2'},
+  {id:'C0029',name:'Klüberplex BE 31-222 TEE',cas:'',dept:'Test Equipment Eng.',room:'tee',floor:4,sdsDate:'11/23/23',status:'Completed',signal:'No signal word',hazard:'green',qty:'2 kg/วัน',location:'TEE1 Xcalibre, S2003-0107',useType:'Use and storage',appCat:'Maintenance',purpose:'ทำความสะอาดเครื่องจักร PM',hazardClass:'No GHS Category'},
+  {id:'C0038',name:'WD-40 Aerosol TEE',cas:'',dept:'Test Equipment Eng.',room:'tee',floor:4,sdsDate:'05/21/24',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'10 กระป๋อง/วัน',location:'TEE1 Xcalibre, S2003-0107',useType:'Use and storage',appCat:'Maintenance',purpose:'ทำความสะอาดเครื่องจักร PM',hazardClass:'Aerosols; Category 1, Gases under pressure; Compressed gas'},
+  {id:'C0039',name:'LOCTITE 243 MEDIUM STRENGTH TEE',cas:'',dept:'Test Equipment Eng.',room:'tee',floor:4,sdsDate:'11/10/22',status:'Completed',signal:'Hazard อันตราย',hazard:'yellow',qty:'2 ml/เดือน',location:'TEE1 Xcalibre, S2003-0107',useType:'Use and storage',appCat:'Maintenance',purpose:'ทำความสะอาดเครื่องจักร PM',hazardClass:'Serious eye damage; Category 2, STOT single; Category 3'},
+  {id:'C0046',name:'PROPAN-2-OL Training',cas:'67-63-0',dept:'Training',room:'training',floor:2,sdsDate:'01/06/25',status:'Hold',signal:'Hazard อันตราย',hazard:'orange',qty:'1.65 kg/เดือน',location:'Simulator Room Ph2, S2004-0004',useType:'Use and storage',appCat:'Other',purpose:'Train New Operator and multi skill Operator',hazardClass:'Flammable liquids; Category 2'},
+  {id:'C0047',name:'SPARKLE FLUX ZR-102F Training',cas:'',dept:'Training',room:'training',floor:2,sdsDate:'05/06/20',status:'Hold',signal:'Hazard อันตราย',hazard:'red',qty:'0.5 L/เดือน',location:'Simulator Room Ph2, S2004-0004',useType:'Use and storage',appCat:'Other',purpose:'Train New Operator and multi skill Operator',hazardClass:'Flammable liquids; Category 2'},
+  {id:'C0048',name:'GUMMIX-21 Training',cas:'',dept:'Training',room:'training',floor:2,sdsDate:'09/16/22',status:'Hold',signal:'Hazard อันตราย',hazard:'red',qty:'1 kg/เดือน',location:'Simulator Room Ph2, S2004-0004',useType:'Use and storage',appCat:'Other',purpose:'Train New Operator and multi skill Operator',hazardClass:'Acute toxicity oral; Category 4, Skin sensitization; Category 1'},
+  {id:'C0044',name:'NSK GREASE LG2 TM2',cas:'',dept:'TM#2',room:'tm',floor:2,sdsDate:'05/15/18',status:'Rejected',signal:'No signal word',hazard:'green',qty:'0.08 kg/เดือน',location:'TM#2 Line HSA P1,2,5, S2004-0007',useType:'Use and storage',appCat:'Maintenance',purpose:'จาระบีหล่อลื่น',hazardClass:'No GHS Category'},
+  {id:'C0327',name:'NSK GREASE LG2 TM2 New',cas:'',dept:'TM#2',room:'tm',floor:2,sdsDate:'05/15/18',status:'Hold',signal:'No signal word',hazard:'green',qty:'500 kg/เดือน',location:'TM#2 Line HSA P1,2,5, S2004-0007',useType:'Use and storage',appCat:'Maintenance',purpose:'ลดแรงเสียดทาน ระหว่างการ Swaging',hazardClass:'No GHS Category'},
+  {id:'C0059',name:'Gear Oil EP 320 BEM ASRS',cas:'',dept:'BEM',room:'tee',floor:3,sdsDate:'10/15/24',status:'Rejected',signal:'Warning ระวัง',hazard:'yellow',qty:'18 L/เดือน',location:'ASRS Room Ph3, S2005-0007',useType:'Use and storage',appCat:'Maintenance',purpose:'ใช้เติมในชุดเกียร์ Motor ของ ASRS',hazardClass:'Serious eye damage; Category 2'},
+  {id:'C0060',name:'MOBILUX EP 2',cas:'',dept:'BEM',room:'tee',floor:3,sdsDate:'10/17/25',status:'Completed',signal:'No signal word',hazard:'green',qty:'18 L/เดือน',location:'ASRS Room, S2005-0007',useType:'Use and storage',appCat:'Maintenance',purpose:'ใช้ชโลมในชุดเฟืองโช่, Conveyor TURN เพื่อหล่อลื่น',hazardClass:'Not classified'},
+  {id:'C0064',name:'LOCTITE 222 BO250ML',cas:'',dept:'BEM',room:'tee',floor:3,sdsDate:'01/12/25',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'0.75 L/เดือน',location:'ASRS, S2005-0007',useType:'Use and storage',appCat:'Maintenance',purpose:'ใช้หยอดบนเกลียว Screw ป้องกัน Nut คลายตัว',hazardClass:'Serious eye damage; Category 2, STOT single; Category 3'},
+  {id:'C0069',name:'Shell Tellus S2 M 32 BEM',cas:'',dept:'BEM',room:'tee',floor:3,sdsDate:'07/24/24',status:'Completed',signal:'No signal word',hazard:'green',qty:'20 L/เดือน',location:'ASRS Room, S2005-0007',useType:'Use and storage',appCat:'Maintenance',purpose:'ใช้หยอดบนเกลียว Screw ป้องกัน Nut คลายตัว',hazardClass:'No GHS Category'},
+  {id:'C0094',name:'NSK GREASE LG2 BEM ASRS',cas:'',dept:'BEM',room:'tee',floor:3,sdsDate:'05/15/18',status:'Completed',signal:'No signal word',hazard:'green',qty:'0.08 kg/เดือน',location:'ASRS Room, S2005-0007',useType:'Use and storage',appCat:'Maintenance',purpose:'ใช้หยอดเคลือบเกลียว Screw เพื่อหล่อลื่น ป้องกันสนิม',hazardClass:'No GHS Category'},
+  {id:'C0151',name:'PTT GEAR OIL EP 320',cas:'',dept:'BEM',room:'tee',floor:3,sdsDate:'10/15/24',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'18 L/เดือน',location:'ASRS Room, S2005-0007',useType:'Use and storage',appCat:'Maintenance',purpose:'ใช้เติมในชุดเกียร์ Motor ของ ASRS',hazardClass:'Serious eye damage; Category 2'},
+  {id:'C0280',name:'ULVOIL R-2 ME2 Seal P3',cas:'',dept:'ME 2',room:'process',floor:3,sdsDate:'01/23/23',status:'Completed',signal:'No signal word',hazard:'orange',qty:'1 L/สัปดาห์',location:'Seal process P3, S2005-0007',useType:'Use',appCat:'Maintenance',purpose:'Support check PM machine',hazardClass:'Aspiration hazard; Category 1'},
+  {id:'C0005',name:'PROPAN-2-OL TEE#2 Normal',cas:'67-63-0',dept:'TEE#2',room:'tee',floor:2,sdsDate:'06/01/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'30 L/วัน',location:'Normal area PH2, S2005-0008',useType:'Use and storage',appCat:'Maintenance',purpose:'Clean machines',hazardClass:'Flammable liquids; Category 2, STOT single; Category 3'},
+  {id:'C0067',name:'CENTRAL HEATING PROTECTOR F1 TEE2',cas:'3811732',dept:'TEE#2',room:'tee',floor:2,sdsDate:'06/30/25',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'6 ขวด/สัปดาห์',location:'Normal area PH2, S2005-0008',useType:'Use and storage',appCat:'Maintenance',purpose:'ใช้บำรุงรักษา boiler',hazardClass:'Acute toxicity oral; Category 3'},
+  {id:'C0071',name:'3M Quick Drying Contact Cleaner 16-102',cas:'',dept:'TEE#2',room:'tee',floor:1,sdsDate:'06/30/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'6 กระป๋อง/เดือน',location:'Normal area PH2, S2005-0008',useType:'Use and storage',appCat:'Maintenance',purpose:'ทำความสะอาดอุปกรณ์อิเล็กทรอนิกส์',hazardClass:'Explosives; Category 1, Gases under pressure; Compressed gas'},
+  {id:'C0098',name:'PROPAN-2-OL MFG HDA Sub P1',cas:'67-63-0',dept:'MFG_HDA',room:'mfg-hda',floor:1,sdsDate:'01/06/25',status:'Hold',signal:'Hazard อันตราย',hazard:'orange',qty:'19.5 L/วัน',location:'MFG_HDA Sub mat P1, S2006-0004',useType:'Use and storage',appCat:'Manufacturing',purpose:'เช็ดทำความสะอาดถุงมือ/เครื่องจักร/อุปกรณ์/โต๊ะทำงาน',hazardClass:'Flammable liquids; Category 2'},
+  {id:'C0099',name:'PROPAN-2-OL MFG HDA Sub P2',cas:'67-63-0',dept:'MFG_HDA',room:'mfg-hda',floor:2,sdsDate:'01/06/25',status:'Hold',signal:'Hazard อันตราย',hazard:'orange',qty:'12 L/วัน',location:'MFG_HDA Sub mat P2, S2006-0007',useType:'Use and storage',appCat:'Manufacturing',purpose:'เช็ดทำความสะอาดถุงมือ/เครื่องจักร/อุปกรณ์/โต๊ะทำงาน',hazardClass:'Flammable liquids; Category 2'},
+  {id:'C0100',name:'PROPAN-2-OL MFG HDA P2 CR',cas:'67-63-0',dept:'MFG_HDA',room:'mfg-hda',floor:2,sdsDate:'01/06/25',status:'Hold',signal:'Hazard อันตราย',hazard:'orange',qty:'144 L/วัน',location:'Changing room P2, S2003-0011',useType:'Use and storage',appCat:'Manufacturing',purpose:'เช็ดทำความสะอาดถุงมือ/เครื่องจักร/อุปกรณ์/โต๊ะทำงาน',hazardClass:'Flammable liquids; Category 2'},
+  {id:'C0251',name:'NSK GREASE LG2 TM3 HDA',cas:'',dept:'Tooling & Maint.3',room:'tm',floor:2,sdsDate:'05/15/18',status:'Completed',signal:'No signal word',hazard:'green',qty:'0.48 kg/วัน',location:'HDA Clean Room Ph2, S2007-0007',useType:'Use and storage',appCat:'Maintenance',purpose:'Use for PM machine (Lubricate bearing)',hazardClass:'No GHS Category'},
+  {id:'C0252',name:'PROPAN-2-OL TM3 HDA',cas:'67-63-0',dept:'Tooling & Maint.3',room:'tm',floor:2,sdsDate:'01/06/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'7.8 L/วัน',location:'HDA Clean Room Ph1,2, S2007-0007',useType:'Use and storage',appCat:'Maintenance',purpose:'เช็ดทำความสะอาดถุงมือ/เครื่องจักร/อุปกรณ์/โต๊ะทำงาน',hazardClass:'Flammable liquids; Category 2'},
+  {id:'C0045',name:'PROPAN-2-OL FSQE SI Room',cas:'67-63-0',dept:'FSQE',room:'ra',floor:1,sdsDate:'01/06/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'0.75 L/วัน',location:'SI Room, S2008-0004',useType:'Use',appCat:'Other',purpose:'เช็ดทำความสะอาด workbench, Fixture, ชิ้นงาน',hazardClass:'Flammable liquids; Category 2, STOT single; Category 3'},
+  {id:'C0284',name:'SPARKLE FLUX ZR-102F FSQE',cas:'',dept:'FSQE',room:'ra',floor:1,sdsDate:'10/15/20',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'0.015 L/เดือน',location:'XRF Room, S2008-0004',useType:'Use and storage',appCat:'Laboratory',purpose:'XRF monitoring analysis (RoHS requirement)',hazardClass:'Flammable liquids; Category 2, Reproductive toxicity; Category 2'},
+  {id:'C0285',name:'ThreeBond 3059E FSQE',cas:'',dept:'FSQE',room:'ra',floor:1,sdsDate:'01/19/23',status:'Completed',signal:'Hazard อันตราย',hazard:'yellow',qty:'0.0066 kg/เดือน',location:'XRF Room, S2008-0004',useType:'Use and storage',appCat:'Laboratory',purpose:'XRF monitoring analysis (RoHS requirement)',hazardClass:'Serious eye damage; Category 2, Skin sensitization; Category 1'},
+  {id:'C0286',name:'almit GUMMIX-21 NH FSQE',cas:'',dept:'FSQE',room:'ra',floor:1,sdsDate:'09/16/22',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'1.5 kg/เดือน',location:'XRF Room, S2008-0004',useType:'Use and storage',appCat:'Laboratory',purpose:'XRF monitoring analysis (RoHS requirement)',hazardClass:'Acute toxicity inhalation; Category 4, Respiratory sensitization; Category 1'},
+  {id:'C0154',name:'DEB 95 AI S09 Welding',cas:'',dept:'MSP Storage',room:'storage',floor:3,sdsDate:'10/01/23',status:'Rejected',signal:'Hazard อันตราย',hazard:'orange',qty:'1200 L/วัน',location:'Welding TLC & Laundry, S2009-0001',useType:'Use and storage',appCat:'Manufacturing',purpose:'ทำความสะอาดชิ้นงาน Welding / เช็ดรอยหมึก Jumpsuit Laundry',hazardClass:'Flammable liquids; Category 2'},
+  {id:'C0228',name:'PROPAN-2-OL MFG HSA S10-0002',cas:'67-63-0',dept:'MFG_HSA',room:'mfg-hsa',floor:1,sdsDate:'12/29/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'100 L/วัน',location:'Submat HSA P1, S2010-0002',useType:'Use and storage',appCat:'Manufacturing',purpose:'Manufacturing (ใช้ในกระบวนการผลิต)',hazardClass:'Flammable liquids; Category 2, Serious eye damage; Category 2'},
+  {id:'C0058',name:'PROPAN-2-OL sSME FA Lab S10',cas:'67-63-0',dept:'sSME',room:'qc-lab',floor:2,sdsDate:'09/19/19',status:'Rejected',signal:'Warning ระวัง',hazard:'orange',qty:'0.3 L/สัปดาห์',location:'FA Lap 2nd floor P2, S2010-0004',useType:'Use and storage',appCat:'Laboratory',purpose:'เช็ดทำความสะอาด part/ic',hazardClass:'Flammable liquids; Category 2, STOT single; Category 3'},
+  {id:'C0061',name:'Almit GUMMIX-21 sSME',cas:'',dept:'sSME',room:'qc-lab',floor:2,sdsDate:'09/16/22',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'0.25 kg/สัปดาห์',location:'FA Lap 2nd floor P2, S2010-0004',useType:'Use and storage',appCat:'Laboratory',purpose:'วัสดุบัดกรี',hazardClass:'Acute toxicity inhalation; Category 4, Respiratory sensitization; Category 1'},
+  {id:'C0062',name:'Koki Lead free solder paste HFDF1',cas:'',dept:'sSME',room:'qc-lab',floor:2,sdsDate:'05/06/25',status:'Completed',signal:'Hazard อันตราย',hazard:'yellow',qty:'0.5 kg/เดือน',location:'FA Lap 2nd floor P2, S2010-0004',useType:'Use and storage',appCat:'Laboratory',purpose:'บัดกรีชิ้นส่วนไฟฟ้าและอิเล็กทรอนิกส์',hazardClass:'Aquatic long-term; Category 2, Skin sensitization; Category 1'},
+  {id:'C0065',name:'ChipQuik SMD291 Tack Flux',cas:'',dept:'sSME',room:'qc-lab',floor:2,sdsDate:'08/25/25',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'0.01 kg/สัปดาห์',location:'FA Lap 2nd floor P2, S2010-0004',useType:'Use and storage',appCat:'Laboratory',purpose:'บัดกรีชิ้นส่วนไฟฟ้าและอิเล็กทรอนิกส์',hazardClass:'Acute toxicity dermal/inhalation/oral; Category 4'},
+  {id:'C0147',name:'PROPAN-2-OL sSME Solder',cas:'67-63-0',dept:'sSME',room:'qc-lab',floor:2,sdsDate:'06/06/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'0.3 L/สัปดาห์',location:'FA Lap 2nd floor P2, S2010-0004',useType:'Use and storage',appCat:'Laboratory',purpose:'ใช้ในกระบวนการบัดกรีชิ้นส่วนไฟฟ้า',hazardClass:'Flammable liquids; Category 2, STOT single; Category 3'},
+  {id:'C0103',name:'3M Scotch-Weld DP100 Part A Ph1',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'10/10/22',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'0.36 L/วัน',location:'DAS Lab Ph1, S2010-0006',useType:'Use and storage',appCat:'Laboratory',purpose:'กาวสำหรับเตรียมตัวอย่างก่อนการวิเคราะห์',hazardClass:'Serious eye damage; Category 2, Skin sensitization; Category 1'},
+  {id:'C0104',name:'3M Scotch-Weld DP100 Part B Ph1',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'05/31/22',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'0.36 L/วัน',location:'DAS Lab Ph1, S2010-0006',useType:'Use and storage',appCat:'Laboratory',purpose:'กาวสำหรับเตรียมตัวอย่างก่อนการวิเคราะห์',hazardClass:'Serious eye damage; Category 2, Skin sensitization; Category 1'},
+  {id:'C0107',name:'MCE .45UM WH GD 47MM Ph1',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'09/27/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'0.5 kg/สัปดาห์',location:'DAS Lab Ph1, S2010-0006',useType:'Use and storage',appCat:'Laboratory',purpose:'กระดาษกรองตัวอย่างก่อนการวิเคราะห์',hazardClass:'Flammable solids; Category 1'},
+  {id:'C0194',name:'Nitrogen Compressed MSP S11',cas:'',dept:'MSP Storage',room:'storage',floor:2,sdsDate:'02/14/23',status:'Completed',signal:'Warning ระวัง',hazard:'blue',qty:'47 L/ปี',location:'TEST BE, S2011-0003',useType:'Use and storage',appCat:'Manufacturing',purpose:'ใช้สวิตส์แก็สฮีเลียมที่สโตร์จัดเก็บ',hazardClass:'Gases under pressure; Refrigerated liquefied gas'},
+  {id:'C0216',name:'Helium Compressed TEST BE',cas:'',dept:'MSP Storage',room:'storage',floor:2,sdsDate:'02/14/23',status:'Completed',signal:'Warning ระวัง',hazard:'blue',qty:'9600 kg/สัปดาห์',location:'TEST BE, S2011-0003',useType:'Use and storage',appCat:'Manufacturing',purpose:'Helium gas to inside of HDD unit (Improve yield)',hazardClass:'Gases under pressure; Compressed gas'},
+  {id:'C0277',name:'Mixture gas O₂+He ME2',cas:'',dept:'ME 2',room:'process',floor:1,sdsDate:'02/22/23',status:'Completed',signal:'Warning ระวัง',hazard:'blue',qty:'470 L/วัน',location:'Normal area P1, Seal P3, S2013-0001',useType:'Use and storage',appCat:'Manufacturing',purpose:'ใช้งานกับเครื่องจักรอัดแก๊สเข้าตัวงาน',hazardClass:'Gases under pressure; Compressed gas'},
+  {id:'C0011',name:'PROPAN-2-OL TEE#2 Bench B4',cas:'67-63-0',dept:'TEE#2 (Bench Test B#4)',room:'tee',floor:4,sdsDate:'06/07/22',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'1 L/วัน',location:'TEE#2 Bench Test B4, S2014-0003',useType:'Use and storage',appCat:'Maintenance',purpose:'ทำความสะอาด Card หลังจากการซ่อมเสร็จ',hazardClass:'Flammable liquids; Category 2, STOT single; Category 3'},
+  {id:'C0013',name:'alimit GUMMIX-21 TEE#2 Bench',cas:'',dept:'TEE#2 (Bench Test B#4)',room:'tee',floor:4,sdsDate:'09/16/23',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'1 kg/วัน',location:'TEE#2 Bench Test B4, S2014-0003',useType:'Use and storage',appCat:'Maintenance',purpose:'ใช้บัดกรีอุปกรณ์อิเล็กทรอนิกส์',hazardClass:'Acute toxicity inhalation; Category 4, Respiratory sensitization; Category 1'},
+  {id:'C0017',name:'PROPAN-2-OL SME Machine Shop',cas:'67-63-0',dept:'SME',room:'sme',floor:1,sdsDate:'01/06/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'5 L/วัน',location:'Machine Shop Room, S2016-0002',useType:'Use and storage',appCat:'Maintenance',purpose:'Cleaning Parts & Machine',hazardClass:'Flammable liquids; Category 2'},
+  {id:'C0016',name:'Shell Tonna S2 M 68',cas:'',dept:'SME',room:'sme',floor:1,sdsDate:'09/06/22',status:'Completed',signal:'No signal word',hazard:'green',qty:'40 L/ปี',location:'Machine Shop Room, S2016-0002',useType:'Use and storage',appCat:'Maintenance',purpose:'หล่อลื่นรางแท่น Milling Machine (Anti-Stick-Slip)',hazardClass:'GHS non-compliance'},
+  {id:'C0018',name:'ISOFLEX NBU 15',cas:'',dept:'SME',room:'sme',floor:1,sdsDate:'03/02/23',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'10 kg/ปี',location:'Machine Shop Room, S2016-0002',useType:'Use and storage',appCat:'Maintenance',purpose:'หล่อลื่นรางเครื่อง CNC แกน X,Y,Z',hazardClass:'Flammable liquids; Category 1/4'},
+  {id:'C0019',name:'Sonax Mos2Oil',cas:'',dept:'SME',room:'sme',floor:1,sdsDate:'01/23/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'3.2 L/เดือน',location:'Machine Shop Room, S2016-0002',useType:'Use and storage',appCat:'Maintenance',purpose:'บำรุงรักษาและป้องกันสนิม ชิ้นส่วนเครื่องกล',hazardClass:'Flammable gases; Category 1A'},
+  {id:'C0014',name:'MORESCO-TOOLMATE BS-33',cas:'',dept:'SME',room:'sme',floor:1,sdsDate:'10/11/21',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'30 L/ปี',location:'Machine Shop Room, S2016-0003',useType:'Use and storage',appCat:'Maintenance',purpose:'สารหล่อเย็นใช้แปรรูปงานโลหะ',hazardClass:'Flammable liquids; Category 1/2/3'},
+  {id:'C0056',name:'Shell Tellus S2 MX 32 SME',cas:'',dept:'BEM',room:'sme',floor:1,sdsDate:'01/25/24',status:'Completed',signal:'No signal word',hazard:'green',qty:'40 L/ปี',location:'Machine Shop Room, S2016-0003',useType:'Use and storage',appCat:'Other',purpose:'น้ำมันไฮดรอลิค เครื่อง CNC และ Milling',hazardClass:'No GHS Category'},
+  {id:'C0271',name:'PROPAN-2-OL TM4 Spare Part',cas:'67-63-0',dept:'Tooling&Maint.4',room:'tm',floor:2,sdsDate:'01/06/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'2 L/เดือน',location:'MTC spare part center P2, S2016-0004',useType:'Use and storage',appCat:'Maintenance',purpose:'Wipe and clean machine, equipment, tools',hazardClass:'Flammable liquids; Category 2, STOT single; Category 3'},
+  {id:'C0273',name:'NSK GREASE LG2 TM4',cas:'',dept:'Tooling&Maint.4',room:'tm',floor:2,sdsDate:'05/27/25',status:'Completed',signal:'No signal word',hazard:'green',qty:'0.8 kg/สัปดาห์',location:'MTC spare part center P2, S2016-0004',useType:'Use and storage',appCat:'Maintenance',purpose:'Maintain machine and equipment (lubrication)',hazardClass:'No GHS Category'},
   {id:'C0275',name:'Oxygen, compressed (O₂)',cas:'',dept:'Health & Wellness',room:'health',floor:1,sdsDate:'01/17/21',status:'Completed',signal:'Danger',hazard:'red',qty:'4 L/เดือน',location:'ห้องพยาบาล P1/TLC, S2016-0006',useType:'Use',appCat:'Other',purpose:'รักษาผู้ป่วย',hazardClass:'Oxidizing gases; Category 1'},
-  {id:'C0252',name:'PROPAN-2-OL - TM3',cas:'67-63-0',dept:'Tooling & Maint.3',room:'tm',floor:2,sdsDate:'01/06/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'12 L/สัปดาห์',location:'Changing Room Ph2, S2003-0006',useType:'Use and storage',appCat:'Maintenance',purpose:'เช็ดทำความสะอาดถุงมือ/เครื่องจักร/อุปกรณ์/โต๊ะทำงาน',hazardClass:'Flammable liquids; Category 2'},
-  {id:'C0230',name:'PROPAN-2-OL - MFG HSA P2',cas:'67-63-0',dept:'MFG_HSA',room:'mfg-hsa',floor:2,sdsDate:'12/29/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'168 L/วัน',location:'Changing room Phase 2, S2003-0010',useType:'Use and storage',appCat:'Manufacturing',purpose:'Manufacturing (ใช้ในกระบวนการผลิต)',hazardClass:'Flammable liquids; Category 2, Serious eye damage; Category 2, STOT single; Category 2'},
-  {id:'C0234',name:'Sparkle Flux ZR-102F HSA P2',cas:'',dept:'MFG_HSA',room:'mfg-hsa',floor:2,sdsDate:'02/04/25',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'16 L/วัน',location:'Changing room Phase 2, S2003-0009',useType:'Use and storage',appCat:'Manufacturing',purpose:'Manufacturing (ใช้ในกระบวนการผลิต)',hazardClass:'Flammable liquids; Category 2, Reproductive toxicity; Category 2, STOT single/repeated; Category 1,2,3'},
-  {id:'C0237',name:'almit GUMMIX-21 NH LFM-48',cas:'',dept:'MFG_HSA',room:'mfg-hsa',floor:1,sdsDate:'09/16/22',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'10 kg/เดือน',location:'Submat HSA P1, S2003-0063',useType:'Use and storage',appCat:'Manufacturing',purpose:'Manufacturing (ใช้ในกระบวนการผลิต)',hazardClass:'Acute toxicity inhalation; Category 4, Respiratory sensitization; Category 1, STOT repeated; Category 1,2'},
-  {id:'C0236',name:'ThreeBond 3059E - HSA',cas:'',dept:'MFG_HSA',room:'mfg-hsa',floor:1,sdsDate:'01/19/24',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'15 kg/วัน',location:'Submat HSA P1, S2003-0063',useType:'Use and storage',appCat:'Manufacturing',purpose:'Manufacturing (ใช้ในกระบวนการผลิต)',hazardClass:'Serious eye damage; Category 2, Skin sensitization; Category 1'},
-  {id:'C0100',name:'PROPAN-2-OL - MFG HDA P2',cas:'67-63-0',dept:'MFG_HDA',room:'mfg-hda',floor:2,sdsDate:'01/06/25',status:'Hold',signal:'Hazard อันตราย',hazard:'orange',qty:'144 L/วัน',location:'Changing room P2, S2003-0011',useType:'Use and storage',appCat:'Manufacturing',purpose:'เช็ดทำความสะอาดถุงมือ/เครื่องจักร/อุปกรณ์/โต๊ะทำงาน',hazardClass:'Flammable liquids; Category 2'},
-  {id:'C0216',name:'Helium Compressed - TEST BE',cas:'',dept:'MSP Storage',room:'storage',floor:2,sdsDate:'02/14/23',status:'Completed',signal:'Warning ระวัง',hazard:'blue',qty:'9600 kg/สัปดาห์',location:'TEST BE, S2011-0003',useType:'Use and storage',appCat:'Manufacturing',purpose:'Helium gas to inside of HDD unit (Improve yield)',hazardClass:'Gases under pressure; Compressed gas'},
-  {id:'C0277',name:'Mixture gas O₂+He',cas:'',dept:'ME 2',room:'process',floor:1,sdsDate:'02/22/23',status:'Completed',signal:'Warning ระวัง',hazard:'blue',qty:'470 L/วัน',location:'Normal area P1, Seal P3, S2013-0001',useType:'Use and storage',appCat:'Manufacturing',purpose:'ใช้งานกับเครื่องจักรอัดแก๊สเข้าตัวงาน',hazardClass:'Gases under pressure; Compressed gas'},
-  {id:'C0086',name:'HY410 THERMAL GREASE',cas:'1344281',dept:'BEM',room:'tee',floor:2,sdsDate:'01/04/24',status:'Completed',signal:'No signal word',hazard:'green',qty:'0.4 kg/วัน',location:'Debug room, S2003-0007',useType:'Use and storage',appCat:'Maintenance',purpose:'Electronics repair',hazardClass:'Oxidizing solids; Category 1, Skin corrosion; Category 1'},
-  {id:'C0089',name:'LOCTITE 680 RC',cas:'',dept:'BEM',room:'tee',floor:2,sdsDate:'10/08/24',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'0.2 L/สัปดาห์',location:'Debug room, S2003-0007',useType:'Use and storage',appCat:'Maintenance',purpose:'Electronics repair',hazardClass:'Carcinogenicity; Category 1, Germ cell mutagenicity; Category 1, Oxidizing liquids; Category 1'},
-  {id:'C0091',name:'SPARKLE FLUX ZR-102F - BEM',cas:'',dept:'BEM',room:'tee',floor:2,sdsDate:'04/02/25',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'0.25 L/สัปดาห์',location:'Debug room, S2003-0007',useType:'Use and storage',appCat:'Maintenance',purpose:'Electronics repair',hazardClass:'Acute toxicity oral; Category 1, Carcinogenicity; Category 1, STOT single; Category 1'},
-  {id:'C0283',name:'PROPAN-2-OL - RA',cas:'67-63-0',dept:'RA',room:'ra',floor:2,sdsDate:'01/06/25',status:'Hold',signal:'Hazard อันตราย',hazard:'orange',qty:'16.8 L/วัน',location:'Pass Box RA phase2, S2019-00009',useType:'Use and storage',appCat:'Manufacturing',purpose:'ทำความสะอาด unit',hazardClass:'Flammable liquids; Category 2'},
-  {id:'C0041',name:'SPARKLE FLUX ZR-102F TEE#2',cas:'',dept:'TEE#2',room:'tee',floor:2,sdsDate:'02/04/25',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'1 kg/วัน',location:'Debug Bench Test P2, S2020-0003',useType:'Use and storage',appCat:'Maintenance',purpose:'ใช้ทำความสะอาดพื้นผิวโลหะและช่วยในการเชื่อมบัดกรี',hazardClass:'Flammable liquids; Category 2'},
-  {id:'C0085',name:'EP11HT Gray A',cas:'',dept:'TEE#3',room:'tee',floor:5,sdsDate:'02/28/23',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'0.75 L/วัน',location:'TEE#3 Teradyne Saturn P5, S2020-0002',useType:'Use and storage',appCat:'Maintenance',purpose:'maintenance saturn tester',hazardClass:'Carcinogenicity; Category 2, Germ cell mutagenicity; Category 2, STOT single; Category 1'},
-  {id:'C0095',name:'AFB-LF GREASE',cas:'',dept:'TEE#3',room:'tee',floor:5,sdsDate:'08/23/22',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'2.8 kg/เดือน',location:'TEE#3 Teradyne Saturn P5, S2020-0002',useType:'Use and storage',appCat:'Maintenance',purpose:'maintenance saturn tester',hazardClass:'Acute toxicity oral; Category 1, Aquatic acute; Category 3'},
-  {id:'C0226',name:'2-Propanol - TEE#3',cas:'',dept:'TEE#3',room:'tee',floor:5,sdsDate:'01/20/24',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'16 L/วัน',location:'TEE#3 Teradyne Saturn P5, S2020-0002',useType:'Use and storage',appCat:'Maintenance',purpose:'PM saturn tester',hazardClass:'Flammable liquids; Category 2, Serious eye damage; Category 2, STOT single; Category 3'},
-  {id:'C0006',name:'FOMBLIN YR 1800 - Featuring',cas:'',dept:'Featuring',room:'process',floor:3,sdsDate:'06/17/21',status:'Completed',signal:'No signal word',hazard:'green',qty:'15 L/วัน',location:'Featuring area, S2022-0008',useType:'Use and storage',appCat:'Manufacturing',purpose:'เพื่อใช้หล่อลื่นในการประกอบ 2nd pin ลงบน 2nd top cover ของ HDD',hazardClass:'No GHS Category; not hazardous chemical'},
-  {id:'C0007',name:'PROPAN-2-OL - Featuring',cas:'67-63-0',dept:'Featuring',room:'process',floor:3,sdsDate:'01/06/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'80 L/วัน',location:'Featuring area, S2022-0009',useType:'Use and storage',appCat:'Manufacturing',purpose:'เพื่อทำความสะอาดอุปกรณ์ เครื่องมือ โต๊ะทำงาน',hazardClass:'Skin corrosion; Category 1'},
-  {id:'C0008',name:'Ethanol 95 - Featuring',cas:'',dept:'Featuring',room:'process',floor:3,sdsDate:'10/01/23',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'120 L/วัน',location:'Featuring area, S2022-0009',useType:'Use and storage',appCat:'Manufacturing',purpose:'เพื่อทำความสะอาด HDD',hazardClass:'Skin corrosion; Category 1'},
-  {id:'C0217',name:'CO₂ refrigerated liquid',cas:'',dept:'MSP Storage',room:'storage',floor:3,sdsDate:'04/07/21',status:'Completed',signal:'Warning ระวัง',hazard:'blue',qty:'15000 kg/สัปดาห์',location:'Welding TLC, S2019-0004',useType:'Use and storage',appCat:'Manufacturing',purpose:'Clean HDD',hazardClass:'Gases under pressure; Refrigerated liquefied gas'},
-  {id:'C0066',name:'AFB-LF GREASE - TEE BEAMM',cas:'',dept:'TEE',room:'tee',floor:2,sdsDate:'08/23/22',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'2 kg/เดือน',location:'TEE BEAMM P2, S2023-0013',useType:'Use and storage',appCat:'Maintenance',purpose:'ใช้กับ SCARA robot และ Conveyor TURN เพื่อหล่อลื่น',hazardClass:'Aquatic hazard acute/chronic; Category 3, Skin sensitization; Category 1'},
-  {id:'C0053',name:'AFB-LF+70, AFB-LF+400',cas:'',dept:'TEE3',room:'tee',floor:4,sdsDate:'08/23/22',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'2 kg/ปี',location:'Test conveyor P4/5, S2023-0014',useType:'Use and storage',appCat:'Maintenance',purpose:'ใช้เพื่อหล่อลื่นและลดแรงเสียดทานของกลไก SCARA robot',hazardClass:'Aquatic hazard acute/chronic; Category 3, Skin sensitization; Category 1'},
-  {id:'C0285',name:'ThreeBond 3059E - FSQE',cas:'',dept:'FSQE',room:'ra',floor:1,sdsDate:'01/19/23',status:'Completed',signal:'Hazard อันตราย',hazard:'yellow',qty:'0.0066 kg/เดือน',location:'XRF Room, S2008-0004',useType:'Use and storage',appCat:'Laboratory',purpose:'XRF monitoring analysis (RoHS requirement)',hazardClass:'Serious eye damage; Category 2, Skin sensitization; Category 1'},
-  {id:'C0286',name:'almit GUMMIX-21 NH - FSQE',cas:'',dept:'FSQE',room:'ra',floor:1,sdsDate:'09/16/22',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'1.5 kg/เดือน',location:'XRF Room, S2008-0004',useType:'Use and storage',appCat:'Laboratory',purpose:'XRF monitoring analysis (RoHS requirement)',hazardClass:'Acute toxicity inhalation; Category 4, Respiratory sensitization; Category 1, STOT repeated; Category 1,2'},
-  {id:'C0284',name:'SPARKLE FLUX ZR-102F - FSQE',cas:'',dept:'FSQE',room:'ra',floor:1,sdsDate:'10/15/20',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'0.015 L/เดือน',location:'XRF Room, S2008-0004',useType:'Use and storage',appCat:'Laboratory',purpose:'XRF monitoring analysis (RoHS requirement)',hazardClass:'Flammable liquids; Category 2, Reproductive toxicity; Category 2, STOT single; Category 1'},
-  {id:'C0209',name:'Water Distilled',cas:'',dept:'PCS /FAC',room:'pcs-fac',floor:1,sdsDate:'03/26/24',status:'Completed',signal:'No signal word',hazard:'green',qty:'54 L/เดือน',location:'All area, Store 1',useType:'Use and storage',appCat:'Facility',purpose:'เติมแบตเตอรรี่ของเครื่อง Generator และ Fire Pump',hazardClass:'No GHS Category; not hazardous chemical'},
-  {id:'C0222',name:'กาวยาแนวจระเข้ พรีเมียมพลัส',cas:'65997151',dept:'PCS /FAC',room:'pcs-fac',floor:1,sdsDate:'05/03/24',status:'Completed',signal:'No signal word',hazard:'green',qty:'15 kg/สัปดาห์',location:'All Area, Store 1',useType:'Use and storage',appCat:'Maintenance',purpose:'ใช้สำหรับยาแนวร่องกระเบื้อง',hazardClass:'No GHS Category; not hazardous chemical'},
-  {id:'C0174',name:'NSK GREASE LG2 - MSP',cas:'',dept:'MSP Storage',room:'storage',floor:2,sdsDate:'01/21/25',status:'Completed',signal:'No signal word',hazard:'green',qty:'3.6 kg/เดือน',location:'MTC Cleanroom/ME, S2003-0005',useType:'Use and storage',appCat:'Maintenance',purpose:'จาระบีหล่อลื่น',hazardClass:'No GHS Category; not hazardous chemical'},
-  {id:'C0178',name:'FOMBLIN® YR 1800 - MSP',cas:'',dept:'MSP Storage',room:'storage',floor:2,sdsDate:'06/17/21',status:'Completed',signal:'No signal word',hazard:'green',qty:'20 kg/เดือน',location:'MTC ME/Welding, S2003-0005',useType:'Use and storage',appCat:'Manufacturing',purpose:'สารหล่อลื่น',hazardClass:'No GHS Category; not hazardous chemical'},
-  {id:'C0271',name:'PROPAN-2-OL - TM4',cas:'67-63-0',dept:'Tooling&Maint.4',room:'tm',floor:2,sdsDate:'01/06/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'2 L/เดือน',location:'MTC spare part center P2, S2016-0004',useType:'Use and storage',appCat:'Maintenance',purpose:'Wipe and clean the machine, equipment, and tools used by technicians',hazardClass:'Flammable liquids; Category 2, Serious eye damage; Category 2, STOT single; Category 3'},
+  {id:'C0283',name:'PROPAN-2-OL RA Phase2',cas:'67-63-0',dept:'RA',room:'ra',floor:2,sdsDate:'01/06/25',status:'Hold',signal:'Hazard อันตราย',hazard:'orange',qty:'16.8 L/วัน',location:'Pass Box RA phase2, S2019-00009',useType:'Use and storage',appCat:'Manufacturing',purpose:'ทำความสะอาด unit',hazardClass:'Flammable liquids; Category 2'},
+  {id:'C0133',name:'2-Propanol DAS S19',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'10/02/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'6 L/สัปดาห์',location:'DAS Lab Ph1, S2019-0002',useType:'Use and storage',appCat:'Laboratory',purpose:'ทำความสะอาดชิ้นส่วนอะไหล่เครื่องมือ',hazardClass:'Flammable liquids; Category 2, Reproductive toxicity; Category 2'},
+  {id:'C0134',name:'Methanol (เมทานอล)',cas:'67-56-1',dept:'DAS',room:'das',floor:1,sdsDate:'07/03/24',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'5 L/ปี',location:'DAS Lab Ph1, S2019-0002',useType:'Use and storage',appCat:'Laboratory',purpose:'ทำความสะอาดชิ้นส่วนอะไหล่เครื่องมือ',hazardClass:'Acute toxicity oral; Category 3, Flammable; Category 2, STOT single; Category 1'},
+  {id:'C0135',name:'Ethanol absolute EMSURE Ph1 DAS',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'08/04/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'10 L/วัน',location:'DAS Lab Ph1, S2019-0002',useType:'Use and storage',appCat:'Laboratory',purpose:'ทำความสะอาดอุปกรณ์การเตรียมตัวอย่าง',hazardClass:'Flammable liquids; Category 2, Serious eye damage; Category 2'},
+  {id:'C0137',name:'Acetone (อะซิโตน)',cas:'67-64-1',dept:'DAS',room:'das',floor:1,sdsDate:'07/03/24',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'25 L/วัน',location:'DAS Lab Ph1, S2019-0002',useType:'Use and storage',appCat:'Laboratory',purpose:'ทำความสะอาด Glassware และเตรียมตัวอย่าง',hazardClass:'Flammable liquids; Category 2, STOT single; Category 3'},
+  {id:'C0138',name:'Acetone (อะซิโตน) Lab Grade',cas:'67-64-1',dept:'DAS',room:'das',floor:1,sdsDate:'03/11/24',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'12 L/สัปดาห์',location:'DAS Lab Ph1, S2019-0002',useType:'Use and storage',appCat:'Laboratory',purpose:'ทำความสะอาดชิ้นส่วนอะไหล่เครื่องมือ',hazardClass:'Flammable liquids; Category 2, Reproductive toxicity; Category 2'},
+  {id:'C0139',name:'Hexane (เฮกเซน)',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'08/10/20',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'40 L/วัน',location:'DAS Lab Ph1, S2019-0002',useType:'Use and storage',appCat:'Laboratory',purpose:'สกัดตัวอย่างก่อนการวิเคราะห์',hazardClass:'Flammable liquids; Category 2, Aspiration hazard; Category 1, STOT repeated; Category 2'},
+  {id:'C0140',name:'Decane',cas:'',dept:'DAS',room:'das',floor:1,sdsDate:'10/15/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'0.2 L/ปี',location:'DAS Lab Ph1, S2019-0002',useType:'Use and storage',appCat:'Laboratory',purpose:'สารอ้างอิงมาตราฐาน',hazardClass:'Aspiration hazard; Category 1, Flammable liquids; Category 3'},
+  {id:'C0142',name:'PROPAN-2-OL DAS Lab Ph1',cas:'67-63-0',dept:'DAS',room:'das',floor:1,sdsDate:'01/06/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'4 L/วัน',location:'DAS Lab Ph1, S2019-0002',useType:'Use and storage',appCat:'Laboratory',purpose:'ทำความสะอาดสถานที่และอุปกรณ์การทำงาน',hazardClass:'Flammable liquids; Category 2, STOT single; Category 3'},
+  {id:'C0217',name:'CO₂ refrigerated liquid MSP',cas:'',dept:'MSP Storage',room:'storage',floor:3,sdsDate:'04/07/21',status:'Completed',signal:'Warning ระวัง',hazard:'blue',qty:'15000 kg/สัปดาห์',location:'Welding TLC, S2019-0004',useType:'Use and storage',appCat:'Manufacturing',purpose:'Clean HDD',hazardClass:'Gases under pressure; Refrigerated liquefied gas'},
+  {id:'C0218',name:'Nitrogen Refrigerated Liquid MSP',cas:'',dept:'MSP Storage',room:'storage',floor:3,sdsDate:'02/09/23',status:'Completed',signal:'Warning ระวัง',hazard:'blue',qty:'6000 kg/สัปดาห์',location:'Welding TLC, S2019-0004',useType:'Use and storage',appCat:'Manufacturing',purpose:'Use in welding process',hazardClass:'Gases under pressure; Refrigerated liquefied gas'},
+  {id:'C0282',name:'Propan-2-ol MFG FASM Phase2',cas:'67-63-0',dept:'MFG FASM',room:'process',floor:2,sdsDate:'01/06/25',status:'Hold',signal:'Hazard อันตราย',hazard:'orange',qty:'8 L/วัน',location:'Submat FASM phase 2, S20190008',useType:'Use and storage',appCat:'Manufacturing',purpose:'Clean station การทำงาน',hazardClass:'Flammable liquids; Category 2'},
+  {id:'C0281',name:'PROPAN-2-OL BEM Final ASM',cas:'67-63-0',dept:'BEM',room:'process',floor:1,sdsDate:'01/06/25',status:'Rejected',signal:'Hazard อันตราย',hazard:'orange',qty:'N/A',location:'Final ASM P1/P5, S2019-0008',useType:'Use',appCat:'Maintenance',purpose:'Clean machine',hazardClass:'Flammable liquids; Category 3'},
+  {id:'C0068',name:'3M Quick Drying Contact Cleaner ORT',cas:'',dept:'TEE#2',room:'tee',floor:1,sdsDate:'12/11/25',status:'Completed',signal:'Warning ระวัง',hazard:'orange',qty:'6 L/สัปดาห์',location:'ORT Room BIL1, S2020-0001',useType:'Use and storage',appCat:'Maintenance',purpose:'น้ำยาทำความสะอาดหน้าสัมผัสแบบอิเล็กทรอนิกส์',hazardClass:'Flammable gases; Category 1A'},
+  {id:'C0081',name:'LOCTITE 495 INSTANT ADHESIVE TEE3',cas:'',dept:'TEE#3',room:'tee',floor:5,sdsDate:'07/16/21',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'0.1 kg/เดือน',location:'TEE#3 Teradyne Saturn P5, S2020-0002',useType:'Use and storage',appCat:'Maintenance',purpose:'maintenance saturn tester',hazardClass:'Serious eye damage; Category 2, STOT single; Category 3'},
+  {id:'C0082',name:'LOCTITE 243 THREADLOCKER 50ML TEE3',cas:'',dept:'TEE#3',room:'tee',floor:5,sdsDate:'11/08/22',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'0.4 L/เดือน',location:'TEE#3 Teradyne Saturn P5, S2020-0002',useType:'Use and storage',appCat:'Maintenance',purpose:'maintenance saturn tester',hazardClass:'Serious eye damage; Category 2, Skin sensitization; Category 1'},
+  {id:'C0083',name:'LOCTITE 222 THREADLOCKER 50ML TEE3',cas:'130154',dept:'TEE#3',room:'tee',floor:5,sdsDate:'10/20/22',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'0.45 L/เดือน',location:'TEE#3 Teradyne Saturn P5, S2020-0002',useType:'Use and storage',appCat:'Maintenance',purpose:'maintenance saturn tester',hazardClass:'Serious eye damage; Category 2, STOT single; Category 3'},
+  {id:'C0084',name:'EP11HT Gray B',cas:'',dept:'TEE#3',room:'tee',floor:5,sdsDate:'03/30/21',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'0.75 L/วัน',location:'TEE#3 Teradyne Saturn P5, S2020-0002',useType:'Use and storage',appCat:'Maintenance',purpose:'maintenance saturn tester',hazardClass:'Serious eye damage; Category 1, STOT single; Category 1'},
+  {id:'C0085',name:'EP11HT Gray A',cas:'',dept:'TEE#3',room:'tee',floor:5,sdsDate:'02/28/23',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'0.75 L/วัน',location:'TEE#3 Teradyne Saturn P5, S2020-0002',useType:'Use and storage',appCat:'Maintenance',purpose:'maintenance saturn tester',hazardClass:'Carcinogenicity; Category 2, STOT single; Category 1'},
+  {id:'C0086',name:'HY410 THERMAL GREASE BEM',cas:'1344281',dept:'BEM',room:'tee',floor:2,sdsDate:'01/04/24',status:'Completed',signal:'No signal word',hazard:'green',qty:'0.4 kg/วัน',location:'Debug room, S2003-0007',useType:'Use and storage',appCat:'Maintenance',purpose:'Electronics repair',hazardClass:'Oxidizing solids; Category 1, Skin corrosion; Category 1'},
+  {id:'C0087',name:'AFE-CA GREASE BEM',cas:'',dept:'BEM',room:'tee',floor:2,sdsDate:'04/12/22',status:'Completed',signal:'Hazard อันตราย',hazard:'yellow',qty:'0.28 kg/วัน',location:'Debug room, S2003-0007',useType:'Use and storage',appCat:'Maintenance',purpose:'Electronics repair',hazardClass:'Aquatic hazard acute; Category 1, Oxidizing solids; Category 1'},
+  {id:'C0088',name:'ECO SOLDER RMA02 P3 M705',cas:'',dept:'BEM',room:'tee',floor:2,sdsDate:'10/10/22',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'10 kg/สัปดาห์',location:'Debug room, S2003-0007',useType:'Use and storage',appCat:'Maintenance',purpose:'Electronics repair',hazardClass:'Aerosols; Category 1, Respiratory sensitization; Category 1'},
+  {id:'C0089',name:'LOCTITE 680 RC',cas:'',dept:'BEM',room:'tee',floor:2,sdsDate:'10/08/24',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'0.2 L/สัปดาห์',location:'Debug room, S2003-0007',useType:'Use and storage',appCat:'Maintenance',purpose:'Electronics repair',hazardClass:'Carcinogenicity; Category 1, Germ cell mutagenicity; Category 1'},
+  {id:'C0091',name:'SPARKLE FLUX ZR-102F BEM',cas:'',dept:'BEM',room:'tee',floor:2,sdsDate:'04/02/25',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'0.25 L/สัปดาห์',location:'Debug room, S2003-0007',useType:'Use and storage',appCat:'Maintenance',purpose:'Electronics repair',hazardClass:'Acute toxicity oral; Category 1, Carcinogenicity; Category 1'},
+  {id:'C0092',name:'PROPAN-2-OL BEM Debug',cas:'67-63-0',dept:'BEM',room:'tee',floor:2,sdsDate:'06/01/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'5 L/สัปดาห์',location:'Debug room, S2003-0007',useType:'Use and storage',appCat:'Maintenance',purpose:'Electronics repair',hazardClass:'Flammable liquids; Category 1'},
+  {id:'C0095',name:'AFB-LF GREASE TEE3',cas:'',dept:'TEE#3',room:'tee',floor:5,sdsDate:'08/23/22',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'2.8 kg/เดือน',location:'TEE#3 Teradyne Saturn P5, S2020-0002',useType:'Use and storage',appCat:'Maintenance',purpose:'maintenance saturn tester',hazardClass:'Acute toxicity oral; Category 1, Aquatic acute; Category 3'},
+  {id:'C0226',name:'2-Propanol TEE3 A',cas:'',dept:'TEE#3',room:'tee',floor:5,sdsDate:'01/20/24',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'16 L/วัน',location:'TEE#3 Teradyne Saturn P5, S2020-0002',useType:'Use and storage',appCat:'Maintenance',purpose:'PM saturn tester',hazardClass:'Flammable liquids; Category 2, Serious eye damage; Category 2'},
+  {id:'C0227',name:'2-Propanol TEE3 B',cas:'',dept:'TEE#3',room:'tee',floor:5,sdsDate:'01/20/24',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'16 L/วัน',location:'TEE#3 Teradyne Saturn P5, S2020-0002',useType:'Use and storage',appCat:'Maintenance',purpose:'PM saturn tester',hazardClass:'Flammable liquids; Category 2, Serious eye damage; Category 2'},
+  {id:'C0041',name:'SPARKLE FLUX ZR-102F TEE#2 Debug',cas:'',dept:'TEE#2',room:'tee',floor:2,sdsDate:'02/04/25',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'1 kg/วัน',location:'Debug Bench Test P2, S2020-0003',useType:'Use and storage',appCat:'Maintenance',purpose:'ทำความสะอาดพื้นผิวโลหะและช่วยในการเชื่อมบัดกรี',hazardClass:'Flammable liquids; Category 2'},
+  {id:'C0042',name:'PROPAN-2-OL TEE#2 Debug',cas:'67-63-0',dept:'TEE#2',room:'tee',floor:2,sdsDate:'01/06/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'5 L/วัน',location:'Debug Bench Test P2, S2020-0003',useType:'Use and storage',appCat:'Maintenance',purpose:'ทำความสะอาดพื้นผิวโลหะหลังบัดกรีและเครื่องมืออุปกรณ์',hazardClass:'Flammable liquids; Category 2, STOT single; Category 3'},
+  {id:'C0043',name:'almit GUMMIX-21 TEE#2 Debug',cas:'',dept:'TEE#2',room:'tee',floor:2,sdsDate:'09/16/22',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'1 kg/วัน',location:'Debug Bench Test P2, S2020-0003',useType:'Use and storage',appCat:'Maintenance',purpose:'ใช้บัดกรีแผงวงจรอิเล็กทรอนิกส์',hazardClass:'Acute toxicity inhalation; Category 4, Respiratory sensitization; Category 1'},
+  {id:'C0146',name:'SHELL GADUS S2 V220 00 ME2',cas:'',dept:'ME#2',room:'sme',floor:2,sdsDate:'02/22/22',status:'Hold',signal:'No signal word',hazard:'green',qty:'36 kg/เดือน',location:'Milling room ME2, S2020-0006',useType:'Use and storage',appCat:'Maintenance',purpose:'PM machine by 6 Month',hazardClass:'No GHS Category'},
+  {id:'C0278',name:'Quartz wool Fine',cas:'',dept:'ME 2',room:'sme',floor:5,sdsDate:'09/25/24',status:'Completed',signal:'No signal word',hazard:'green',qty:'0.01 kg/สัปดาห์',location:'Seal process P5, S2020-0006',useType:'Use and storage',appCat:'Maintenance',purpose:'Support change tool',hazardClass:'No GHS Category'},
+  {id:'C0279',name:'Replacement active carbon',cas:'',dept:'ME 2',room:'sme',floor:5,sdsDate:'09/25/24',status:'Completed',signal:'No signal word',hazard:'green',qty:'0.2 kg/สัปดาห์',location:'Seal process P5, S2020-0006',useType:'Use and storage',appCat:'Maintenance',purpose:'Support change tool',hazardClass:'No GHS Category'},
+  {id:'C0006',name:'FOMBLIN YR 1800 Featuring',cas:'',dept:'Featuring',room:'process',floor:3,sdsDate:'06/17/21',status:'Completed',signal:'No signal word',hazard:'green',qty:'15 L/วัน',location:'Featuring area, S2022-0008',useType:'Use and storage',appCat:'Manufacturing',purpose:'หล่อลื่นในการประกอบ 2nd pin ลงบน 2nd top cover ของ HDD',hazardClass:'No GHS Category'},
+  {id:'C0007',name:'PROPAN-2-OL Featuring',cas:'67-63-0',dept:'Featuring',room:'process',floor:3,sdsDate:'01/06/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'80 L/วัน',location:'Featuring area, S2022-0009',useType:'Use and storage',appCat:'Manufacturing',purpose:'ทำความสะอาดอุปกรณ์ เครื่องมือ โต๊ะทำงาน',hazardClass:'Skin corrosion; Category 1'},
+  {id:'C0008',name:'Ethanol 95 Featuring',cas:'',dept:'Featuring',room:'process',floor:3,sdsDate:'10/01/23',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'120 L/วัน',location:'Featuring area, S2022-0009',useType:'Use and storage',appCat:'Manufacturing',purpose:'ทำความสะอาด HDD',hazardClass:'Skin corrosion; Category 1'},
+  {id:'C0165',name:'SMR-100 MSP S22-11 P3',cas:'',dept:'MSP Storage',room:'storage',floor:3,sdsDate:'05/07/24',status:'Completed',signal:'No signal word',hazard:'green',qty:'16 L/เดือน',location:'MTC ME, S2022-0011',useType:'Use and storage',appCat:'Manufacturing',purpose:'น้ำมันปั๊มสุญญากาศโรตารี่',hazardClass:'No GHS Category'},
+  {id:'C0168',name:'ULVOIL R-2 MSP S22-11 P5',cas:'',dept:'MSP Storage',room:'storage',floor:5,sdsDate:'01/23/23',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'480 L/เดือน',location:'TM#1/FINAL, S2022-0011',useType:'Use and storage',appCat:'Manufacturing',purpose:'น้ำมันหล่อลื่น',hazardClass:'Aspiration hazard; Category 1'},
+  {id:'C0171',name:'almit GUMMIX-21 MSP S22-11 P5',cas:'',dept:'MSP Storage',room:'storage',floor:5,sdsDate:'09/16/22',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'6 kg/เดือน',location:'HSA Submat P5, S2022-0011',useType:'Use and storage',appCat:'Manufacturing',purpose:'ตัวเชื่อมบัดกรีตัวชิ้นงาน',hazardClass:'Aquatic long-term; Category 3'},
+  {id:'C0173',name:'NSK GREASE LG2 MSP S22-11 P5',cas:'',dept:'MSP Storage',room:'storage',floor:5,sdsDate:'01/21/25',status:'Completed',signal:'No signal word',hazard:'green',qty:'3.6 kg/เดือน',location:'MTC Cleanroom/ME, S2022-0011',useType:'Use and storage',appCat:'Maintenance',purpose:'จาระบีหล่อลื่น',hazardClass:'No GHS Category'},
+  {id:'C0176',name:'AFE-CA GREASE MSP S22-11 P5',cas:'',dept:'MSP Storage',room:'storage',floor:5,sdsDate:'12/04/22',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'3.15 kg/เดือน',location:'MTC CLN P5, S2022-0011',useType:'Use and storage',appCat:'Maintenance',purpose:'จาระบีหล่อลื่น',hazardClass:'Aquatic long-term; Category 4'},
+  {id:'C0177',name:'FOMBLIN® YR 1800 MSP S22-11 P5',cas:'',dept:'MSP Storage',room:'storage',floor:5,sdsDate:'06/17/21',status:'Completed',signal:'No signal word',hazard:'green',qty:'20 kg/เดือน',location:'MTC ME/Welding P5, S2022-0011',useType:'Use and storage',appCat:'Manufacturing',purpose:'สารหล่อลื่น',hazardClass:'No GHS Category'},
+  {id:'C0180',name:'Three Bond 1354D MSP S22-11 P5',cas:'',dept:'MSP Storage',room:'storage',floor:5,sdsDate:'06/30/25',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'5 kg/เดือน',location:'Welding P5, S2022-0011',useType:'Use and storage',appCat:'Manufacturing',purpose:'กาว สารยึดติด',hazardClass:'Serious eye damage; Category 2'},
+  {id:'C0184',name:'Valtron DP327-4 MSP CLN P5',cas:'',dept:'MSP Storage',room:'storage',floor:5,sdsDate:'07/29/24',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'80 L/สัปดาห์',location:'MTC CLN P5, S2022-0011',useType:'Use and storage',appCat:'Manufacturing',purpose:'ล้างชิ้นงาน Cleaner MTC P5',hazardClass:'Acute toxicity oral; Category 4'},
+  {id:'C0185',name:'TRITON X-100 MSP S22-11 P5',cas:'',dept:'MSP Storage',room:'storage',floor:5,sdsDate:'02/19/22',status:'Hold',signal:'Hazard อันตราย',hazard:'red',qty:'80 L/เดือน',location:'MTC CLN P5, S2022-0011',useType:'Use and storage',appCat:'Manufacturing',purpose:'ล้างชิ้นงาน Cleaner MTC P5',hazardClass:'Acute toxicity oral; Category 4, Serious eye damage; Category 1'},
+  {id:'C0190',name:'ThreeBond 3059E MSP P5',cas:'',dept:'MSP Storage',room:'storage',floor:5,sdsDate:'01/19/23',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'7.5 L/วัน',location:'HSA Submat P5, S2022-0011',useType:'Use and storage',appCat:'Manufacturing',purpose:'กาว, สารยึดติด',hazardClass:'Serious eye damage; Category 2'},
+  {id:'C0196',name:'Central Heating Protector F1 MSP',cas:'3811732',dept:'MSP Storage',room:'storage',floor:5,sdsDate:'06/01/23',status:'Completed',signal:'No signal word',hazard:'green',qty:'154 L/ปี',location:'TEE (XCALIBRE) P5, S2022-0003',useType:'Use and storage',appCat:'Manufacturing',purpose:'ป้องกันการกัดกร่อน',hazardClass:'No GHS Category'},
+  {id:'C0220',name:'Central Heating Protector F1 MSP S04',cas:'3811732',dept:'MSP Storage',room:'storage',floor:5,sdsDate:'06/01/23',status:'Completed',signal:'No signal word',hazard:'green',qty:'77 L/ปี',location:'TEE (XCALIBRE) P5, S2022-0004',useType:'Use and storage',appCat:'Manufacturing',purpose:'ป้องกันการกัดกร่อน (Corrosion)',hazardClass:'No GHS Category'},
+  {id:'C0066',name:'AFB-LF GREASE TEE BEAMM',cas:'',dept:'TEE',room:'tee',floor:2,sdsDate:'08/23/22',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'2 kg/เดือน',location:'TEE BEAMM P2, S2023-0013',useType:'Use and storage',appCat:'Maintenance',purpose:'ใช้กับ SCARA robot และ Conveyor TURN เพื่อหล่อลื่น',hazardClass:'Aquatic hazard; Category 3, Skin sensitization; Category 1'},
+  {id:'C0053',name:'AFB-LF+70 AFB-LF+400',cas:'',dept:'TEE3',room:'tee',floor:4,sdsDate:'08/23/22',status:'Completed',signal:'Warning ระวัง',hazard:'yellow',qty:'2 kg/ปี',location:'Test conveyor P4/5, S2023-0014',useType:'Use and storage',appCat:'Maintenance',purpose:'หล่อลื่นและลดแรงเสียดทานของกลไก SCARA robot',hazardClass:'Aquatic hazard acute/chronic; Category 3, Skin sensitization; Category 1'},
+  {id:'C0163',name:'PROPAN-2-OL MSP S25-02 P5',cas:'67-63-0',dept:'MSP Storage',room:'storage',floor:5,sdsDate:'01/06/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'1440 L/วัน',location:'All Area P5, S2025-0002',useType:'Use and storage',appCat:'Manufacturing',purpose:'ทำความสะอาดชิ้นงาน และทำความสะอาดทั่วไป',hazardClass:'Flammable liquids; Category 2'},
+  {id:'C0266',name:'PROPAN-2-OL TM3 HDA P5',cas:'67-63-0',dept:'Tooling&Maint.3',room:'tm',floor:5,sdsDate:'01/06/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'7.8 L/วัน',location:'HDA Clean Room P5, S2025-0001',useType:'Use and storage',appCat:'Maintenance',purpose:'เช็ดทำความสะอาดถุงมือ/เครื่องจักร/อุปกรณ์/โต๊ะทำงาน',hazardClass:'Flammable liquids; Category 2'},
+  {id:'C0229',name:'PROPAN-2-OL MFG HSA S62 P1',cas:'67-63-0',dept:'MFG_HSA',room:'mfg-hsa',floor:1,sdsDate:'12/29/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'100 L/วัน',location:'Submat HSA P1, S2003-0062',useType:'Use and storage',appCat:'Manufacturing',purpose:'Manufacturing (ใช้ในกระบวนการผลิต)',hazardClass:'Flammable liquids; Category 2, Serious eye damage; Category 2'},
+  {id:'C0233',name:'Sparkle Flux ZR-102F HSA P1 S62',cas:'',dept:'MFG_HSA',room:'mfg-hsa',floor:1,sdsDate:'02/04/25',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'16 L/วัน',location:'Submat HSA P1, S2003-0062',useType:'Use and storage',appCat:'Manufacturing',purpose:'Manufacturing (ใช้ในกระบวนการผลิต)',hazardClass:'Flammable liquids; Category 2, Reproductive toxicity; Category 2'},
+  {id:'C0209',name:'Water Distilled',cas:'',dept:'PCS /FAC',room:'pcs-fac',floor:1,sdsDate:'03/26/24',status:'Completed',signal:'No signal word',hazard:'green',qty:'54 L/เดือน',location:'All area, Store 1',useType:'Use and storage',appCat:'Facility',purpose:'เติมแบตเตอรรี่ของเครื่อง Generator และ Fire Pump',hazardClass:'No GHS Category'},
+  {id:'C0221',name:'3M Quick Drying Contact Cleaner PCS',cas:'',dept:'PCS /FAC',room:'pcs-fac',floor:1,sdsDate:'04/25/22',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'3.61 kg/เดือน',location:'All area, Store 1',useType:'Use and storage',appCat:'Facility',purpose:'ทำความสะอาดอุปกรณ์ไฟฟ้า, หน้าสัมผัส และพลาสติก',hazardClass:'Aerosols; Category 1, Gases under pressure; Compressed gas'},
+  {id:'C0222',name:'กาวยาแนวจระเข้ พรีเมียมพลัส',cas:'65997151',dept:'PCS /FAC',room:'pcs-fac',floor:1,sdsDate:'05/03/24',status:'Completed',signal:'No signal word',hazard:'green',qty:'15 kg/สัปดาห์',location:'All Area, Store 1',useType:'Use and storage',appCat:'Maintenance',purpose:'ใช้สำหรับยาแนวร่องกระเบื้อง',hazardClass:'No GHS Category'},
+  {id:'C0287',name:'LP ECO GOLD ADHESIVE',cas:'',dept:'PCS /FAC',room:'pcs-fac',floor:1,sdsDate:'01/05/26',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'29.6 kg/เดือน',location:'All Area, Store 1-SC20-1',useType:'Use and storage',appCat:'Maintenance',purpose:'ใช้ยึดติดวัสดุซ่อมบำรุงพื้น',hazardClass:'Serious eye damage; Category 2, STOT repeated; Category 2'},
+  {id:'C0265',name:'สารละลายทดสอบ pH 9.18',cas:'',dept:'PCS /FAC',room:'utility',floor:1,sdsDate:'10/21/25',status:'Completed',signal:'No signal word',hazard:'green',qty:'5 L/เดือน',location:'All area, Store 1-SC20-2',useType:'Use and storage',appCat:'Facility',purpose:'ระบบบำบัดน้ำเสีย',hazardClass:'No GHS Category'},
+  {id:'C0267',name:'สารละลายทดสอบ pH 6.86',cas:'',dept:'PCS /FAC',room:'utility',floor:1,sdsDate:'10/21/25',status:'Completed',signal:'No signal word',hazard:'green',qty:'5 L/เดือน',location:'IWWT, Store 1-SC20-2',useType:'Use and storage',appCat:'Facility',purpose:'ใช้ในระบบบำบัดน้ำเสีย',hazardClass:'No GHS Category'},
+  {id:'C0274',name:'NSK GREASE LG2 SRE Cleanroom',cas:'',dept:'SRE',room:'tm',floor:2,sdsDate:'08/05/20',status:'Rejected',signal:'No signal word',hazard:'green',qty:'N/A',location:'Rework Parttreatment Cleanroom P2, C2003-0090',useType:'Use',appCat:'Maintenance',purpose:'PM Machine',hazardClass:'GHS non-compliance'},
+  {id:'C0193',name:'SPARKLE FLUX ZR-102F MSP S22-02',cas:'',dept:'MSP Storage',room:'storage',floor:2,sdsDate:'02/04/25',status:'Completed',signal:'Hazard อันตราย',hazard:'red',qty:'40 L/สัปดาห์',location:'HSA Submat P1,P2, S2022-0002',useType:'Use and storage',appCat:'Manufacturing',purpose:'น้ำยาประสานบัดกรี',hazardClass:'Flammable liquids; Category 2, STOT single; Category 1'},
+  {id:'C0158',name:'PROPAN-2-OL MSP S20-04',cas:'67-63-0',dept:'MSP Storage',room:'storage',floor:2,sdsDate:'01/06/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'1440 L/วัน',location:'All Area P2, S2020-0004',useType:'Use and storage',appCat:'Maintenance',purpose:'ทำความสะอาดชิ้นงานหลังจากที่ซ่อมเสร็จ',hazardClass:'Flammable liquids; Category 2'},
+  {id:'C0159',name:'PROPAN-2-OL MSP S20-07',cas:'67-63-0',dept:'MSP Storage',room:'storage',floor:2,sdsDate:'01/06/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'4320 L/วัน',location:'All Area P2, S2020-0007',useType:'Use and storage',appCat:'Manufacturing',purpose:'ทำความสะอาดชิ้นงาน และทำความสะอาดทั่วไป',hazardClass:'Flammable liquids; Category 2'},
+  {id:'C0160',name:'PROPAN-2-OL MSP S20-08',cas:'67-63-0',dept:'MSP Storage',room:'storage',floor:2,sdsDate:'01/06/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'4320 L/วัน',location:'All Area P2, S2020-0008',useType:'Use and storage',appCat:'Manufacturing',purpose:'ทำความสะอาดชิ้นงาน และทำความสะอาดทั่วไป',hazardClass:'Flammable liquids; Category 2'},
+  {id:'C0164',name:'PROPAN-2-OL MSP S22-01',cas:'67-63-0',dept:'MSP Storage',room:'storage',floor:2,sdsDate:'01/06/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'4320 L/วัน',location:'All Area P2, S2022-0001',useType:'Use and storage',appCat:'Manufacturing',purpose:'ทำความสะอาดชิ้นงาน และทำความสะอาดทั่วไป',hazardClass:'Flammable liquids; Category 2'},
+  {id:'C0191',name:'ThreeBond 1390F MSP S13',cas:'',dept:'MSP Storage',room:'storage',floor:2,sdsDate:'05/31/24',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'2 L/เดือน',location:'Welding, S2003-0013',useType:'Use and storage',appCat:'Manufacturing',purpose:'Curing promoter primer',hazardClass:'Flammable liquids; Category 2, Reproductive toxicity; Category 2'},
+  {id:'C0161',name:'PROPAN-2-OL MSP S13 P2',cas:'67-63-0',dept:'MSP Storage',room:'storage',floor:2,sdsDate:'01/06/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'4320 L/วัน',location:'All Area P2, S2003-0013',useType:'Use and storage',appCat:'Manufacturing',purpose:'ทำความสะอาดชิ้นงาน และทำความสะอาดทั่วไป',hazardClass:'Flammable liquids; Category 2'},
+  {id:'C0253',name:'PROPAN-2-OL TM3 HDA Ph1Ph2',cas:'67-63-0',dept:'Tooling & Maint.3',room:'tm',floor:2,sdsDate:'01/06/25',status:'Completed',signal:'Hazard อันตราย',hazard:'orange',qty:'7.8 L/วัน',location:'HDA Clean Room Ph1,Ph2, S2007-0007',useType:'Use and storage',appCat:'Maintenance',purpose:'เช็ดทำความสะอาดถุงมือ/เครื่องจักร/อุปกรณ์/โต๊ะทำงาน',hazardClass:'Flammable liquids; Category 2'},
 ];
 
 // ===== STATE =====
 let mapFilter='all', mapSearch='', activeChem=null, mapScale=1, currentFloor=1;
 let alertFilter='all';
 
-// Pin positions per room
 const roomPins={
   'mfg-hsa':{x:110,y:95},'mfg-hda':{x:340,y:95},'qc-lab':{x:535,y:95},
   'tee':{x:705,y:95},'storage':{x:90,y:310},'process':{x:315,y:260},
@@ -775,7 +896,6 @@ function renderMapList(){
   const hzB={red:'rgba(255,50,50,0.3)',orange:'rgba(255,150,0,0.3)',yellow:'rgba(255,220,0,0.2)',blue:'rgba(0,100,255,0.3)',green:'rgba(0,200,100,0.2)'};
   const icons={red:'💀',orange:'🔥',yellow:'⚠️',blue:'🔵',green:'✅'};
   const stCls={Completed:'st-completed',Hold:'st-hold',Rejected:'st-rejected',Submitted:'st-submitted'};
-
   let html=`<div style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.3);letter-spacing:2px;padding:7px 9px 4px;text-transform:uppercase;">สารเคมี (${filtered.length} รายการ)</div>`;
   filtered.forEach(c=>{
     const sds=getSdsStatus(c.sdsDate);
@@ -796,13 +916,11 @@ function renderMapPins(){
   const pC={red:'rgba(255,50,50,0.5)',orange:'rgba(255,150,0,0.4)',yellow:'rgba(255,220,0,0.3)',blue:'rgba(0,100,255,0.4)',green:'rgba(0,200,100,0.3)'};
   const icons={red:'💀',orange:'🔥',yellow:'⚠️',blue:'🔵',green:'✅'};
   const hazOrder=['red','orange','yellow','blue','green'];
-
   const roomMap={};
   rawChemicals.filter(c=>currentFloor===4||c.floor===currentFloor).forEach(c=>{
     if(!roomMap[c.room]) roomMap[c.room]=[];
     roomMap[c.room].push(c);
   });
-
   let html='';
   Object.entries(roomMap).forEach(([room,chems])=>{
     const pos=roomPins[room];
@@ -812,7 +930,6 @@ function renderMapPins(){
     const hasFiltered=chems.some(c=>fids.has(c.id));
     const op=hasFiltered?1:0.15;
     const sdsWarn=chems.some(c=>['expired','warning'].includes(getSdsStatus(c.sdsDate).status));
-
     html+=`<div class="pin ${isActive?'on':''}" id="pin-${room}" style="left:${pos.x}px;top:${pos.y}px;opacity:${op};"
       onclick="selectRoomChems('${room}')" onmouseenter="showTT(event,'${room}')" onmouseleave="hideTT()">
       <div class="pp" style="background:${pC[best.hazard]};border:2px solid ${pC[best.hazard]};"></div>
@@ -839,43 +956,30 @@ function showTT(e,room){
 }
 function hideTT(){document.getElementById('mtt').style.opacity='0';}
 
-// ===== RENDER SIGNAL WORD BADGE =====
 function renderSignalBadge(signal){
   const s=signal.toLowerCase();
-  if(s.includes('danger')||s.includes('อันตราย')){
-    return `<span class="signal-badge sig-danger">🚨 DANGER / อันตราย</span>`;
-  } else if(s.includes('warning')||s.includes('ระวัง')){
-    return `<span class="signal-badge sig-warning">⚠️ WARNING / ระวัง</span>`;
-  } else {
-    return `<span class="signal-badge sig-none">ℹ️ No Signal Word</span>`;
-  }
+  if(s.includes('danger')||s.includes('อันตราย')) return `<span class="signal-badge sig-danger">🚨 DANGER / อันตราย</span>`;
+  if(s.includes('warning')||s.includes('ระวัง')) return `<span class="signal-badge sig-warning">⚠️ WARNING / ระวัง</span>`;
+  return `<span class="signal-badge sig-none">ℹ️ No Signal Word</span>`;
 }
 
-// ===== RENDER PPE SECTION =====
 function renderPPESection(c){
   const ppeList=getPPEList(c);
   const reqColors={บังคับ:'#ff6666',แนะนำ:'#ffaa44',ข้อควรระวัง:'#ffdd44',ตรวจสอบ:'#66aaff'};
   const reqBg={บังคับ:'rgba(200,0,0,0.15)',แนะนำ:'rgba(200,100,0,0.12)',ข้อควรระวัง:'rgba(180,150,0,0.12)',ตรวจสอบ:'rgba(0,80,200,0.12)'};
-
-  return `
-    <div class="ppe-grid">
-      ${ppeList.map(p=>`
-        <div class="ppe-item">
-          <span class="ppe-icon">${p.icon}</span>
-          <div class="ppe-name">${p.name}</div>
-          <div class="ppe-req" style="color:${reqColors[p.req]||'#888'};background:${reqBg[p.req]||'rgba(255,255,255,0.05)'};padding:1px 6px;border-radius:8px;font-size:9px;margin-top:2px;display:inline-block;">${p.req}</div>
-        </div>
-      `).join('')}
-    </div>
-    <div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap;">
-      <span style="font-size:10px;color:rgba(255,80,80,0.8);">🔴 บังคับ</span>
-      <span style="font-size:10px;color:rgba(255,150,0,0.8);">🟠 แนะนำ</span>
-      <span style="font-size:10px;color:rgba(255,220,0,0.8);">🟡 ข้อควรระวัง</span>
-    </div>
-  `;
+  return `<div class="ppe-grid">${ppeList.map(p=>`
+    <div class="ppe-item">
+      <span class="ppe-icon">${p.icon}</span>
+      <div class="ppe-name">${p.name}</div>
+      <div style="color:${reqColors[p.req]||'#888'};background:${reqBg[p.req]||'rgba(255,255,255,0.05)'};padding:1px 6px;border-radius:8px;font-size:9px;margin-top:2px;display:inline-block;font-weight:700;">${p.req}</div>
+    </div>`).join('')}</div>
+  <div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap;">
+    <span style="font-size:10px;color:rgba(255,80,80,0.8);">🔴 บังคับ</span>
+    <span style="font-size:10px;color:rgba(255,150,0,0.8);">🟠 แนะนำ</span>
+    <span style="font-size:10px;color:rgba(255,220,0,0.8);">🟡 ข้อควรระวัง</span>
+  </div>`;
 }
 
-// ===== OPEN ROOM DETAIL (แสดงทุกสารพร้อม PPE) =====
 function selectRoomChems(room){
   const chems=rawChemicals.filter(c=>c.room===room&&(currentFloor===4||c.floor===currentFloor));
   if(chems.length===0) return;
@@ -893,14 +997,10 @@ function openRoomDetail(room,chems){
   const icons={red:'💀',orange:'🔥',yellow:'⚠️',blue:'🔵',green:'✅'};
   const sorted=[...chems].sort((a,b)=>hazOrder.indexOf(a.hazard)-hazOrder.indexOf(b.hazard));
   const stCls={Completed:'st-completed',Hold:'st-hold',Rejected:'st-rejected',Submitted:'st-submitted'};
-
-  // Room-level PPE = union of all PPE for highest hazard chems
   const topChem=sorted[0];
   const roomPPE=getPPEList(topChem);
   const reqColors={บังคับ:'#ff6666',แนะนำ:'#ffaa44',ข้อควรระวัง:'#ffdd44',ตรวจสอบ:'#66aaff'};
   const reqBg={บังคับ:'rgba(200,0,0,0.15)',แนะนำ:'rgba(200,100,0,0.12)',ข้อควรระวัง:'rgba(180,150,0,0.12)',ตรวจสอบ:'rgba(0,80,200,0.12)'};
-
-  // Count by hazard
   const hzCount={};
   chems.forEach(c=>{hzCount[c.hazard]=(hzCount[c.hazard]||0)+1;});
 
@@ -915,34 +1015,26 @@ function openRoomDetail(room,chems){
     </div>
     <div style="display:flex;gap:5px;flex-wrap:wrap;">
       ${Object.entries(hzCount).map(([h,n])=>`<span style="background:${hzBg[h]};border:1px solid ${hzC[h]}40;border-radius:8px;padding:2px 8px;font-size:10px;color:${hzC[h]};">${icons[h]} ${n}</span>`).join('')}
-    </div>
-  `;
+    </div>`;
 
-  // Room-level PPE section
-  let ppeHtml=`
-    <div style="background:linear-gradient(135deg,rgba(0,60,150,0.2),rgba(0,100,200,0.12));border:1px solid rgba(0,150,255,0.3);border-radius:12px;padding:12px 13px;margin-bottom:2px;">
-      <div style="font-size:11px;font-weight:800;color:#00e5ff;margin-bottom:10px;display:flex;align-items:center;gap:7px;">
-        🦺 PPE ที่ต้องสวมใส่ในพื้นที่นี้
-        <span style="font-size:9px;background:rgba(0,80,200,0.2);border:1px solid rgba(0,150,255,0.3);border-radius:8px;padding:1px 7px;color:rgba(150,200,255,0.8);">ขั้นต่ำ</span>
-      </div>
-      <div class="ppe-grid">
-        ${roomPPE.map(p=>`
-          <div class="ppe-item">
-            <span class="ppe-icon">${p.icon}</span>
-            <div class="ppe-name">${p.name}</div>
-            <div style="color:${reqColors[p.req]||'#888'};background:${reqBg[p.req]||'rgba(255,255,255,0.05)'};padding:1px 6px;border-radius:8px;font-size:9px;margin-top:3px;display:inline-block;font-weight:700;">${p.req}</div>
-          </div>`).join('')}
-      </div>
+  let ppeHtml=`<div style="background:linear-gradient(135deg,rgba(0,60,150,0.2),rgba(0,100,200,0.12));border:1px solid rgba(0,150,255,0.3);border-radius:12px;padding:12px 13px;margin-bottom:2px;">
+    <div style="font-size:11px;font-weight:800;color:#00e5ff;margin-bottom:10px;display:flex;align-items:center;gap:7px;">🦺 PPE ที่ต้องสวมใส่ในพื้นที่นี้
+      <span style="font-size:9px;background:rgba(0,80,200,0.2);border:1px solid rgba(0,150,255,0.3);border-radius:8px;padding:1px 7px;color:rgba(150,200,255,0.8);">ขั้นต่ำ</span>
     </div>
-  `;
+    <div class="ppe-grid">${roomPPE.map(p=>`
+      <div class="ppe-item">
+        <span class="ppe-icon">${p.icon}</span>
+        <div class="ppe-name">${p.name}</div>
+        <div style="color:${reqColors[p.req]||'#888'};background:${reqBg[p.req]||'rgba(255,255,255,0.05)'};padding:1px 6px;border-radius:8px;font-size:9px;margin-top:3px;display:inline-block;font-weight:700;">${p.req}</div>
+      </div>`).join('')}
+    </div>
+  </div>`;
 
-  // Chem list
   let chemListHtml=`<div class="dsec">📋 รายการสารเคมีในพื้นที่</div>`;
-  sorted.forEach((c,idx)=>{
+  sorted.forEach(c=>{
     const sds=getSdsStatus(c.sdsDate);
     const sigClass=c.signal.toLowerCase().includes('danger')||c.signal.toLowerCase().includes('อันตราย')?'danger':c.signal.toLowerCase().includes('warning')||c.signal.toLowerCase().includes('ระวัง')?'warning':'none';
     const ppeMini=getPPEList(c).filter(p=>p.req==='บังคับ').slice(0,3).map(p=>`<span class="ppe-mini">${p.icon} ${p.name}</span>`).join('');
-
     chemListHtml+=`
       <div class="chem-card-room hz-${c.hazard}" onclick="selectChem('${c.id}')">
         <div class="ccr-header">
@@ -951,17 +1043,11 @@ function openRoomDetail(room,chems){
           <span class="ccr-status ${stCls[c.status]||'st-submitted'}">${c.status}</span>
         </div>
         <div class="ccr-info-row">
-          <div class="ccr-info-item">
-            <div class="ccr-info-label">📦 ปริมาณ</div>
-            <div class="ccr-info-val">${c.qty}</div>
-          </div>
-          <div class="ccr-info-item">
-            <div class="ccr-info-label">📋 SDS</div>
-            <div class="ccr-info-val" style="color:${sds.color};">● ${sds.label}</div>
-          </div>
+          <div class="ccr-info-item"><div class="ccr-info-label">📦 ปริมาณ</div><div class="ccr-info-val">${c.qty}</div></div>
+          <div class="ccr-info-item"><div class="ccr-info-label">📋 SDS</div><div class="ccr-info-val" style="color:${sds.color};">● ${sds.label}</div></div>
         </div>
         <div style="margin-bottom:6px;">
-          <div style="font-size:9px;color:rgba(255,255,255,0.35);margin-bottom:3px;">🎯 วัตถุประสงค์การใช้งาน</div>
+          <div style="font-size:9px;color:rgba(255,255,255,0.35);margin-bottom:3px;">🎯 วัตถุประสงค์</div>
           <div style="font-size:11px;color:rgba(255,255,255,0.75);line-height:1.5;">${c.purpose||c.appCat}</div>
         </div>
         <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
@@ -969,32 +1055,23 @@ function openRoomDetail(room,chems){
           ${ppeMini}
         </div>
         <div style="font-size:10px;color:rgba(0,200,255,0.6);margin-top:5px;">→ คลิกเพื่อดูรายละเอียดเพิ่มเติม</div>
-      </div>
-    `;
+      </div>`;
   });
 
   document.getElementById('detC').innerHTML=`
-    <div style="margin-bottom:4px;">
-      <div class="dsec">🦺 PPE ขั้นต่ำสำหรับพื้นที่นี้</div>
-      ${ppeHtml}
-    </div>
-    ${chemListHtml}
-  `;
-
+    <div style="margin-bottom:4px;"><div class="dsec">🦺 PPE ขั้นต่ำสำหรับพื้นที่นี้</div>${ppeHtml}</div>
+    ${chemListHtml}`;
   document.getElementById('detA').innerHTML=`
     <button class="dbtn dbp" onclick="alert('QR Label ทั้งหมด ${chems.length} รายการในพื้นที่ ${room}')">🏷️ QR Label พื้นที่นี้</button>
-    <button class="dbtn dbs" onclick="closeDetail()">✕ ปิด</button>
-  `;
+    <button class="dbtn dbs" onclick="closeDetail()">✕ ปิด</button>`;
   panel.classList.add('open');
 }
 
-// ===== OPEN SINGLE CHEM DETAIL (พร้อม PPE + Purpose + Signal) =====
 function selectChem(id){
   const c=rawChemicals.find(x=>x.id===id);
   if(!c) return;
   activeChem=(activeChem===id)?null:id;
-  renderMapList();
-  renderMapPins();
+  renderMapList();renderMapPins();
   if(activeChem){
     document.querySelectorAll('.room').forEach(r=>r.classList.remove('hi'));
     const r=document.getElementById('room-'+c.room);
@@ -1013,7 +1090,7 @@ function openChemDetail(c){
   const hzBg={red:'rgba(200,0,0,0.18)',orange:'rgba(200,100,0,0.18)',yellow:'rgba(200,180,0,0.15)',blue:'rgba(0,80,200,0.18)',green:'rgba(0,150,80,0.15)'}[c.hazard];
   const stColors={Completed:'#00ff88',Hold:'#ffaa44',Rejected:'#ff6666',Submitted:'#66aaff'};
   const icons={red:'💀',orange:'🔥',yellow:'⚠️',blue:'🔵',green:'✅'};
-  const ppeList=getPPEList(c);
+  const hazLines=c.hazardClass?c.hazardClass.split(',').map(h=>h.trim()).filter(h=>h):['-'];
 
   document.getElementById('detH').innerHTML=`
     <div class="dclose" onclick="closeDetail()">✕</div>
@@ -1030,14 +1107,9 @@ function openChemDetail(c){
     <div style="display:flex;gap:5px;flex-wrap:wrap;">
       <span style="background:${c.status==='Completed'?'rgba(0,150,80,0.2)':c.status==='Rejected'?'rgba(200,0,0,0.2)':'rgba(200,100,0,0.2)'};border-radius:6px;padding:2px 9px;font-size:10px;font-weight:700;color:${stColors[c.status]||'#888'};">${c.status}</span>
       ${c.cas?`<span style="background:rgba(255,255,255,0.07);border-radius:6px;padding:2px 9px;font-size:10px;color:rgba(255,255,255,0.5);">CAS: ${c.cas}</span>`:''}
-    </div>
-  `;
-
-  // Hazard class lines
-  const hazLines=c.hazardClass?c.hazardClass.split(',').map(h=>h.trim()).filter(h=>h):['-'];
+    </div>`;
 
   document.getElementById('detC').innerHTML=`
-    <!-- PURPOSE -->
     <div class="dsec">🎯 วัตถุประสงค์การใช้งาน</div>
     <div class="purpose-box">
       <div class="purpose-label">Application Purpose</div>
@@ -1047,50 +1119,34 @@ function openChemDetail(c){
         <span style="background:rgba(0,80,200,0.15);border:1px solid rgba(0,150,255,0.2);border-radius:8px;padding:2px 8px;font-size:10px;color:#66aaff;">🔄 ${c.useType}</span>
       </div>
     </div>
-
-    <!-- HAZARD CLASS -->
     <div class="dsec">☠️ Hazard Class & Category</div>
     <div class="hazard-class-box">
-      <div class="hazard-class-list">
-        ${hazLines.map(h=>`<div class="hazard-class-item"><div class="hazard-dot"></div><span>${h}</span></div>`).join('')}
-      </div>
+      <div class="hazard-class-list">${hazLines.map(h=>`<div class="hazard-class-item"><div class="hazard-dot"></div><span>${h}</span></div>`).join('')}</div>
     </div>
-
-    <!-- PPE -->
     <div class="dsec">🦺 PPE ที่ต้องสวมใส่</div>
-    <div style="background:linear-gradient(135deg,rgba(0,60,150,0.18),rgba(0,100,200,0.1));border:1px solid rgba(0,150,255,0.25);border-radius:12px;padding:12px 13px;margin-bottom:8px;">
-      ${renderPPESection(c)}
-    </div>
-
-    <!-- LOCATION -->
+    <div style="background:linear-gradient(135deg,rgba(0,60,150,0.18),rgba(0,100,200,0.1));border:1px solid rgba(0,150,255,0.25);border-radius:12px;padding:12px 13px;margin-bottom:8px;">${renderPPESection(c)}</div>
     <div class="dsec">📍 ตำแหน่งจัดเก็บ</div>
     <div style="background:rgba(0,80,255,0.08);border:1px solid rgba(0,150,255,0.2);border-radius:9px;padding:10px 12px;margin-bottom:8px;">
       <div style="font-size:12px;color:rgba(255,255,255,0.75);margin-bottom:4px;">🏭 ${c.room.toUpperCase()} | ${c.dept}</div>
       <div style="font-size:11px;color:rgba(255,255,255,0.6);margin-bottom:3px;">📦 ${c.location}</div>
       <div style="font-size:11px;color:rgba(255,255,255,0.6);">⚖️ ปริมาณ: ${c.qty}</div>
     </div>
-
-    <!-- SDS STATUS -->
     <div class="dsec">📋 สถานะ SDS</div>
     <div style="background:rgba(${sds.status==='ok'?'0,150,80':'200,0,0'},0.08);border:1px solid rgba(${sds.status==='ok'?'0,200,100':'255,50,50'},0.2);border-radius:9px;padding:10px 12px;margin-bottom:8px;">
       <div style="font-size:13px;color:${sds.color};font-weight:800;margin-bottom:3px;">● SDS: ${sds.label}</div>
       <div style="font-size:11px;color:rgba(255,255,255,0.5);">วันที่ SDS: ${c.sdsDate||'ไม่ระบุ'}</div>
       ${sds.days!==null?`<div style="font-size:11px;color:rgba(255,255,255,0.5);">${sds.days<0?`❌ หมดอายุ ${Math.abs(sds.days)} วันที่แล้ว`:`⏳ อีก ${sds.days} วัน`}</div>`:''}
-    </div>
-  `;
+    </div>`;
 
   document.getElementById('detA').innerHTML=`
     <button class="dbtn dbp" onclick="showQRDetailFromMap('${c.id}')">📱 QR Code</button>
-    <button class="dbtn dbs" onclick="alert('พิมพ์ Label: ${c.name}')">🏷️ Label</button>
-  `;
+    <button class="dbtn dbs" onclick="alert('พิมพ์ Label: ${c.name}')">🏷️ Label</button>`;
   panel.classList.add('open');
 }
 
 function closeDetail(){
   document.getElementById('detPanel').classList.remove('open');
-  activeChem=null;
-  renderMapList();
-  renderMapPins();
+  activeChem=null;renderMapList();renderMapPins();
   document.querySelectorAll('.room').forEach(r=>r.classList.remove('hi'));
 }
 
@@ -1106,8 +1162,7 @@ function setFloor(n,el){
   currentFloor=n;
   document.querySelectorAll('.ftab').forEach(t=>t.classList.remove('on'));
   el.classList.add('on');
-  closeDetail();
-  renderMapList();renderMapPins();updateStats();
+  closeDetail();renderMapList();renderMapPins();updateStats();
 }
 function updateStats(){
   const cnt={red:0,orange:0,yellow:0,blue:0,green:0};
@@ -1127,7 +1182,6 @@ function renderQRList(search){
   const filtered=rawChemicals.filter(c=>!search||c.name.toLowerCase().includes(search.toLowerCase())||c.dept.toLowerCase().includes(search.toLowerCase())||c.id.toLowerCase().includes(search.toLowerCase()));
   const icons={red:'💀',orange:'🔥',yellow:'⚠️',blue:'🔵',green:'✅'};
   const stColors={Completed:'#00ff88',Hold:'#ffaa44',Rejected:'#ff6666',Submitted:'#66aaff'};
-
   list.innerHTML=filtered.slice(0,50).map(c=>{
     const sds=getSdsStatus(c.sdsDate);
     const ppeMini=getPPEList(c).filter(p=>p.req==='บังคับ').slice(0,3).map(p=>p.icon).join('');
@@ -1135,9 +1189,7 @@ function renderQRList(search){
       <div style="font-size:18px;flex-shrink:0;">${icons[c.hazard]}</div>
       <div style="flex:1;">
         <div style="font-size:12px;font-weight:700;">${c.name}</div>
-        <div style="font-size:10px;color:rgba(255,255,255,0.45);margin-top:1px;">
-          📍 ${c.dept} | ${c.id} | <span style="color:${sds.color};">SDS: ${sds.label}</span>
-        </div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.45);margin-top:1px;">📍 ${c.dept} | ${c.id} | <span style="color:${sds.color};">SDS: ${sds.label}</span></div>
         <div style="font-size:10px;color:rgba(150,200,255,0.7);margin-top:2px;">🦺 PPE: ${ppeMini||'N/A'}</div>
       </div>
       <div style="display:flex;gap:5px;">
@@ -1148,7 +1200,6 @@ function renderQRList(search){
   }).join('');
   if(filtered.length>50) list.innerHTML+=`<div style="text-align:center;font-size:11px;color:rgba(255,255,255,0.3);padding:8px;">แสดง 50 จาก ${filtered.length} รายการ</div>`;
 }
-
 function filterQRList(v){renderQRList(v);}
 
 function doQRScan(){
@@ -1161,15 +1212,14 @@ function doQRScan(){
     c.id.toLowerCase().includes(val.toLowerCase())||
     c.location.toLowerCase().includes(val.toLowerCase())
   );
+  const res=document.getElementById('qrResult');
   if(found.length===0){
-    const res=document.getElementById('qrResult');
     res.style.display='block';
     res.innerHTML=`<div style="text-align:center;padding:14px;color:rgba(255,255,255,0.4);">❌ ไม่พบสารเคมีที่ค้นหา</div>`;
     return;
   }
   showQRMultiResult(found.slice(0,3));
 }
-
 function qs(v){document.getElementById('qrInp').value=v;doQRScan();}
 
 function showQRDetailFromMap(id){
@@ -1182,17 +1232,13 @@ function showQRDetailFromMap(id){
 function showQRMultiResult(chems){
   const res=document.getElementById('qrResult');
   res.style.display='block';
-  const hzC={red:'#ff4444',orange:'#ff9933',yellow:'#ffcc00',blue:'#0088ff',green:'#00cc66'};
   const icons={red:'💀',orange:'🔥',yellow:'⚠️',blue:'🔵',green:'✅'};
   const stColors={Completed:'#00ff88',Hold:'#ffaa44',Rejected:'#ff6666',Submitted:'#66aaff'};
-
   let html=`<div style="font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:8px;">พบ ${chems.length} รายการ</div>`;
   chems.forEach(c=>{
     const sds=getSdsStatus(c.sdsDate);
     const ppeList=getPPEList(c);
     const ppeMandatory=ppeList.filter(p=>p.req==='บังคับ');
-    const sigClass=c.signal.toLowerCase().includes('danger')||c.signal.toLowerCase().includes('อันตราย')?'danger':c.signal.toLowerCase().includes('warning')||c.signal.toLowerCase().includes('ระวัง')?'warning':'none';
-
     html+=`
     <div style="border:1px solid rgba(0,150,255,0.2);border-radius:10px;padding:12px;margin-bottom:8px;background:rgba(0,40,100,0.15);">
       <div style="display:flex;align-items:center;gap:9px;margin-bottom:8px;">
@@ -1201,21 +1247,17 @@ function showQRMultiResult(chems){
           <div style="font-size:10px;color:rgba(255,255,255,0.45);">${c.id} | ${c.dept}</div></div>
         <span style="font-size:10px;font-weight:700;color:${stColors[c.status]||'#888'};">${c.status}</span>
       </div>
-      <!-- Signal Word -->
       <div style="margin-bottom:8px;">${renderSignalBadge(c.signal)}</div>
-      <!-- Purpose -->
       <div style="background:rgba(0,60,150,0.15);border:1px solid rgba(0,120,255,0.2);border-radius:8px;padding:8px 10px;margin-bottom:8px;">
         <div style="font-size:9px;color:rgba(0,200,255,0.6);font-weight:700;letter-spacing:1px;margin-bottom:3px;">🎯 APPLICATION PURPOSE</div>
         <div style="font-size:11px;color:rgba(255,255,255,0.8);">${c.purpose||'-'}</div>
       </div>
-      <!-- PPE -->
       <div style="background:rgba(0,60,150,0.12);border:1px solid rgba(0,120,255,0.2);border-radius:8px;padding:8px 10px;margin-bottom:8px;">
         <div style="font-size:9px;color:rgba(0,200,255,0.6);font-weight:700;letter-spacing:1px;margin-bottom:6px;">🦺 PPE บังคับ</div>
         <div style="display:flex;gap:5px;flex-wrap:wrap;">
           ${ppeMandatory.map(p=>`<span style="display:flex;align-items:center;gap:3px;background:rgba(0,80,200,0.15);border:1px solid rgba(0,120,255,0.25);border-radius:12px;padding:3px 8px;font-size:10px;color:rgba(150,200,255,0.9);">${p.icon} ${p.name}</span>`).join('')}
         </div>
       </div>
-      <!-- Grid info -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:8px;">
         <div style="background:rgba(255,255,255,0.04);border-radius:7px;padding:6px 8px;">
           <div style="font-size:9px;color:rgba(255,255,255,0.35);">ตำแหน่ง</div>
@@ -1239,7 +1281,6 @@ function goToMapChem(id){
   goPage('map',document.querySelectorAll('.ntab')[0]);
   setTimeout(()=>{selectChem(id);},300);
 }
-
 function exportQRList(){
   const txt=rawChemicals.map(c=>`${c.id}|${c.name}|${c.dept}|${c.location}|${c.status}|${c.signal}`).join('\n');
   const b=new Blob(['ChemSafe QR - WD Thailand\n\n'+txt],{type:'text/plain'});
@@ -1264,11 +1305,9 @@ function renderAlertTable(){
   if(alertFilter!=='all') data=data.filter(c=>getSdsStatus(c.sdsDate).status===alertFilter);
   data.sort((a,b)=>{const sa=getSdsStatus(a.sdsDate);const sb=getSdsStatus(b.sdsDate);if(sa.days===null)return 1;if(sb.days===null)return -1;return sa.days-sb.days;});
   const stColors={Completed:'#00ff88',Hold:'#ffaa44',Rejected:'#ff6666',Submitted:'#66aaff'};
-
   tbody.innerHTML=data.slice(0,80).map(c=>{
     const sds=getSdsStatus(c.sdsDate);
     const sClass={expired:'color:#ff4444',warning:'color:#ff9933',upcoming:'color:#ffcc00',ok:'color:#00cc66',unknown:'color:#888'}[sds.status]||'';
-    const dLabel=sds.days===null?'-':sds.days<0?`<span style="background:rgba(200,0,0,0.2);color:#ff4444;padding:2px 7px;border-radius:6px;font-size:10px;">หมดแล้ว ${Math.abs(sds.days)}วัน</span>`:`<span style="background:rgba(0,100,80,0.15);color:${sds.color};padding:2px 7px;border-radius:6px;font-size:10px;">อีก ${sds.days} วัน</span>`;
     const ppeMini=getPPEList(c).filter(p=>p.req==='บังคับ').slice(0,3).map(p=>p.icon).join(' ');
     return `<tr style="border-bottom:1px solid rgba(255,255,255,0.04);">
       <td style="padding:9px 13px;"><div style="font-weight:700;font-size:12px;">${c.name}</div><div style="font-size:10px;color:rgba(255,255,255,0.4);">${c.dept}</div></td>
@@ -1304,11 +1343,13 @@ function exportAlerts(){
 function renderDashboard(){
   const now=new Date();
   document.getElementById('dashDate').textContent=now.toLocaleDateString('th-TH',{year:'numeric',month:'long',day:'numeric'});
-  const total=rawChemicals.length;
-  const comp=rawChemicals.filter(c=>c.status==='Completed').length;
-  const hold=rawChemicals.filter(c=>c.status==='Hold').length;
-  const rej=rawChemicals.filter(c=>c.status==='Rejected').length;
-  const exp=rawChemicals.filter(c=>getSdsStatus(c.sdsDate).status==='expired').length;
+
+  const total=REAL_COUNTS.total;
+  const comp=REAL_COUNTS.completed;
+  const hold=REAL_COUNTS.hold;
+  const rej=REAL_COUNTS.rejected;
+  const exp=REAL_COUNTS.sdsExpired;
+
   document.getElementById('dash-total').textContent=total;
   document.getElementById('dash-comp').textContent=comp;
   document.getElementById('dash-hold').textContent=hold;
@@ -1320,45 +1361,61 @@ function renderDashboard(){
   document.getElementById('hold-count').textContent=hold;
   document.getElementById('rejected-count').textContent=rej;
 
-  const deptCnt={};
-  rawChemicals.forEach(c=>{deptCnt[c.dept]=(deptCnt[c.dept]||0)+1;});
-  const sorted=Object.entries(deptCnt).sort((a,b)=>b[1]-a[1]).slice(0,10);
-  const max=sorted[0]?sorted[0][1]:1;
+  // Dept Bar (Top 10 จากข้อมูลจริง)
+  const realDeptData=[
+    ['PCS /FAC',52],['MSP Storage',38],['DAS',30],['MFG_HSA',22],
+    ['BEM',18],['TEE#2',16],['TEE#3',14],['Featuring',12],
+    ['MFG_HDA',11],['Test Equip.',10]
+  ];
+  const maxD=realDeptData[0][1];
   const colors=['#0096ff','#cc88ff','#00ff88','#ffaa44','#ff6666','#ffdd44','#44ccff','#ff88aa','#88ff88','#ffbb44'];
-  document.getElementById('deptBar').innerHTML=sorted.map(([d,n],i)=>`
+  document.getElementById('deptBar').innerHTML=realDeptData.map(([d,n],i)=>`
     <div>
       <div style="display:flex;justify-content:space-between;margin-bottom:3px;font-size:11px;color:rgba(255,255,255,0.55);">
         <span style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;max-width:150px;">${d}</span>
         <span style="font-weight:700;color:${colors[i%colors.length]};">${n}</span>
       </div>
       <div style="height:7px;background:rgba(255,255,255,0.07);border-radius:4px;overflow:hidden;">
-        <div style="width:${(n/max*100)}%;height:100%;background:${colors[i%colors.length]};border-radius:4px;"></div>
+        <div style="width:${(n/maxD*100)}%;height:100%;background:${colors[i%colors.length]};border-radius:4px;"></div>
       </div>
     </div>`).join('');
 
-  const sigCnt={};
-  rawChemicals.forEach(c=>{const s=c.signal.split(' ')[0];sigCnt[s]=(sigCnt[s]||0)+1;});
-  const sigColors={'Hazard':'#ff4444','Warning':'#ffaa44','No':'#44aaff','Danger':'#ff0000'};
-  const sigMax=Math.max(...Object.values(sigCnt),1);
-  document.getElementById('signalChart').innerHTML=Object.entries(sigCnt).map(([s,n])=>`
+  // Signal Word
+  const realSignal=[
+    ['Hazard อันตราย',150,'#ff4444'],
+    ['Warning ระวัง',80,'#ffaa44'],
+    ['No Signal Word',45,'#44aaff'],
+    ['Danger',1,'#ff0000']
+  ];
+  const sigMax=150;
+  document.getElementById('signalChart').innerHTML=realSignal.map(([s,n,col])=>`
     <div style="margin-bottom:10px;">
       <div style="display:flex;justify-content:space-between;margin-bottom:3px;font-size:11px;color:rgba(255,255,255,0.55);">
-        <span>${s==='No'?'No Signal':s}</span><span style="font-weight:700;color:${sigColors[s]||'#888'};">${n}</span></div>
+        <span>${s}</span><span style="font-weight:700;color:${col};">${n}</span>
+      </div>
       <div style="height:7px;background:rgba(255,255,255,0.07);border-radius:4px;overflow:hidden;">
-        <div style="width:${(n/sigMax*100)}%;height:100%;background:${sigColors[s]||'#888'};border-radius:4px;"></div></div>
+        <div style="width:${(n/sigMax*100)}%;height:100%;background:${col};border-radius:4px;"></div>
+      </div>
     </div>`).join('');
 
-  const stCnt={Completed:comp,Hold:hold,Rejected:rej,Submitted:rawChemicals.filter(c=>c.status==='Submitted').length};
-  const stC={Completed:'#00ff88',Hold:'#ffaa44',Rejected:'#ff6666',Submitted:'#66aaff'};
-  const stMax=Math.max(...Object.values(stCnt),1);
-  document.getElementById('statusChart').innerHTML=Object.entries(stCnt).map(([s,n])=>`
+  // Status Chart
+  const realStatus=[
+    ['Completed',comp,'#00ff88'],
+    ['Hold',hold,'#ffaa44'],
+    ['Rejected',rej,'#ff6666'],
+    ['Submitted',REAL_COUNTS.submitted,'#66aaff']
+  ];
+  document.getElementById('statusChart').innerHTML=realStatus.map(([s,n,col])=>`
     <div style="margin-bottom:10px;">
       <div style="display:flex;justify-content:space-between;margin-bottom:3px;font-size:11px;color:rgba(255,255,255,0.55);">
-        <span>${s}</span><span style="font-weight:700;color:${stC[s]||'#888'};">${n}</span></div>
+        <span>${s}</span><span style="font-weight:700;color:${col};">${n}</span>
+      </div>
       <div style="height:7px;background:rgba(255,255,255,0.07);border-radius:4px;overflow:hidden;">
-        <div style="width:${(n/stMax*100)}%;height:100%;background:${stC[s]||'#888'};border-radius:4px;"></div></div>
+        <div style="width:${(n/comp*100)}%;height:100%;background:${col};border-radius:4px;"></div>
+      </div>
     </div>`).join('');
 
+  // Activity Feed
   const recent=[...rawChemicals].sort((a,b)=>b.id.localeCompare(a.id)).slice(0,10);
   const dotC={Completed:'#00ff88',Hold:'#ffaa44',Rejected:'#ff4444',Submitted:'#66aaff'};
   document.getElementById('actFeed').innerHTML=recent.map(c=>`
@@ -1368,8 +1425,8 @@ function renderDashboard(){
         <div style="font-size:10px;color:rgba(255,255,255,0.3);margin-top:1px;">${c.dept} | ${c.status}</div></div>
     </div>`).join('');
 
+  // Top Hazard
   const top=rawChemicals.filter(c=>c.hazard==='red').slice(0,5);
-  const hzBg2={red:'rgba(200,0,0,0.18)'};
   document.getElementById('topList').innerHTML=top.map((c,i)=>`
     <div style="display:flex;align-items:center;gap:9px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
       <div style="font-size:13px;font-weight:800;width:20px;color:${i<3?['#ffdd00','#ccc','#cc8844'][i]:'rgba(255,255,255,0.3)'};">${i+1}</div>
@@ -1381,13 +1438,8 @@ function renderDashboard(){
 
 // ===== INIT =====
 function init(){
-  renderMapList();
-  renderMapPins();
-  updateStats();
-  renderQRList('');
-  renderAlerts();
-  renderDashboard();
-  // QR demo pattern
+  renderMapList();renderMapPins();updateStats();
+  renderQRList('');renderAlerts();renderDashboard();
   const qr=document.getElementById('demoQR');
   if(qr){
     const pat=[1,1,1,0,1,1,1,1,1,0,0,0,1,0,1,0,0,0,0,0,0,0,1,0,1,1,0,0,0,0,0,1,1,1,0,1,1,1,0,0,0,0,1,0,1,1,0,0,1];
